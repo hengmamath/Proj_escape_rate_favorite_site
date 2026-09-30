@@ -1,0 +1,42 @@
+\clearpage
+\appendix
+\section{Notation guide}\label{sec:notation}
+
+The same letter $n$ denotes physical time in the main theorem and a
+truncated logarithmic depth inside the traversal argument; the relation
+$n=J-h+O(1)$ is stated whenever the latter convention is used. Likewise,
+the function $h(r)=2\arctan(r/2)$ converts conformal to spherical radii,
+whereas the terminal depth $h$ satisfies $M=e^h$.
+
+\small
+\begin{longtable}{@{}p{.19\textwidth}p{.49\textwidth}p{.25\textwidth}@{}}
+\toprule
+Symbol & Meaning & Where used \\
+\midrule
+\endhead
+$L_n(x),M_n$ & Site local time and its spatial maximum. & Section~\ref{sec:introduction} \\
+$\mathcal F_n,R_n^-,R_n^+$ & Favorite set and its nearest and farthest distances from the origin. & Section~\ref{sec:introduction} \\
+$a_\gamma(n)$ & $\sqrt n/(\log n)^\gamma$. & Theorem~\ref{main:precise-escape-rate} \\
+$g,u_{J,c}$ & $g=2/\pi$ and $u_{J,c}=2gJ^2-cgJ\log J$. & Both disk estimates \\
+$D(x,r),\tau_r$ & Lattice disk and exit time from $D(0,r)$. & Section~\ref{sec:elementary} \\
+$G_D$ & Green function for the walk killed on leaving $D$. & Sections~\ref{sec:elementary} and \ref{sec:terminal-upper} \\
+$z,N,K$ & Geometric weight, $N=(1-z)^{-1}$ and clock with $P(K=n)=(1-z)z^n$. & Section~\ref{sec:recurrence} \\
+$X_K^*,U_x$ & Priority-selected favorite and independent site priorities. & Lemma~\ref{lem:plateau-bijection} \\
+$\sigma,\ell$ & First and last visits to the selected favorite. & Lemma~\ref{lem:plateau-bijection} \\
+$\mathcal B,\tau_c$ & Exposed excursion/suffix tuple and terminal-arm killing time. & Lemma~\ref{lem:plateau-bijection} \\
+$J,h,M,L$ & Outer logarithmic radius, terminal logarithmic radius, $M=e^h$, and lower traversal depth $L=J-h$. & Sections~\ref{sec:continuum-transfer}--\ref{sec:terminal-lower} \\
+$\rho_L,\alpha_{z,\pm}$ & Barrier slope $2-(\log L)/L$ and its upper/lower curved barriers. & Section~\ref{sec:continuum-transfer} \\
+$F_L,k_y$ & Deterministic net of centers and a center's source shell. & Section~\ref{sec:continuum-transfer} \\
+$T_{y,j}^{1,m_0}$ & Traversal count within the first $m_0$ complete source excursions. & Section~\ref{sec:continuum-transfer} \\
+$I_y^\circ,S_y$ & Truncated Brownian root event and connector safety event. & Section~\ref{sec:continuum-transfer} \\
+$\chi_y,\Psi_J$ & Centered conformal coordinate and dilated stereographic chart. & Section~\ref{sec:continuum-transfer} \\
+$w,Q,G_0$ & Complete radial word, number of shell decisions, and number of nonempty source blocks. & Section~\ref{sec:terminal-upper} \\
+$D_y,A_y,V_y,E_y$ & Terminal killing disk, entrance interface, core, and directed exit edges. & Section~\ref{sec:terminal-upper} \\
+$\omega_i,X_i(x)$ & Entrance/exit pair and occupation at $x$ of its killed bridge. & Section~\ref{sec:terminal-upper} \\
+$P_w,\widetilde P_w$ & True complete-word endpoint law and its sequentially normalized comparison law. & Section~\ref{sec:terminal-upper} \\
+$\Lambda_M$ & Reference entrance/exit measure obtained from harmonic measure at the center. & Section~\ref{sec:terminal-upper} \\
+$\mathcal R_y,\mathcal C_y$ & Intrinsic information exposing exterior paths and bridge endpoints while erasing bridge interiors. & Sections~\ref{sec:continuum-transfer} and \ref{sec:terminal-lower} \\
+$Z_L^S,\widehat Z_L^S$ & Lattice root counts used before conditional terminal success. & Section~\ref{sec:terminal-lower} \\
+\bottomrule
+\end{longtable}
+\normalsize

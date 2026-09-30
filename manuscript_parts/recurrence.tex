@@ -1,0 +1,328 @@
+\section{Recurrence at the critical scale}\label{sec:recurrence}
+The goal of this section is to place every favorite in a small disk at infinitely
+many times. We first localize one favorite at an independent geometric time,
+then make that favorite unique by an injective four-step insertion. Uniqueness
+allows the resulting fresh segment to be combined with an arbitrary past.
+
+\subsection{A resolvent estimate and reversal at a favorite}
+
+\begin{lemma}[A stopped resolvent bound]\label{lem:stopped-resolvent}
+Let \(0<z<1\), \(N=(1-z)^{-1}\), and let \(\mu\) be a finite positive
+measure on \(\mathbb Z^2\) of mass \(\beta\).  Suppose that
+\begin{equation}
+(I-zP)\mu=\alpha\delta_0-\nu,\qquad \nu\ge0,
+       \qquad \alpha-\nu(\mathbb Z^2)=(1-z)\beta.                 \tag{1}
+\end{equation}
+There is a universal \(c>0\) such that, whenever
+\(2\le f\le N^{1/8}\),
+\begin{equation}
+\mu\left(B\left(0,C\frac{\sqrt N}{f}\right)\right)
+       \ge c\beta\,\frac{1+\log f}{f^2}.                         \tag{2}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let \(Q_R=[-R,R]^2\cap\mathbb Z^2\) and set
+\[
+ w_R:=|Q_R|^{-1}{\bf1}_{Q_R}*{\bf1}_{-Q_R}.
+\]
+Then \(0\le w_R\le1\), \(w_R(0)=1\), and \(w_R\) is supported in
+\(B(0,3R)\).  Put
+\[
+ G_z:=\sum_{n\ge0}z^nP^n,\qquad \phi_R:=G_z*w_R.
+\]
+Fourier inversion gives
+\[
+ \widehat{\phi_R}(\theta)=
+ \frac{|\widehat{{\bf1}_{Q_R}}(\theta)|^2/|Q_R|}
+      {1-z\widehat P(\theta)}\ge0.
+\]
+Consequently \(\phi_R(y)\le\phi_R(0)\) for every \(y\).  Pairing (1) with
+\(\phi_R\) and using \((I-zP)\phi_R=w_R\) yields
+\begin{equation}
+\begin{split}
+ \mu(w_R)
+ &=\alpha\phi_R(0)-\nu(\phi_R)\\
+ &\ge(\alpha-\nu(\mathbb Z^2))\phi_R(0)
+   =(1-z)\beta\phi_R(0).                                      \tag{3}
+\end{split}
+\end{equation}
+The elementary Fourier integral over
+\(\{\lVert\theta\rVert\le c/R\}\), together with
+\(1-z\widehat P(\theta)\asymp (1-z)+\lVert\theta\rVert^2\),
+gives, for \(R^2\le N/4\),
+\begin{equation}
+\phi_R(0)\ge cR^2\left(1+\log\frac N{R^2}\right).              \tag{4}
+\end{equation}
+Since \(\mu(w_R)\le\mu(B(0,3R))\), take
+\(R=\lfloor\sqrt N/(4f)\rfloor\) in (3)--(4).  This proves (2),
+after changing the absolute radius constant.
+\end{proof}
+
+\begin{lemma}[Localization of a selected favorite]\label{lem:plateau-bijection}
+Let \(K\) be independent of the walk with
+\[
+       P(K=n)=(1-z)z^n,\qquad n\ge0.
+\]
+Attach independent uniform $[0,1]$ priorities \((U_x)_{x\in\mathbb Z^2}\) to
+the sites and let \(X_K^*\) be the least-priority member of
+\(\mathcal F_K\).  If \(\sigma\) and \(\ell\) are respectively its first and
+last visit times, then the endpoint law of \(-X_K^*\), restricted by any event measurable with respect to the base tuple defined in the proof, is a positive
+mixture satisfying (1).  In particular,
+\begin{equation}
+P\left(\lVert X_K^*\rVert_2\le C\frac{\sqrt K}{f}\right)
+       \ge c\,\frac{1+\log f}{f^2},\qquad
+       2\le f\le N^{1/8}.                                     \tag{5}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We give the atomwise bijection; this is needed because a mere informal path
+reversal does not control plateaux of tied favorites.
+
+Fix a clock atom \(K=n\), a path
+\(s=(s_0,\ldots,s_n)\), and first insert
+\[
+       1=\sum_x{\bf1}_{\{x=X_n^*\}}.
+\]
+Thus, in the sector currently considered, \(x\) is deterministic while the
+priorities are translated.  Put \(m=M_n\), \(r=m-1\), and let
+\(\sigma,\ell\) be the first and last visits to \(x\).  Reverse and center
+the prefix through \(\ell\):
+\[
+       A_i=s_{\ell-i}-x,\qquad 0\le i\le\ell.
+\]
+It has exactly \(r\) positive returns to zero by time
+\(\ell-\sigma\).  Hence it decomposes uniquely as
+\begin{equation}
+A=E_1\oplus\cdots\oplus E_r\oplus C,                    \tag{6}
+\end{equation}
+where the \(E_i\)'s are completed positive root excursions and \(C\)
+starts at zero, has no positive return to zero, and ends at
+\(a=-x\).  The centered forward suffix
+\[
+       B_i=s_{\ell+i}-x,\qquad 0\le i\le n-\ell,
+\]
+also has no positive return to zero.
+
+Write \(H_r(y)\) for the number of visits to \(y\ne0\) in the completed
+excursions and \(N_C(y),N_B(y)\) for the corresponding positive-time
+counts in \(C,B\).  Translate priorities by the fixed sector shift,
+\(V_y=U_{x+y}\).  The statement that the root is the priority-selected
+favorite is exactly
+\begin{equation}
+H_r(y)+N_C(y)+N_B(y)
+       \le r+{\bf1}_{\{V_y>V_0\}},\qquad y\ne0.                 \tag{7}
+\end{equation}
+Indeed, a better-priority site must be strictly below the root's value
+\(r+1\), while a worse-priority site may tie it.
+
+Expose the base tuple
+\[
+       {\cal B}=(r,E_1,\ldots,E_r,B,V)
+\]
+and define its fixed capacities
+\begin{equation}
+c_{\cal B}(y):=
+       r+{\bf1}_{\{V_y>V_0\}}-H_r(y)-N_B(y),\qquad y\ne0.       \tag{8}
+\end{equation}
+Let \(\tau_c\) be the first positive return of a new walk \(C\) to zero or
+the first time some \(N_C(y)\) exceeds (8).  The possible terminal arms
+are exactly the prefixes \(C_0,\ldots,C_q\) with \(q<\tau_c\).
+
+Conversely, a feasible base tuple and one such prefix reconstruct the
+original path: concatenate (6), reverse it, translate by
+\(-a=x\), and append the translated suffix \(B\).  Inequality (7) makes
+\(x\) a favorite and excludes every better-priority tie; avoidance of zero
+by \(B\) makes \(\ell\) its last visit.  The endpoint \(a\) recovers the
+sector \(x=-a\), so both the path and the priority translation are unique.
+The forward and inverse maps are therefore genuine bijections, including
+\(r=0\).
+
+If \(\rho_r\), \(q\), and \(k\) are the lengths of the completed part,
+\(C\), and \(B\), reversal and symmetry preserve the path weight and
+\begin{equation}
+z^{\rho_r}4^{-\rho_r}\,
+ z^q4^{-q}\,(1-z)z^k4^{-k}
+       =(1-z)z^n4^{-n}.                                      \tag{9}
+\end{equation}
+Thus no multiplicity or normalization factor is hidden.
+
+For a fixed capacity let
+\[
+       g_c(u)=E_0\sum_{q<\tau_c}z^q{\bf1}_{\{C_q=u\}}.
+\]
+Direct telescoping gives
+\begin{equation}
+(I-zP)g_c=\delta_0-E_0[z^{\tau_c}\delta_{C_{\tau_c}}].  \tag{10}
+\end{equation}
+Mixing (10) with the positive base weights in (9), and optionally
+restricting those base weights by a base-measurable event, proves (1).
+
+It remains to make the radius self-normalized.  Whole-path reversal,
+translation to the new starting point, and transport of the iid priorities
+preserve the joint law and send
+\[
+       (\sigma,\ell)\longmapsto(n-\ell,n-\sigma).
+\]
+As \(\sigma\le\ell\),
+\begin{equation}
+E(n-\sigma)=E\ell\ge n/2,
+       \qquad P(n-\sigma\ge n/4)\ge1/3.                        \tag{11}
+\end{equation}
+Also \(P(K\ge N/2)\ge1/4\) for all large \(N\).  Hence the restriction
+\[
+       \Gamma=\{n-\sigma\ge N/8\}
+\]
+has mixture mass \(\beta\ge1/12\).  In the tuple,
+\[
+       n-\sigma=(\ell-\sigma)+(n-\ell)=\rho_r+|B|,
+\]
+so \(\Gamma\) is base-measurable, as required above.  Apply Lemma~\ref{lem:stopped-resolvent} to this restricted mixture. It gives a disk of radius $C_1\sqrt N/f$; on $\Gamma$, this is at most $\sqrt8 C_1\sqrt K/f$. Absorb the fixed factor into the radius constant.  This proves (5).
+\end{proof}
+
+\subsection{Removing ties and absorbing the past}
+
+\begin{lemma}[Localization with a unique favorite]\label{lem:singleton-geometric-localization}
+For the same geometric clock, uniformly for \(2\le f\le N^{1/8}\),
+\begin{equation}
+P\left(\mathcal F_K=\{X\},\
+        \lVert X\rVert_2\le C\frac{\sqrt K}{f}\right)
+       \ge c\,\frac{1+\log f}{f^2}.                            \tag{12}
+\end{equation}
+The conclusion remains valid, up to a universal change of \(c\), after
+restricting the output clock to
+\begin{equation}
+aN\le K\le JN,\qquad J=\log N,\qquad
+       a=\frac c8\,\frac{1+\log f}{f^2}.                       \tag{13}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For every atom counted in (5), insert immediately after the last visit to
+its priority-selected favorite \(x\) the fixed loop
+\begin{equation}
+x,\ x+e_1,\ x,\ x+e_2,\ x.                             \tag{14}
+\end{equation}
+The local time at \(x\) rises by two, those at the two neighbors rise by
+one, and all other local times are unchanged.  Thus \(x\) is the unique
+favorite of the new path.  The old suffix avoids \(x\), so in the image the
+last visit to the unique favorite is the final vertex of (14).  Removing
+the four preceding prescribed steps is therefore the unique inverse.  On
+geometrically weighted path atoms the image-to-source weight ratio is
+\(z^4/4^4\), bounded below for \(z\) close to one.  This proves (12).
+
+Now \(P(K<aN)\le2a\), while
+\(P(K>JN)\le\exp(-J/2)\).  With the constant in (13) chosen after the
+constant in (12), these discarded masses total at most half the right-hand
+side of (12).  Four added steps are absorbed by changing the universal
+constants.
+\end{proof}
+
+\begin{lemma}[Adding an inherited local-time profile]\label{lem:inherited-profile-dichotomy}
+Let \(H\ge0\) be any finitely supported integer profile and let
+\(\ell\ge0\) be a second integer profile with a unique maximizer \(y\).
+Every maximizer of \(H+\ell\) lies in
+\(\operatorname{supp}H\cup\{y\}\).
+\end{lemma}
+
+\begin{proof}
+If \(y\) is not a maximizer of \(H+\ell\), then
+\(\max(H+\ell)>(H+\ell)(y)\ge\ell(y)\).  Outside
+\(\operatorname{supp}H\), the profile \(H+\ell\) equals \(\ell\) and is at
+most \(\ell(y)\), so every maximizer lies in \(\operatorname{supp}H\).
+If \(y\) is a maximizer, uniqueness of the maximum of \(\ell\) shows that
+the only possible maximizer outside \(\operatorname{supp}H\) is \(y\).
+\end{proof}
+
+\subsection{Infinitely many successful blocks}
+
+\begin{proposition}[Recurrence at the critical scale]\label{prop:critical-recurrence}
+Almost surely,
+\begin{equation}
+\liminf_{n\to\infty}
+       \frac{R_n^+}{\sqrt{n/\log n}}=0.                        \tag{15}
+\end{equation}
+Consequently, for every \(\gamma\le\tfrac12\),
+\begin{equation}
+\liminf_{n\to\infty}\frac{R_n^+}{a_\gamma(n)}=0.
+                                                                    \tag{16}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Fix \(\varepsilon>0\).  Choose a deterministic sequence
+\[
+       J_{k+1}=J_k+10\log J_k,\qquad s_k=\lfloor e^{J_k}\rfloor,
+\]
+and, for the fresh block beginning at \(s_k\), put
+\[
+       N_k=\frac{e^{J_{k+1}}}{J_{k+1}^2},\qquad
+       f_k=C\varepsilon^{-1}\sqrt{J_{k+1}}.
+\]
+Apply Lemma~\ref{lem:singleton-geometric-localization} to the fresh increment
+walk, with an independent geometric clock with parameter $1/N_k$.  It gives a
+unique fresh favorite \(Y_k\) satisfying
+\begin{equation}
+\lVert Y_k\rVert\le\frac{\varepsilon}{8}
+             \sqrt{\frac{K_k}{J_{k+1}}}                       \tag{17}
+\end{equation}
+with conditional probability at least
+\begin{equation}
+d_k=c_\varepsilon\frac{\log J_{k+1}}{J_{k+1}},          \tag{18}
+\end{equation}
+even after
+\begin{equation}
+\frac{d_k}{8}N_k\le K_k\le J_{k+1}N_k.                 \tag{19}
+\end{equation}
+For all sufficiently large $k$, the translated clock interval in (19) lies in $[s_k,s_{k+1})$: its upper endpoint is $s_k+e^{J_{k+1}}/J_{k+1}<s_{k+1}$, while its lower clock endpoint is much larger than $s_k$. The singleton estimate already includes the four inserted steps.
+
+Let \(H_k(x)=\sum_{j=0}^{s_k-1}{\bf1}_{\{S_j=x\}}\), while the fresh
+profile includes its time-zero visit at \(S_{s_k}\).  Thus their sum is
+exactly the full profile at \(s_k+K_k\), with no double counting.  The
+fresh profile is translated by \(S_{s_k}\).  By
+Lemma~\ref{lem:inherited-profile-dichotomy}, at time
+\(t_k=s_k+K_k\) every favorite of the full walk belongs either to the old
+range or to \(S_{s_k}+Y_k\).
+
+Part (2) of Lemma~\ref{lem:elementary-walk-estimates} and Borel--Cantelli give
+\[
+       \max_{j\le s_k}\lVert S_j\rVert
+       \le \sqrt{s_k}\,J_k
+\]
+eventually.  The choices above imply, uniformly over (19),
+\begin{equation}
+\sqrt{s_k}\,J_k=o\left(\sqrt{\frac{K_k}{J_{k+1}}}\right),
+ \qquad \log(s_k+K_k)\sim J_{k+1},\qquad s_k=o(K_k).            \tag{20}
+\end{equation}
+Combining (17)--(20), every full favorite at \(t_k\) is in
+\begin{equation}
+B\left(0,\frac{\varepsilon}{2}
+                    \sqrt{\frac{t_k}{\log t_k}}\right)        \tag{21}
+\end{equation}
+for all sufficiently large successful \(k\).
+
+Moreover \(J_k\sim10k\log k\), and hence
+\begin{equation}
+\sum_kd_k=\infty.                                      \tag{22}
+\end{equation}
+The fresh increments occupy disjoint deterministic blocks.  On the product
+space enlarged by the independent clocks and priorities, let \(E_k\)
+be the fresh singleton-success event (17), with clock restriction (19).
+Its conditional probability given the past at \(s_k\) is at least
+\(d_k\).  Lévy's conditional Borel--Cantelli lemma and (22) imply that
+\(E_k\) occurs infinitely often almost surely.  Independently, the
+old-range bound and the deterministic comparisons (20) hold eventually
+almost surely; on their intersection, every sufficiently late \(E_k\)
+implies (21).  Thus (21) occurs infinitely often.  Fubini removes the
+auxiliary clocks and priorities: for almost every walk path, their
+probability of producing infinitely many witness times is one, so that
+path itself has infinitely many such integer witness times.
+
+Intersecting over rational \(\varepsilon>0\) proves (15).  Finally,
+\[
+       \frac{a_{1/2}(n)}{a_\gamma(n)}
+       =(\log n)^{\gamma-1/2}\le1
+\]
+eventually for \(\gamma\le1/2\), which proves (16).
+\end{proof}

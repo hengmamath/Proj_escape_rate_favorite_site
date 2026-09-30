@@ -1,0 +1,88 @@
+\section{Escape below the critical scale}\label{sec:escape}
+The localized disk estimate must exclude a favorite at every time in a block,
+not just at its endpoints. Monotonicity of local times makes this possible:
+use the global maximum at the left endpoint and the local time in the target
+disk at the right endpoint.
+
+\begin{proposition}[Escape below the critical scale]\label{prop:supercritical-escape}
+For every \(\gamma>\tfrac12\), almost surely,
+\begin{equation}
+\liminf_{n\to\infty}
+       \frac{R_n^-}{\sqrt n/(\log n)^\gamma}=\infty.          \tag{80}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Fix \(\gamma>1/2\) and a positive integer spatial multiplier \(A_0\).
+Choose
+\[
+       0<\delta<\frac{2\gamma-1}{4}.
+\]
+For \(N_j=e^{2j}\), Proposition~\ref{prop:deterministic-maximum-lower} gives,
+eventually,
+\begin{equation}
+M_{N_j}\ge u_{j,2+\delta}.                             \tag{81}
+\end{equation}
+
+Consider any \(n\in[N_j,N_{j+1}]\).  If a favorite at time \(n\) lies in
+\[
+       B\left(0,A_0\frac{\sqrt n}{(\log n)^\gamma}\right),
+\]
+then, by monotonicity of local times and (81), at time \(N_{j+1}\) some
+site in
+\begin{equation}
+B\left(0,C_{A_0}e^{j+1}j^{-\gamma}\right)             \tag{82}
+\end{equation}
+has local time at least \(u_{j,2+\delta}\).
+
+Take
+\[
+       K_j=C_*e^{j+1}\sqrt{\log j},\qquad J'_j=\log K_j.
+\]
+By the maximal inequality in Lemma~\ref{lem:elementary-walk-estimates}, \(C_*\)
+can be chosen so that
+\begin{equation}
+\sum_jP(\tau_{K_j}\le N_{j+1})<\infty.                 \tag{83}
+\end{equation}
+For large \(j\), the ball (82) is contained in
+\[
+       B(0,K_j(J'_j)^{-\gamma}).
+\]
+Moreover \(J'_j=j+O(\log\log j)\), and the fixed extra coefficient
+\(\delta\) gives
+\begin{equation}
+u_{j,2+\delta}\ge u_{J'_j,2+2\delta}                  \tag{84}
+\end{equation}
+for all large \(j\): the negative term
+\(-\delta g j\log j\) dominates the \(O(j\log\log j)\) change in the
+leading term.
+
+Choose independently an upper-error exponent \(A_{\rm err}>2\).
+On the complement of the summable event in (83), the implication
+(81)--(84) and Proposition~\ref{prop:localized-disk-upper}, with
+\(\beta=\gamma\) and \(c=2+2\delta\), show that the probability of any
+such \(n\) in the whole block is at most
+\begin{equation}
+(J'_j)^{-2\gamma+2\delta+o(1)}+O(j^{-A_{\rm err}}).     \tag{85}
+\end{equation}
+Our choice of \(\delta\) makes the power in (85) strictly smaller than
+\(-1\).  Hence (85) is summable.  Borel--Cantelli proves that eventually
+no favorite in the \(j\)-th block lies in the ball with multiplier \(A_0\).
+Intersecting over \(A_0\in\mathbb N\) proves (80).
+\end{proof}
+
+
+\begin{proof}[Proof of Theorem~\ref{main:precise-escape-rate}]
+Propositions~\ref{prop:critical-recurrence} and
+\ref{prop:supercritical-escape} give the two assertions for each fixed
+exponent. Intersect the probability-one events for rational
+$\gamma>1/2$ and for the single critical exponent $1/2$.
+If $\gamma>1/2$ is real, choose a rational $q\in(1/2,\gamma)$; then
+\[
+ \frac{R_n^-}{a_\gamma(n)}
+ =\frac{R_n^-}{a_q(n)}(\log n)^{\gamma-q}\longrightarrow\infty.
+\]
+For $\gamma\le1/2$, the inequality
+$R_n^+/a_\gamma(n)\le R_n^+/a_{1/2}(n)$ gives the other assertion on the
+same event. This proves the simultaneous formulation.
+\end{proof}

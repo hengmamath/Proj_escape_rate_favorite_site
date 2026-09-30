@@ -1,0 +1,1152 @@
+\section{Terminal occupation and the localized upper bound}
+\label{sec:terminal-upper}
+
+The radial traversal estimates leave the occupation accumulated inside each terminal disk to be controlled. We first compare the entrance--exit chain in a centered block, then derive its exponential occupation moment. The last subsection combines that moment with the traversal barrier to prove the localized upper estimate.
+
+\subsection{Endpoint products in one centered block}
+\begin{lemma}\label{lem:typed-centered-endpoint-product}
+Let \(D=D(y,eM)\), let \(A\) be the inner vertex boundary of
+\(D(y,M)\), and let \(E\) be the directed edges leaving \(D\).  Put
+\[
+ H^S(a,e)=P_a((S_{\tau_D-1},S_{\tau_D})=e),\qquad
+ ({\cal H}^Sf)(a)=\sum_eH^S(a,e)f(a,e).
+\]
+Let \(G^S=G_D\).  For \(x,x'\in V:=D(y,M/2)\), define on
+\(A\times E\)
+\[
+ m_x(a,e)={G^S(a,x)H^S(x,e)\over H^S(a,e)},
+\]
+\[
+\begin{aligned}
+q_{x,x'}(a,e)=\frac{1}{H^S(a,e)}\big(&G^S(a,x)G^S(x,x')H^S(x',e)\\
+  &+G^S(a,x')G^S(x',x)H^S(x,e)\\
+  &-\mathbf1_{\{x=x'\}}G^S(a,x)H^S(x,e)\big),
+\end{aligned}
+\]
+and let
+\begin{equation}
+ {\cal F}_M^{\rm G}=\{m_x/C:x\in V\}\cup
+ \{q_{x,x'}/[C(1+G^S(x,x'))]:x,x'\in V\},               \tag{TP0}\label{eq:tu-TP0}
+\end{equation}
+where the fixed \(C\) is large enough that all functions have sup norm
+at most one.
+Let \(R_i^S(e,da')\) be a fixed radial-only centered return word from a
+previous exit edge to the next inward entrance, let
+\(\sigma_i=R_i^S1\), \(J_i^S=R_i^S/\sigma_i\), and set
+\begin{equation}
+ P_i^S((a,e),d(a',e'))=J_i^S(e,da')H^S(a',de').           \tag{TP1}\label{eq:tu-TP1}
+\end{equation}
+The word may be selected adaptively from its radial prefix, but not from an
+angular endpoint.  If it contains \(q_i\) elementary letters, all at scales
+at least \(M\), and \(\lambda_A^S\) is the center-to-\(A\) first-hit law,
+put \(\Lambda^S=\lambda_A^SH^S\).  For \(f\in{\cal F}_M^{\rm G}\) and
+every consecutive portion \(r\le s\) of
+one centered block,
+\begin{equation}
+ \left|\Lambda^SP_r^S\cdots P_s^Sf-\Lambda^Sf\right|
+ \le C\left\{M^{-7/24}\log M+{1\over M}
+                   \sum_{i=r}^s(q_i+1)\right\}.            \tag{TP2}\label{eq:tu-TP2}
+\end{equation}
+The bound is uniform over the fixed realized radial word.  An arbitrary
+inter-block reset terminates the estimate; the next block restarts from an
+arbitrary law.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{lem:typed-centered-endpoint-product}]
+The comparison is applied after averaging the exit edge, which removes the
+roughness of the digital boundary. We then normalize each complete return
+word and compare the resulting product with rotation-invariant Brownian
+kernels.
+
+\smallskip\noindent
+\underline{\textit{Step 1.}}\quad Smooth the endpoint observables.
+A discrete pair is
+\((a,e)\in A\times E\).  Every exterior kernel starts at the head
+\(\operatorname{out}(e)\) of the preceding exit edge.  With
+\(P_i^S=J_i^SH^S\), exact operator composition is
+\begin{equation}
+ \Lambda^SP_r^S\cdots P_s^Sf
+ =\lambda_A^SH^SJ_r^SH^S\cdots J_s^S({\cal H}^Sf).         \tag{TP3}\label{eq:tu-TP3}
+\end{equation}
+Thus the first operation on the terminal observable is the exact average
+\({\cal H}^S\).
+
+The continuum entrance and exit state spaces are separate copies of
+\(\mathbb T\), in the common angular coordinate of the centered block.
+Let \(\bar H\) be Brownian exit from radii \(M\) to \(eM\), and let
+\(\bar J_i\) be the normalized Brownian return word.  Their densities are
+rotation convolutions.  Explicitly,
+\begin{equation}
+ {d\bar H(\alpha,\cdot)\over d\theta/(2\pi)}(\beta)
+ ={e^2-1\over e^2+1-2e\cos(\beta-\alpha)},                \tag{TP4}\label{eq:tu-TP4}
+\end{equation}
+and an elementary side kernel from logarithmic level \(x\) to \(b\) before
+\(a\) has unnormalized density
+\begin{equation}
+ {1\over2\pi}\left\{{x-a\over b-a}
+ +2\sum_{n\ge1}{\sinh(n(x-a))\over\sinh(n(b-a))}
+       \cos n(\beta-\alpha)\right\}.                      \tag{TP5}\label{eq:tu-TP5}
+\end{equation}
+Consequently Haar measure \(m(d\alpha)=d\alpha/(2\pi)\) is preserved
+by \(\bar H\) and every \(\bar J_i\). The continuum pair transition
+\(\bar J_i\bar H\) therefore preserves
+\(\bar\Lambda(d\alpha,d\beta)=m(d\alpha)\bar H(\alpha,d\beta)\).
+
+We next construct the continuum test functions.  Write \(G^S=G_D\).
+For \(x,x'\in D(y,M/2)\), the exact bridge identities are
+\begin{equation}
+ {\cal H}^Sm_x(a)=G^S(a,x),                               \tag{TP6}\label{eq:tu-TP6}
+\end{equation}
+\begin{equation}
+ \begin{split}
+ {\cal H}^Sq_{x,x'}(a)
+ &=G^S(a,x)G^S(x,x')+G^S(a,x')G^S(x',x)\\
+ &\quad-\mathbf1_{\{x=x'\}}G^S(a,x).
+ \end{split}                                               \tag{TP7}\label{eq:tu-TP7}
+\end{equation}
+Let \(a_\alpha=y+Me^{i\alpha}\) and
+\[
+       \mathscr G^B(a_\alpha,x)={2\over\pi}
+              g_{B(y,eM)}^B(a_\alpha,x).
+\]
+For \(f=m_x/C\), define
+\(\varphi_f(\alpha)=\mathscr G^B(a_\alpha,x)/C\).  For
+\(f=q_{x,x'}/[C(1+G^S(x,x'))]\), define \(\varphi_f\) by the right side
+of \eqref{eq:tu-TP7}, divided by \(C(1+G^S(x,x'))\), and replace only the boundary-variable factors
+\(G^S(a,x),G^S(a,x')\) by \(\mathscr G^B(a_\alpha,x)\) and
+\(\mathscr G^B(a_\alpha,x')\).  The short-distance lattice coefficients
+\(G^S(x,x')\) are retained, including on the diagonal.
+
+After scaling by \(M\),
+\begin{equation}
+ g_{B(0,e)}^B(z,\xi)=\log\left|{e^2-z\bar\xi\over e(z-\xi)}\right|,
+       \qquad |z|=1,\quad|\xi|\le\tfrac12,               \tag{TP8}\label{eq:tu-TP8}
+\end{equation}
+where the logarithmic Green function is normalized as in the preceding
+display. The denominators stay uniformly
+away from zero, and symmetry of \(G^S\) bounds all retained normalized
+coefficients.  Hence
+\begin{equation}
+                  \sup_f\|\varphi_f\|_{C^4(\mathbb T)}\le C.          \tag{TP9}\label{eq:tu-TP9}
+\end{equation}
+
+We use the Green-function comparison of Kozdron--Lawler
+\cite[Corollary~3.5, equation~(30)]{KozdronLawler2005}.
+For a simply connected lattice domain \(A\) of inradius in \([n,2n]\),
+let \(\widetilde A\) be its union-of-squares domain. If
+\(u\in A_n^*:=\{z:g_{\widetilde A}(0,z)\ge n^{-1/16}\}\), the
+comparison, away from the diagonal, is
+\begin{equation}
+ G_A(u,z)={2\over\pi}g_{\widetilde A}(u,z)+k_{z-u}
+                 +O(n^{-7/24}\log n),                    \tag{TP10}\label{eq:tu-TP10}
+\end{equation}
+where \(a\) is the lattice potential kernel and
+\(k_w=k_0+(2/\pi)\log|w|-a(w)\) for \(w\ne0\).
+Apply this with the core pole in \(D(y,M/2)\). This pole is a fixed
+fraction of the radius from the boundary and belongs to \(A_n^*\).
+The boundary-variable point is at distance at least \(M/2-O(1)\) from
+the pole, so \(k_{a-x}=O(M^{-2})\). Sandwiching the union-of-squares
+disk between disks whose radii differ by \(O(1)\), and projecting
+radially to the continuum circle, each costs \(O(M^{-1})\).
+Equations
+\eqref{eq:tu-TP6}--\eqref{eq:tu-TP10} therefore give, with
+\(U_AF(a)=F(\arg(a-y))\),
+\begin{equation}
+ \|{\cal H}^Sf-U_A\varphi_f\|_\infty
+       \le C\epsilon_G(M),\qquad
+ \epsilon_G(M)=M^{-7/24}\log M.                           \tag{TP11}\label{eq:tu-TP11}
+\end{equation}
+
+For an exit edge put \(U_EF(e)=F(\arg(\operatorname{out}(e)-y))\).
+Lemma~\ref{lem:smooth-interface-discretization}, with the same tubular
+continuation for a disk having only its exit boundary, gives for every
+smooth angular test \(F\)
+\begin{equation}
+ \|H^SU_EF-U_A\bar HF\|_\infty
+       +|\lambda_A^SU_AF-mF|
+       \le {C\over M}\|F\|_{C^4}.                         \tag{TP12}\label{eq:tu-TP12}
+\end{equation}
+For the second term, solve the disk Dirichlet problem with boundary data
+\(F\), start at its center, and apply the tubular continuation argument
+of (39e)--(39f). For the first term, solve the exit-disk problem and
+start on the inner circle. This proves the comparison for the digital
+circles directly.
+
+\smallskip\noindent
+\underline{\textit{Step 2.}}\quad Normalize each complete return word.
+A prescribed word may have very small probability. The elementary
+relative estimates must therefore be multiplied before the complete word
+is normalized. Write its elementary kernels as
+\[
+ T_{i,l}^S(z,dz')=p_{i,l}^S(z)K_{i,l}^S(z,dz'),\qquad
+ \bar T_{i,l}=\bar p_{i,l}\bar K_{i,l},\qquad1\le l\le q_i,
+\]
+and let \(Q_i^S=K_{i,1}^S\cdots K_{i,q_i}^S\).  Under this normalized
+digital chain put
+\[
+ W_i=\prod_{l=1}^{q_i}{p_{i,l}^S(Z_{l-1})\over\bar p_{i,l}}.
+\]
+By (39c), if \(\eta_i=C\sum_lR_{i,l}^{-1}\le Cq_i/M\), then
+\(e^{-\eta_i}\le W_i\le e^{\eta_i}\).  With
+\(\bar s_i=\prod_l\bar p_{i,l}\), the identities
+\begin{equation}
+ {R_i^S1(e)\over\bar s_i}=E_{Q_{i,e}^S}W_i,\qquad
+ J_i^SF(e)={E_{Q_{i,e}^S}[W_iF(Z_{q_i})]
+                 \over E_{Q_{i,e}^S}W_i}                  \tag{TP13}\label{eq:tu-TP13}
+\end{equation}
+are exact.  Hence
+\begin{equation}
+             \|J_i^SF-Q_i^SF\|_\infty
+             \le C\eta_i\|F\|_\infty.                    \tag{TP14}\label{eq:tu-TP14}
+\end{equation}
+
+Apply the normalized smooth-test estimate following (39c) to the
+\(K_{i,l}^S\) and telescope from the right.  If
+\(\Phi_{l,F}=\bar K_{i,l+1}\cdots\bar K_{i,q_i}F\), convolution gives
+\(\|\Phi_{l,F}\|_{C^4}\le\|F\|_{C^4}\).  With the appropriate angular
+pullback at every state,
+\[
+ \|Q_i^SU_AF-U_E\bar J_iF\|_\infty
+       \le C\eta_i\|F\|_{C^4}.
+\]
+Together with \eqref{eq:tu-TP14},
+\begin{equation}
+ \|J_i^SU_AF-U_E\bar J_iF\|_\infty
+       \le C\eta_i\|F\|_{C^4}.                            \tag{TP15}\label{eq:tu-TP15}
+\end{equation}
+The weight in \eqref{eq:tu-TP13} contains the row masses of every letter of the fixed
+word, including letters after the state currently being compared.
+
+\smallskip\noindent
+\underline{\textit{Step 3.}}\quad Compare the complete product.
+
+Write \eqref{eq:tu-TP3} as alternating operators
+\(H^S,J_r^S,H^S,\ldots,J_s^S\), with terminal test
+\(g_f^S={\cal H}^Sf\).  Let \(L_j^S,\bar L_j\) be the corresponding
+discrete and Brownian operators. Write \(U_j\) for the angular pullback
+on the state space after the \(j\)-th operator, and put
+\(\Phi_{j,f}=\bar L_{j+1}\cdots\bar L_N\varphi_f\).  The operator identity, with every pullback on its corresponding state
+space, is
+\begin{equation}
+\begin{split}
+ L_1^S\cdots L_N^Sg_f^S-U_0\bar L_1\cdots\bar L_N\varphi_f
+ &=L_1^S\cdots L_N^S(g_f^S-U_N\varphi_f)\\
+ &\quad+\sum_{j=1}^NL_1^S\cdots L_{j-1}^S
+ [L_j^SU_j\Phi_{j,f}-U_{j-1}\bar L_j\Phi_{j,f}].          \end{split}
+\tag{TP16}\label{eq:tu-TP16}
+\end{equation}
+All \(\Phi_{j,f}\) have uniformly bounded \(C^4\)-norm by \eqref{eq:tu-TP9} and
+convolution contraction.  Equations \eqref{eq:tu-TP11}, \eqref{eq:tu-TP12}, and \eqref{eq:tu-TP15} bound
+\eqref{eq:tu-TP16} by the right side of \eqref{eq:tu-TP2}.  In the continuum the alternating
+product preserves Haar flux, so it has integral \(m\varphi_f\).  A
+separate zero-length use of \eqref{eq:tu-TP11}--\eqref{eq:tu-TP12} gives
+\(|\Lambda^Sf-m\varphi_f|\le C(\epsilon_G+M^{-1})\).
+Subtracting these two comparisons proves \eqref{eq:tu-TP2}.
+
+For a lower conformal block the same proof uses its one common
+\(\chi_y\)-angle.  Each occurrence of \(H^S\) has angular conjugacy error
+\(O(M^{-1}+e^{-J+h})\).  Since \(2h\le J\),
+\(e^{-J+h}\le M^{-1}\), and paying this error once per occurrence is
+already contained in \(M^{-1}\sum_i(q_i+1)\). A decision depending on
+an angular endpoint can change Haar measure. Such decisions are therefore
+included in the reset density constructed below, at the boundary between
+centered blocks.
+\end{proof}
+
+\subsection{Occupation of completed terminal excursions}
+Fix a center \(y\) and set \(o_y:=y\).  Let
+\[
+\begin{aligned}
+ D_y&=\{z\in\mathbb Z^2:\|z-y\|<eM\},\\
+ A_y&=\partial_{\rm in}\{z:\|z-y\|<M\},\\
+ V_y&=\{z:\|z-y\|<M/2\},
+\end{aligned}
+\]
+where \(\partial_{\rm in}D=\{a\in D:\exists a'\notin D,\ a'\sim a\}\),
+and let \(E_y=\{(u,v):u\in D_y,v\notin D_y,u\sim v\}\) be the directed
+exit edges.  A completed
+terminal piece begins at the first lattice vertex \(a\) after an inward
+crossing of radius \(M\), and is killed on the directed edge \(e\in E_y\)
+that first crosses radius \(eM\).  Erasing the interiors of all such
+outward pieces gives exactly the intrinsic sigma-field \({\cal R}_y\) of
+Lemma~\ref{lem:buffered-transfer}.  Conditional on their endpoint pairs
+\(\omega_i=(a_i,e_i)\), their occupation vectors
+\(X_i=(X_i(x):x\in V_y)\) are independent killed lattice bridges.
+
+An \emph{admissible centered block word} \(w\) is a positive-probability
+radial-only cylinder.  It has \(b=O(J^2)\) completed pieces, at most
+\(Q\le J^3\) adjacent-shell decisions, and a fixed
+number \(G_0\) of blocks.  Within each block every decision is between
+circles centered at \(y\), or, in the lower spherical transfer, between successive level
+sets of the single conformal coordinate \(\chi_y\).  In either case the
+normalized Brownian kernels are rotation convolutions in one common
+angular coordinate; this is what ``centered block'' means here.  Between
+two lower blocks the safe connector contributes no observable and its
+normalized angular kernel is treated only as an arbitrary reset.  Its
+scalar prescribed-side row mass is retained in the exact word
+factorization, but no comparison of its angular density or invariant law
+is made.  Before factorization, retain only source intervals containing
+at least one completed terminal piece as blocks.  Fold any initial empty
+intervals and connectors into the first chronological law, every
+intervening string of empty intervals and connectors into the preceding
+reset, and every terminal such string into the final reset.  Hence
+\(b_g\ge1\), and in the lower application \(G_0\le m_0\); the
+inter-source connectors and empty intervals contribute no core
+occupation.  In the upper application \(G_0=1\) when \(b>0\), after the
+centered extension (39k).  The case \(b=0\) is trivial and is henceforth
+excluded.  The reset construction below assigns every initial/final
+suffix and connector exactly once, so there is no unrecorded future
+weight.  Put
+\[
+ H(a,e)=P_a\big((S_{\tau_{D_y^c}-1},S_{\tau_{D_y^c}})=e\big).
+\]
+Write \(b_g\) for the number of completed pieces in block \(g\), so
+\(\sum_gb_g=b\).  For \(i<b_g\), let
+\(R_{g,i}^w(e,da')\) be the sub-Markov kernel of the prescribed exterior
+return word, started at \(\operatorname{out}(e_{g,i})\), from
+\(e_{g,i}=e\) to the next entrance
+\(a_{g,i+1}=a'\).  The pair subkernel factors exactly as
+\begin{equation}
+ Q_{g,i}^w((a,e),d(a',e'))=
+       R_{g,i}^w(e,da')H(a',de').                           \tag{47c}\label{eq:tu-47c}
+\end{equation}
+Write
+\begin{equation}
+ \sigma_{g,i}(e)=R_{g,i}^w1(e),\qquad
+ J_{g,i}^w={R_{g,i}^w\over\sigma_{g,i}},
+ \qquad\widetilde K_{g,i}^w=J_{g,i}^wH.                    \tag{47d}\label{eq:tu-47d}
+\end{equation}
+For \(g<G_0\), let
+\begin{equation}
+ C_g^w(e,d\zeta,d\omega')                                  \tag{47d'}\label{eq:tu-47d-prime}
+\end{equation}
+be the genuine sub-Markov reset kernel which, after the last endpoint
+of block \(g\), contains the prescribed final no-more-piece suffix, the
+safe connector and its data \(\zeta\), and the prefix of block \(g+1\)
+through its first endpoint pair \(\omega'\).  For \(g=G_0\), the same
+notation denotes the final suffix to a cemetery state.  Put
+\begin{equation}
+ \sigma_{g,b_g}(e)=C_g^w1(e),\qquad
+ J_{g,b_g}^w=C_g^w/\sigma_{g,b_g}.                          \tag{47d''}\label{eq:tu-47d-doubleprime}
+\end{equation}
+In a centered suffix every adjacent-shell letter is included in \(Q\).
+A lower inter-source connector is not declared centered; its normalized
+kernel \(J_{g,b_g}^w\) is used as an arbitrary reset.
+
+Let \(\alpha_{1,w}\) be the actual subprobability law of the first endpoint
+pair after imposing only the word prefix through that piece.  Admissibility
+means \(\alpha_{1,w}1>0\); put
+\(\mu_{1,w}=\alpha_{1,w}/(\alpha_{1,w}1)\).  The
+\emph{sequentially normalized} law \(\widetilde P_w\) is the
+joint law of all endpoint and reset variables that starts with
+\(\mu_{1,w}\), uses \(\widetilde K_{g,i}^w\) internally, and uses the
+normalized reset kernels \(J_{g,b_g}^w\) between blocks and at the final
+cemetery transition.  Thus the first law of every later block is
+generated chronologically by the preceding reset, not conditioned on
+its future output.  Write \(P_w\) for the true endpoint-and-reset law
+conditioned on the complete word \(w\).  All estimates are uniform over
+the arbitrary normalized reset kernels, which are marginalized at the
+end.
+
+Let \(\lambda_A\) be the law of the first hit of \(A_y\) by a walk started
+at \(o_y\), and set
+\begin{equation}
+                 \Lambda_M(da,de)=\lambda_A(da)H(a,de).     \tag{47e}\label{eq:tu-47e}
+\end{equation}
+For a pair observable \(f\), write
+\begin{equation}
+                 ({\cal H}f)(a)=\sum_eH(a,e)f(a,e).         \tag{47f}\label{eq:tu-47f}
+\end{equation}
+For \(x,x'\in V_y\), define
+\begin{equation}
+ m_x(a,e)={G(a,x)H(x,e)\over H(a,e)},                       \tag{47g}\label{eq:tu-47g}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+q_{x,x'}(a,e)=\frac{1}{H(a,e)}\big(&G(a,x)G(x,x')H(x',e)\\
+&+G(a,x')G(x',x)H(x,e)\\
+&-{\bf1}_{\{x=x'\}}G(a,x)H(x,e)\big).
+\end{aligned}                                             \tag{47h}\label{eq:tu-47h}
+\end{equation}
+Uniformly,
+\begin{equation}
+ 0\le m_x\le C,\qquad0\le q_{x,x'}\le C(1+G(x,x')),       \tag{47h'}\label{eq:tu-47h-prime}
+\end{equation}
+and the exit-edge averages are exactly
+\[
+ {\cal H}m_x(a)=G(a,x),
+\]
+\begin{equation}
+ {\cal H}q_{x,x'}(a)=G(a,x)G(x,x')+G(a,x')G(x',x)
+             -{\bf1}_{\{x=x'\}}G(a,x).                    \tag{47h''}\label{eq:tu-47h-doubleprime}
+\end{equation}
+The finite normalized observable family is
+\begin{equation}
+ {\cal F}_M=\{m_x/C:x\in V_y\}\cup
+ \left\{{q_{x,x'}\over C(1+G(x,x'))}:x,x'\in V_y\right\}; \tag{47i}\label{eq:tu-47i}
+\end{equation}
+it has at most \(CM^4\) members.  Put
+\begin{equation}
+ \varepsilon_M=CM^{-7/24}\log M,
+ \qquad
+ \eta_w^*:=CQ/M+CG_{\rm nc},                                \tag{48a}\label{eq:tu-48a}
+\end{equation}
+where \(G_{\rm nc}\le G_0\le m_0\) counts noncentered whole resets; each
+is factored once through the separator \eqref{eq:tu-59a0} below.  Thus
+\(G_{\rm nc}=0\) in the upper application and is fixed in the lower one.
+Take the deterministic centers \(c_f=\Lambda_Mf\).  Before the
+normalizations in \eqref{eq:tu-47i}, they satisfy
+\begin{equation}
+ c_{m_x}=g+O(\varepsilon_M),                                \tag{48b}\label{eq:tu-48b}
+\end{equation}
+\begin{equation}
+ c_{q_{x,x'}}=gG(x,x')+gG(x',x)-{\bf1}_{\{x=x'\}}g
+       +O(\varepsilon_M(1+G(x,x'))).                        \tag{48c}\label{eq:tu-48c}
+\end{equation}
+\begin{lemma}\label{lem:terminal-feynman-kac}
+With the preceding notation, the exact density of the complete word is
+\begin{equation}
+ {dP_w\over d\widetilde P_w}
+ ={\displaystyle\prod_{g=1}^{G_0}\prod_{i=1}^{b_g}
+          \sigma_{g,i}(e_{g,i})\over
+   \displaystyle E_{\widetilde P_w}
+       \prod_{g=1}^{G_0}\prod_{i=1}^{b_g}
+          \sigma_{g,i}(e_{g,i})},
+\qquad
+ e^{-2\eta_w^*}\le
+ {dP_w\over d\widetilde P_w}
+ \le e^{2\eta_w^*}.                                        \tag{48d}\label{eq:tu-48d}
+\end{equation}
+The product visibly includes the final no-more-piece suffix and every
+connector likelihood.  For every \(t>0\), conditionally on \(w\),
+\begin{equation}
+\begin{split}
+P_w\Bigg(&\max_{f\in{\cal F}_M}\left|
+ b^{-1}\sum_{i\le b}f(\omega_i)-c_f\right|\\
+&>t+C\{G_0/b+\varepsilon_M+Q/M\}\Bigg)
+ \le2|{\cal F}_M|\exp\{2\eta_w^*-cbt^2\}.                   \end{split}
+\tag{49}\label{eq:tu-49}
+\end{equation}
+
+For \(x\in V_y\), \(G=G_{D_y}\), and
+\begin{equation}
+ r_\theta(x):=
+ \frac{e^\theta-1}
+ {1-(G(x,x)-1)(e^\theta-1)},                                 \tag{39}\label{eq:tu-39}
+\end{equation}
+uniformly for \(0\le r_\theta\le c/h\), \(h=\log M\),
+\begin{equation}
+ \log E\left[\exp\left\{\theta\sum_{i=1}^bX_i(x)\right\}
+             \,\middle|\,w\right]
+       =bg\,r_\theta+O\left(br_\theta^2+
+       r_\theta\{G_0+b\varepsilon_M+bQ/M\}
+                    +\eta_w^*\right).                       \tag{50}\label{eq:tu-50}
+\end{equation}
+The estimate is uniform in \(x,w,b\) and concerns completed pieces.
+In both applications below, every visit to \(V_y\) lies in a completed
+piece, so no conditional incomplete-piece estimate is needed.
+
+For the upper-bound choice from Lemma~\ref{lem:buffered-transfer},
+\[
+ h=(C_h\log J)^4,\qquad n=J-h+O(1),\qquad
+ U=u_{J,c},\quad c>2,
+\]
+put \(Y=\sqrt{2b}\).  On a coefficient-two coarse barrier, uniformly over
+all \(0\le Y\le 3n\),
+\begin{equation}
+\begin{split}
+ P\left(\max_{x\in V_y}\sum_iX_i(x)\ge U\mid w,b\right)
+ &\le C e^{-2n}J^c e^{b/n}\\
+ &\quad{}\times
+ \exp\left\{-\kappa\min\left(
+ \frac{(p-p_*)^2}{h},\frac{J^2}{h}\right)\right\},            \end{split}
+\tag{51}\label{eq:tu-51}
+\end{equation}
+whenever \(Y\) is in the central range.  Here
+\[
+ p=B_n+1-Y,\qquad B_n=\rho_Jn+z_0+h^{1/4},\qquad
+ p_*=O(\log J).
+\]
+Here the coefficient-two barrier means
+\begin{equation}
+ \sqrt{2T^S_{y,j}}\le
+ B_j:=\rho_Jj+z_0+(j\wedge(J-j))^{1/4}
+ \quad(k_y<j\le n),                                         \tag{52}\label{eq:tu-52}
+\end{equation}
+after the fixed \(O(1)\) relaxation of Lemma~\ref{lem:buffered-transfer}.  The central range is
+\(\epsilon n\le Y\le B_n+1\), for one fixed small
+\(\epsilon>0\).  For \(Y<\epsilon n\), \eqref{eq:tu-51} holds with its last factor
+replaced by \(\exp(-\kappa J^2/h)\).
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{lem:terminal-feynman-kac}]
+The bridge formula reduces the occupation moment to a product of bounded
+endpoint observables. We control that product under the sequential law,
+where centered transitions contract, and then restore the likelihood of
+the complete word. The likelihood comparison must include the last
+suffix and every reset, because conditioning on their future outcomes
+can otherwise change the endpoint distribution.
+
+\smallskip\noindent
+\underline{\textit{Step 1.}}\quad Compute bridge moments and their centers.
+Let
+\[
+ H(a,e)=P_a\big((S_{\tau-1},S_\tau)=e\big),\qquad
+ \tau=\tau_{D_y^c}.
+\]
+For the bridge from \(a\) to \(e\), write \(X(x)\) for its occupation of
+\(x\).  Splitting at the first visit to \(x\), and then summing the
+geometric number of returns to \(x\), gives the exact rank-one identity
+\begin{equation}
+\begin{split}
+ H_\theta(a,e)
+ &:=E_a[e^{\theta X(x)};(S_{\tau-1},S_\tau)=e]\\
+ &=H(a,e)+r_\theta G(a,x)H(x,e).                              \end{split}
+\tag{42}\label{eq:tu-42}
+\end{equation}
+Thus
+\begin{equation}
+       \frac{H_\theta(a,e)}{H(a,e)}
+       =1+r_\theta m_x(a,e),\qquad
+       m_x(a,e):=\frac{G(a,x)H(x,e)}{H(a,e)}.                 \tag{43}\label{eq:tu-43}
+\end{equation}
+A Harnack chain inside the fixed-ratio disk gives \(0\le m_x\le C\),
+uniformly in \(x\in V_y\). Although \(m_x(a,e)\) is indexed by the
+rough digital exit edges, the transition \eqref{eq:tu-47c} first averages over that
+edge. From \eqref{eq:tu-43},
+\begin{equation}
+ ({\cal H}m_x)(a)=\sum_eH(a,e)m_x(a,e)=G(a,x).               \tag{43a}\label{eq:tu-43a}
+\end{equation}
+More generally, if \(q_{x,x'}(a,e)=E^{a,e}[X(x)X(x')]\), the
+two ordered visit-time decompositions give
+\begin{equation}
+\begin{split}
+ ({\cal H}q_{x,x'})(a)
+ &=G(a,x)G(x,x')+G(a,x')G(x',x)\\
+ &\quad-{\bf1}_{\{x=x'\}}G(a,x).                            \end{split}
+\tag{43b}\label{eq:tu-43b}
+\end{equation}
+Thus the only functions subsequently fed into a return-word kernel are
+Green functions with their singularities a distance at least \(M/2\)
+from \(A_y\).
+
+We next identify the common center and the only observables that require
+comparison.  With \(\lambda_A\) defined as the first-hit law of the
+inner vertex boundary, the strong Markov property gives
+\begin{equation}
+ d_x:=\sum_a\lambda_A(a)G_{D_y}(a,x)
+ =G_{D(y,eM)}(o_y,x)-G_{D(y,M)}(o_y,x)
+                  +O(M^{-1}\log M).                         \tag{44}\label{eq:tu-44}
+\end{equation}
+Indeed the one-edge collar can return from \(A_y\) to \(D(y,M/2)\)
+before exiting \(D(y,M)\) with probability \(O(M^{-1})\), while the
+Green function is at most \(C\log M\).  This remainder is
+\(o(\varepsilon_M)\).
+
+Apply the Green comparison \eqref{eq:tu-TP10} to both disks in \eqref{eq:tu-44}. For distinct
+arguments it reads
+\begin{equation}
+ G_A(u,z)={2\over\pi}g_A(u,z)+k_{z-u}
+                  +O(n^{-7/24}\log n),\tag{45}\label{eq:tu-45}
+\end{equation}
+with \(k_w=k_0+(2/\pi)\log|w|-a(w)\) for \(w\ne0\).
+The lattice correction is identical in the two domains and cancels.
+When \(x=o_y\), use instead the diagonal formula in
+\cite[Theorem~1.2]{KozdronLawler2005}; its additive potential-kernel
+constant also cancels. The core points lie a fixed fraction of the radius
+from both boundaries, and the union-of-squares domains are between disks
+whose radii differ by \(O(1)\). The Brownian Green-function difference
+for the concentric disks is exactly \(\log e=1\). Consequently, uniformly
+in \(x\in V_y\),
+\begin{equation}
+                     d_x=g+O(\varepsilon_M),
+ \qquad \varepsilon_M=CM^{-7/24}\log M.                    \tag{46}\label{eq:tu-46}
+\end{equation}
+The identities \eqref{eq:tu-43a}--\eqref{eq:tu-43b} now give the centers \eqref{eq:tu-48b}--\eqref{eq:tu-48c}.
+
+\smallskip\noindent
+\underline{\textit{Step 2.}}\quad Compare and contract centered transitions.
+The state of
+\(R_{g,i}^w\) is the preceding directed exit edge, and the walk restarts at
+its head; its target is the next inward directed edge.  A word is called
+admissible only when its cylinder has positive probability, so every row
+normalization below is defined.  Brownian row masses of its elementary
+letters are scalar, while Lemma~\ref{lem:smooth-interface-discretization} gives
+their relative lattice comparison.  The exact whole-word weighting formula
+\eqref{eq:tu-TP13} therefore yields, for a scalar \(s_{g,i}>0\),
+\begin{equation}
+ \sup_e\left|{\sigma_{g,i}(e)\over s_{g,i}}-1\right|
+       \le {Cq_i\over M}.                                  \tag{58c}\label{eq:tu-58c}
+\end{equation}
+This estimate holds for the complete word, since \eqref{eq:tu-TP13} retains the row
+masses of all its letters.
+
+In the common logarithmic conformal coordinate, every normalized Brownian
+letter is the rotation convolution \eqref{eq:tu-TP5}, and the terminal disk exit is
+\eqref{eq:tu-TP4}.  Apply Lemma~\ref{lem:typed-centered-endpoint-product} to the exact
+exit-edge averages \eqref{eq:tu-43a}--\eqref{eq:tu-43b}.  For consecutive internal transitions
+\(r\le s\) in one block and every \(f\in{\cal F}_M\), it gives
+\begin{equation}
+ \left|\Lambda_M
+   \widetilde K_{g,r}^w\widetilde K_{g,r+1}^w\cdots
+   \widetilde K_{g,s}^wf-c_f\right|
+ \le C\left\{\varepsilon_M+
+       {1\over M}\sum_{i=r}^s(q_i+1)\right\}.              \tag{58e}\label{eq:tu-58e}
+\end{equation}
+The two terms are compared separately with the same Haar integral of the
+disk-Green traces \eqref{eq:tu-TP6}--\eqref{eq:tu-TP9}. The estimate therefore controls complete
+prefixes even though \(\Lambda_M\) need not be invariant for a single
+discrete transition. In a lower source interval the common coordinate is
+\(\chi_y\); its terminal chart error is included in the displayed sum.
+An inter-source connector ends this comparison.
+
+To remove dependence on the initial law of each block, we also need a
+uniform contraction in total variation. The elliptic Harnack inequality
+\cite[Theorem~1.1]{AthreyaEtAl2022} states that for every \(d\ge1\)
+there is \(C_d\) such that a nonnegative function harmonic in
+\(B(x_0,R)\) satisfies
+\begin{equation}
+       \max_{B(x_0,R/2)}u\le C_d\min_{B(x_0,R/2)}u.           \tag{58a}\label{eq:tu-58a}
+\end{equation}
+Starting one step inside the outer boundary is too close to use \eqref{eq:tu-58a}
+directly.  Insert instead the deterministic intermediate circle
+\[
+                 C_M=\partial D(y,e^{1/2}M),
+\]
+which every successful outer-to-inner crossing must hit.  For a target
+atom \(a\in A_y\), put
+\[
+ h_a(z)=P_z(S_{H_{A_y}}=a,\ H_{A_y}<\tau_{D(y,eM)}),
+ \qquad s(z)=\sum_{a\in A_y}h_a(z),\qquad z\in C_M.
+\]
+A bounded chain of lattice balls of radius \(cM\), all a fixed positive
+fraction from both boundary components, applies \eqref{eq:tu-58a} to \(h_a\) and
+\(s\).  Uniformly in \(a,z,z_0\in C_M\),
+\[
+ ch_a(z_0)\le h_a(z)\le Ch_a(z_0),\qquad
+ cs(z_0)\le s(z)\le Cs(z_0).
+\]
+After division by the total successful-leg probability this gives
+\begin{equation}
+       J_{\rm in}(z,\cdot)\ge\alpha
+                     J_{\rm in}(z_0,\cdot)                  \tag{58b}\label{eq:tu-58b}
+\end{equation}
+where \(J_{\rm in}(z,\cdot)=h_{\cdot}(z)/s(z)\) is the entrance
+law conditional on reaching the inner boundary, and \(\alpha>0\) is
+uniform in \(M,z,z_0\). Precomposition by all earlier
+within-block word factors and postcomposition by \(H\) preserve this row-independent
+minorization. Writing \(\operatorname{osc}(f)=\sup f-\inf f\), we obtain
+\(\operatorname {osc}(\widetilde K_{g,i}^wf)\le(1-\alpha)
+\operatorname {osc}(f)\) for every bounded \(f\) at every within-block
+transition.  Write \(\rho=1-\alpha<1\).  A reset transition is used
+exactly and has Dobrushin coefficient at most one; there are only
+\(G_0-1\) of them.
+
+\smallskip\noindent
+\underline{\textit{Step 3.}}\quad Retain the full likelihood at resets.
+A connector can have an arbitrary normalized angular kernel. What is
+needed is a bound on the oscillation of its row mass, uniform even when
+the prescribed future event is rare. To obtain it, factor each reset
+through a deterministic separator. Fix
+\begin{equation}
+        \lambda_*=e^{3/2}\in(e,e^2),\qquad
+        \Sigma_y=\partial D(o_y,\lambda_*M).                \tag{59a0}\label{eq:tu-59a0}
+\end{equation}
+The next active outer interface after the terminal \(eM\)-circle has scale
+\(e^2M\).  The fixed-gap geometry and \eqref{eq:tu-47c} put \(\Sigma_y\) strictly
+between them and keep \(D(o_y,\lambda_*M)\) inside the applicable source
+interval and global killing domain.
+
+Let \(e=(u,v)\in E_y\) be the last exit edge of a nonempty block, so the
+exterior kernel starts at \(v=\operatorname{out}(e)\) and
+\(|v-o_y|=eM+O(1)\).  Put
+\[
+ \theta_-=H_{D(o_y,M)},\qquad
+ \theta_+=\tau_{D(o_y,\lambda_*M)},
+\]
+and on \(\{\theta_+<\theta_-\}\) let \(F_+\) be the directed outward
+edge at \(\theta_+\).  For \(g<G_0\), let
+\(B_g^w(f,d\zeta,d\omega')\) be the genuine post-separator subkernel
+which realizes the rest of the no-more-piece suffix, all folded empty
+source intervals and safe connector signs, and the next nonempty block
+prefix through its first endpoint pair.  For \(g=G_0\) it instead contains
+the remaining suffix and final cemetery transition.  Durations, parities,
+angles, and already visible edge data are outputs of this kernel, never
+extra scalar conditions.  Set \(r_g^w(f)=B_g^w(f,\hbox{all outputs})\).
+The strong Markov property gives the exact factorization
+\begin{equation}
+ C_g^w(e,d\gamma)=\sum_f
+ P_v(\theta_+<\theta_-,F_+=f)B_g^w(f,d\gamma).              \tag{59a1}\label{eq:tu-59a1}
+\end{equation}
+Indeed, a return to \(D(o_y,M)\) before \(\Sigma_y\) after the alleged
+last completed piece would, on the subsequent trip to the block's outer
+endpoint, force another exit of \(D_y\), hence another completed terminal
+piece.  Conversely, no reset restriction other than avoiding the inner
+circle is tested before \(\Sigma_y\); all remaining restrictions occur in
+\(B_g^w\).
+
+Define on the digital annulus
+\[
+ \Omega_y=D(o_y,\lambda_*M)\setminus D(o_y,M)
+\]
+\begin{equation}
+ h_g^w(z)=E_z[r_g^w(F_+);\theta_+<\theta_-].                \tag{59a2}\label{eq:tu-59a2}
+\end{equation}
+This is a nonnegative discrete harmonic function at every interior vertex,
+with exact Dirichlet value zero on the inner boundary and the possibly rough
+edge data \(r_g^w\) on the outer boundary.  Global killing and the entire
+later connector/prefix occur only in that outer boundary datum.  Moreover,
+\begin{equation}
+                  \sigma_{g,b_g}(e)=C_g^w1(e)=h_g^w(v).     \tag{59a3}\label{eq:tu-59a3}
+\end{equation}
+All such \(v\)'s lie in the band
+\(\bigl|\|v-o_y\|-eM\bigr|\le2\), a distance
+comparable to \(M\) from both components of \(\partial\Omega_y\).
+A fixed number of overlapping lattice balls of radius \(cM\), whose doubled
+balls remain in \(\Omega_y\), connects any two points of this band.
+Applying \eqref{eq:tu-58a} along this chain gives
+\begin{equation}
+       \sup_e\sigma_{g,b_g}(e)
+              \le C_H\inf_e\sigma_{g,b_g}(e).              \tag{59a}\label{eq:tu-59a}
+\end{equation}
+If \(h_g^w\) vanishes at one interior start, the mean-value property and
+connectedness make it identically zero, and the complete word cylinder has
+zero mass and is discarded.  Otherwise every row is positive and the
+normalization \(J_{g,b_g}^w=C_g^w/\sigma_{g,b_g}\) is defined.  This proves
+\eqref{eq:tu-59a} independently of how rare or rough the later event is.
+
+Start the first block with its actual chronological law through the first
+endpoint.  Use every normalized internal kernel and every normalized reset
+in chronological order, including the final cemetery output, to define
+\(\widetilde P_w\).  Direct disintegration of the unnormalized cylinder
+measure gives
+\begin{equation}
+ {dP_w\over d\widetilde P_w}
+ ={\displaystyle\prod_{g=1}^{G_0}\prod_{i=1}^{b_g}
+          \sigma_{g,i}(e_{g,i})\over
+   \displaystyle E_{\widetilde P_w}
+       \prod_{g=1}^{G_0}\prod_{i=1}^{b_g}
+          \sigma_{g,i}(e_{g,i})}.                           \tag{60a}\label{eq:tu-60a}
+\end{equation}
+The initial prefix is absorbed into \(\mu_{1,w}\), and the product
+includes the final suffix. Equation \eqref{eq:tu-58c}, applied also to a centered final suffix, bounds the
+logarithmic row oscillation of centered factors by \(Cq_i/M\); \eqref{eq:tu-59a} costs
+\(\log C_H\) once per genuinely noncentered reset.  Thus in the upper
+centered extension \(G_{\rm nc}=0\), while in the lower construction
+\(G_{\rm nc}\le G_0\le m_0\).  Scalar
+constants cancel between numerator and denominator, so, after absorbing
+\(\log C_H\) into \(C\),
+\begin{equation}
+ \left|\log{dP_w\over d\widetilde P_w}\right|
+ \le2\{CQ/M+CG_{\rm nc}\}=2\eta_w^*.                       \tag{60b}\label{eq:tu-60b}
+\end{equation}
+\smallskip\noindent
+\underline{\textit{Step 4.}}\quad Concentrate the endpoint averages.
+Fix \(w\) and a normalized
+\(f\in{\cal F}_M\), expose the sequential joint chain under
+\(\widetilde P_w\), and use the Doob martingale of
+the whole sum \(\sum_{i\le b}f(\omega_i)\).  Changing \(\omega_i\) changes the
+conditional expectation of the future sum by at most
+\[
+       2G_0\sum_{j\ge0}\rho^j\le {2G_0\over1-\rho};
+\]
+the factor \(G_0\) accounts for the possibility that a reset preserves
+all the remaining variation.
+Azuma--Hoeffding consequently gives
+\begin{equation}
+ \widetilde P_w\left(\left|\sum_{i\le b}f(\omega_i)
+       -E_{\widetilde P_w}\sum_{i\le b}f(\omega_i)\right|>bt\right)
+ \le2e^{-cbt^2}.                                             \tag{61}\label{eq:tu-61}
+\end{equation}
+More explicitly, if the \(k\)-th endpoint of a block has actual initial
+law \(\mu\), contraction and the full prefix comparison \eqref{eq:tu-58e} give
+\begin{equation}
+\begin{split}
+\left|\mu\widetilde K_{g,1}^w\cdots
+ \widetilde K_{g,k-1}^wf-c_f\right|
+ &\le2\rho^{k-1}\\
+ &\quad+C\left\{\varepsilon_M+
+ {1\over M}\sum_{j<k}(q_j+1)\right\}.                      \end{split}
+\tag{61a0}\label{eq:tu-61a0}
+\end{equation}
+For \(k=1\) this just uses \(\|f\|_\infty\le1\).
+Summing \eqref{eq:tu-61a0} over all endpoints and blocks, and using
+\(\sum_j(q_j+1)\le C Q\), gives
+\begin{equation}
+ \left|E_{\widetilde P_w}\sum_{i\le b}f(\omega_i)-bc_f\right|
+ \le C\{G_0+b\varepsilon_M+bQ/M\}.                         \tag{61a}\label{eq:tu-61a}
+\end{equation}
+A union bound under \(\widetilde P_w\), followed by \eqref{eq:tu-48d}, proves
+\eqref{eq:tu-49}.
+
+\smallskip\noindent
+\underline{\textit{Step 5.}}\quad Bound the exponential occupation moment.
+Conditional on the endpoints, \eqref{eq:tu-42}--\eqref{eq:tu-43} makes the exponential moment
+\(\prod_i(1+rm_x(\omega_i))\).  Under \(\widetilde P_w\), put
+\begin{equation}
+                 \psi_i=\log(1+rm_x(\omega_i)).              \tag{62}\label{eq:tu-62}
+\end{equation}
+Since \(0\le m_x\le C\),
+\(\psi_i=rm_x(\omega_i)+O(r^2)\) and
+\(\operatorname {osc}(\psi_i)\le Cr\).  The same influence calculation
+as for \eqref{eq:tu-61} shows that every Doob martingale difference for
+\(\sum_i\psi_i\) is at most \(CG_0r/(1-\rho)\).  Conditional Hoeffding and
+Jensen therefore give
+\begin{equation}
+ 0\le\log E_{\widetilde P_w}e^{\sum_i\psi_i}
+       -E_{\widetilde P_w}\sum_i\psi_i\le Cbr^2.             \tag{62a}\label{eq:tu-62a}
+\end{equation}
+The exact exit-edge average and its Taylor remainder are
+\begin{equation}
+ \sum_eH(a,e)\log(1+rm_x(a,e))=rG(a,x)+O(r^2),             \tag{62b}\label{eq:tu-62b}
+\end{equation}
+because \(m_x\le C\) and \(\sum_eH(a,e)m_x(a,e)=G(a,x)\le C\).
+The product telescoping \eqref{eq:tu-61a}, now for \(m_x/C\), and \eqref{eq:tu-46} give
+\begin{equation}
+ \sum_{i\le b}E_{\widetilde P_w}m_x(\omega_i)
+       =bg+O\{G_0+b\varepsilon_M+bQ/M\}.                    \tag{62c}\label{eq:tu-62c}
+\end{equation}
+Combining \eqref{eq:tu-62}--\eqref{eq:tu-62c} proves the completed-piece version of \eqref{eq:tu-50} under
+\(\widetilde P_w\).  Finally,
+\eqref{eq:tu-48d} puts the exact full-word density \eqref{eq:tu-60a} between
+\(e^{-2\eta_w^*}\) and \(e^{2\eta_w^*}\).  Multiplying the nonnegative
+exponential by this global density and taking logarithms changes the
+answer by at most \(2\eta_w^*\), exactly the last error in \eqref{eq:tu-50}.
+This proves \eqref{eq:tu-50} under \(P_w\).
+
+\smallskip\noindent
+\underline{\textit{Step 6.}}\quad Optimize the terminal upper tail.
+The first choice of tilt will cancel the endpoint Gaussian cost. A further
+adjustment supplies decay in the distance from the preferred endpoint,
+which is needed when summing all endpoint bands. The inverse of \eqref{eq:tu-39} is
+\begin{equation}
+       \theta(r)=
+       \log\frac{1+G(x,x)r}{1+(G(x,x)-1)r}.                   \tag{49}\label{eq:tu-49-2}
+\end{equation}
+Take \(r_0=(gn)^{-1}\).  Since
+\(G(x,x)=gh+O(1)\) and \(h^2/J=o(1)\),
+\begin{equation}
+ \theta(r_0)=\frac1{gJ}+O(J^{-2}+h^2J^{-3}),\qquad
+ \theta(r_0)U=2J-c\log J+O(1),\qquad bg r_0=b/n.              \tag{50}\label{eq:tu-50-2}
+\end{equation}
+Since \(G_0=1\), \(b=O(J^2)\), \(Q\le J^3\), and
+\(M=e^{(C_h\log J)^4}\), every error term in \eqref{eq:tu-50}
+is \(O(1)\) at \(r_0\), uniformly in the word.
+A union bound over \(O(e^{2h})\) sites, \eqref{eq:tu-50}, and Chernoff's inequality
+give the first line of \eqref{eq:tu-51}.
+
+We retain the tilt freedom to sum every endpoint band.  Set
+\[
+       F_b(r)=\theta(r)U-bgr-C_0br^2.
+\]
+Here are the derivative and feasibility details.  Uniformly on every fixed
+interval \(0\le r\le a/h\),
+\[
+ \theta'(r)=\frac1{(1+Gr)(1+(G-1)r)},
+\]
+\[
+ -\theta''(r)=\theta'(r)
+ \left\{\frac G{1+Gr}+\frac{G-1}{1+(G-1)r}\right\}.
+\]
+Thus \(c_a\le\theta'(r)\le C_a\),
+\(c_ah\le-\theta''(r)\le C_ah\), and
+\(|\theta'''(r)|\le C_ah^2\).  Since \(b=O(J^2)\), after increasing
+\(J\),
+\begin{equation}
+       -C_1J^2h\le F_b''(r)\le-c_1J^2h.                     \tag{51a}\label{eq:tu-51a}
+\end{equation}
+Also
+\begin{equation}
+ \theta'(r_0)=1-\frac{2h}{n}
+                  +O(n^{-1}+h^2n^{-2}).                     \tag{51b}\label{eq:tu-51b}
+\end{equation}
+Define \(b_*\) by \(F_{b_*}'(r_0)=0\).  Since
+\[
+       b_*={U\theta'(r_0)\over g+2C_0r_0},
+\]
+the relations \(J=n+h+O(1)\) and \(h^2=o(J)\) give
+\[
+ b_*=2n^2-cn\log J+O(n+h^2+h\log J)
+     =2n^2-cn\log J+O(n).
+\]
+Consequently
+\begin{equation}
+       Y_*=\sqrt{2b_*}
+          =2n-\frac c2\log J+O(1),                            \tag{51}\label{eq:tu-51-2}
+\end{equation}
+and hence \(p_*=B_n+1-Y_*=O(\log J)\).  More exactly,
+\begin{equation}
+ F_b'(r_0)=(g+2C_0r_0)(b_*-b)
+          =(g+o(1)){(Y_*-Y)(Y_*+Y)\over2}.                  \tag{51c}\label{eq:tu-51c}
+\end{equation}
+
+Fix a sufficiently small constant \(\delta>0\).  If
+\(\epsilon n\le Y\le B_n+1\) and \(|Y-Y_*|\le\delta J\), Taylor's
+formula, \eqref{eq:tu-51a}, and the displacement
+\[
+       s={F_b'(r_0)\over C_1J^2h}
+\]
+(with \(C_1\) enlarged once) give
+\begin{equation}
+ \sup_rF_b(r)-F_b(r_0)
+ \ge\kappa\frac{(Y-Y_*)^2}{h}.                              \tag{51d}\label{eq:tu-51d}
+\end{equation}
+This displacement is feasible.  If it is negative, the barrier and
+\(h^{1/4}=O(\log J)\) imply \(Y-Y_*=O(\log J)\), whence
+\(|s|=O(\log J/(Jh))=o(r_0)\).  If it is positive, choosing \(\delta\)
+small ensures \(s<a/(2h)\).  When
+\(\epsilon n\le Y\le Y_*-\delta J\), choose instead a fixed
+\(s=a_0/h>0\), with \(a_0\) small compared with \(\delta/C_1\).
+Equations \eqref{eq:tu-51a}--\eqref{eq:tu-51c} then give
+\begin{equation}
+       F_b(r_0+s)-F_b(r_0)\ge\kappa J^2/h.                  \tag{51e}\label{eq:tu-51e}
+\end{equation}
+There is no range \(Y\ge Y_*+\delta J\) because the upper barrier permits
+only an \(O(\log J)\) overshoot above \(Y_*\).
+
+Finally, if \(Y<\epsilon n\), take \(r=a_0/h\) directly.  The integral
+formula \(\theta(r)=\int_0^r\theta'(t)\,dt\) gives
+\(\theta(a_0/h)\ge c_aa_0/h\).  First choosing \(\epsilon\) and then
+\(a_0\) small yields
+\begin{equation}
+       F_b(a_0/h)\ge\kappa_0J^2/h,
+       \qquad F_b(r_0)=O(J)=o(J^2/h).                        \tag{51f}\label{eq:tu-51f}
+\end{equation}
+Equations \eqref{eq:tu-51d}--\eqref{eq:tu-51f}, and
+\(p-p_*=Y_*-Y\), prove precisely the two alternatives in \eqref{eq:tu-51}.
+
+\smallskip\noindent
+\underline{\textit{Step 7.}}\quad Account for the initial and final portions.
+In the applications, all core occupation belongs to completed pieces.  A lower source block begins and ends on interfaces outside
+\(D_y\).  An upper block with \(k\le C_0\log J\) starts at the origin,
+which is outside \(D_y\), and ends at \(\sigma_y\), also outside
+\(D_y\).  Before the first inward crossing of radius \(M\) the path
+cannot visit \(V_y\).  After any visit to \(V_y\), reaching the block's
+outer endpoint forces a later crossing of radius \(eM\), so that inward
+crossing and all intervening core occupation form a completed piece.
+Thus the initial and final incomplete portions contribute exactly zero
+to every \(X(x)\) used here.  Upper cells with \(k>C_0\log J\), including
+the cells near the walk's starting point, are treated separately by the
+one-site Green estimate in \eqref{eq:tu-62-2}.
+\end{proof}
+
+\subsection{A local upper bound for the maximum}
+\begin{proposition}\label{prop:localized-disk-upper}
+For every fixed \(\beta>0,c>2\) and \(A<\infty\),
+\begin{equation}
+\begin{split}
+ P\left(\max_{\lVert x\rVert\le e^JJ^{-\beta}}
+             L_{\tau_{e^J}}(x)\ge u_{J,c}\right)
+ \le J^{-2\beta+c-2+o(1)}+O(J^{-A}).                         \end{split}
+\tag{53}\label{eq:tu-53}
+\end{equation}
+The \(o(1)\) is uniform when \(\beta,c\) range over compact subsets of
+\((0,\infty)\) and \((2,\infty)\), respectively.
+\end{proposition}
+
+\begin{proof}[Proof of Proposition~\ref{prop:localized-disk-upper}]
+We work with one terminal cell at a time and extend the walk to a disk
+centered at that cell. This puts the source law, traversal barrier, and
+terminal word in the same centered geometry. The traversal estimate and
+the terminal exponential moment then have opposite Gaussian factors;
+after their cancellation, the ballot prefactor supplies the required
+power \(J^{-2}\).
+
+\smallskip\noindent
+\underline{\textit{Step 1.}}\quad Choose cells and exclude barrier crossings.
+Use the upper buffer
+\[
+       h=(C_h\log J)^4,\qquad M=e^h,\qquad n=J-h,
+\]
+with \(C_h\) fixed large.  Cover the target disk by original \(M\)-cells
+obtained from the dilated image of Rosen's predetermined net \(F_n\),
+rounding each image center to its nearest lattice point.  The chart has
+uniformly bounded distortion on the relevant compact patch, so these
+centers are \(cM\)-separated and form a \(CM\)-cover.  After altering the
+fixed core and terminal radius factors, every lattice point lies in a
+core, the overlap multiplicity is bounded, and Lemmas
+\ref{lem:buffered-transfer} and \ref{lem:terminal-feynman-kac}
+apply to the same cells.  We continue to denote their radii by \(M/2\) and \(eM\).
+For a cell center with \(\|y\|>M\), use the exact index from (45a0),
+\begin{equation}
+ u_y=\log {3e^J\over\|y\|},\qquad
+ k=k(y)=\lceil u_y\rceil,\qquad m=k+1.                     \tag{54a}\label{eq:tu-54a}
+\end{equation}
+Cells with \(\|y\|\le M\) are assigned to the final sitewise range
+\(k>C_0\log J\).  Uniform distortion of the fixed chart makes \eqref{eq:tu-54a}
+equal to the spherical source index (24) up to a bounded additive error,
+which is absorbed by the barrier slack.
+Every target cell has
+\begin{equation}
+       k\ge s:=\beta\log J+O(1).                              \tag{54}\label{eq:tu-54}
+\end{equation}
+For this fixed cell continue the walk from \(\tau_{e^J}\) to
+\(\sigma_y=\tau_{D(y,3e^J)}\).  By (39l), a high local time in the cell
+before \(\tau_{e^J}\) is also high before \(\sigma_y\).  All counts,
+words, terminal bridges, and the source index below refer to this single
+\(y\)-centered extended path.  This domination is applied separately to
+each cell before the final union bound.
+
+First exclude a crossing of the fixed positive-intercept
+coefficient-two barrier \eqref{eq:tu-52} at or before level \(n\).  Since
+\(h>(4\log J)^4\) after choosing \(C_h\) large, all these levels lie in
+the range of (45d)--(45e).  Restricting the source shells to \(k\ge s\)
+and using (40) gives
+\begin{equation}
+\begin{split}
+ P(\hbox{some bad prefix in the target})
+ &\le C\sum_{k\ge s}\sum_{l=k+1}^{n}
+ e^{2(l-k)+\frac12 l_J^{1/4}}
+ e^{-2l-l_J^{1/4}}\\
+ &\le J^{-2\beta+o(1)},\qquad
+ l_J:=l\wedge(J-l).                                          \end{split}
+\tag{55}\label{eq:tu-55}
+\end{equation}
+The direct lattice estimates (45a)--(45e), for both the representative
+count and the probability of a crossing at one center, apply through the
+source-shell range \(k\le C_0\log J\).
+
+\smallskip\noindent
+\underline{\textit{Step 2.}}\quad Include the source law in the ballot estimate.
+Fix one original cell in a shell
+\[
+       s\le k\le C_0\log J.
+\]
+Sum the complete words that include the source and whose radial prefix
+stays below the barrier. The comparison is applied to this joint event
+before conditioning on a particular source height.  Put \(m=k+1\) and
+\[
+       X=\sqrt{2T_m},\qquad Y=\sqrt{2T_n}.
+\]
+The directed-edge source estimate (45c) gives, for each unit band \(I_x\),
+\begin{equation}
+       P(X\in I_x)\le C(k+1)^C\exp\{-x^2/(2m)\}.             \tag{56}\label{eq:tu-56}
+\end{equation}
+For a unit endpoint band \(I_q=[q,q+1]\), let \(\mathscr A(q)\) denote
+the disjoint union of complete words that retain the good barrier and end
+in \(Y\in I_q\).  The joint source-inclusive comparison (45g), before any
+disintegration of the actual lattice law, gives for every source band
+\(I_x\)
+\begin{equation}
+\begin{split}
+ &P_S\bigl(X\in I_x,\mathscr A(q)\bigr)\\
+ &\qquad\le e^{CJ^3/M}
+   \sum_{\sqrt{2t}\in I_x}\pi_{m,u_y}(t)
+       P_t^{\rm GW}(\mathscr A_t^{\rm GW}(q)).              \end{split}
+\tag{56a}\label{eq:tu-56a}
+\end{equation}
+Only the ideal law on the right is disintegrated by \(t\).  The remaining
+traversal chain has length \(L=n-m\).  Its affine barrier has endpoints
+\(a=B_m\) and \(b=B_n+1\), and (31a) shows that it dominates the truncated
+\(J\)-barrier without replacing \(\rho_J\) by \(\rho_n\).
+
+Fix \(\epsilon_0>0\) small and
+\(\epsilon_0n\le q\le B_n+1\), and put \(p=B_n+1-q\).  For each
+\(t\ge2\), set \(x_t=\sqrt{2t}\) and apply (30) pointwise with initial
+height \(x_t\), endpoint band \([q,q+1]\), and duration \(L\).  On the
+good prefix, \(x_t\le B_m=O(m)\), while the exact geometric source law
+satisfies
+\[
+       \pi_{m,u_y}(t)\le Cm^{-1}\exp\{-x_t^2/(2m)\}.
+\]
+Because \(m+L=n\), the two exponential costs combine by the exact identity
+\begin{equation}
+ \frac{x_t^2}{m}+\frac{(q-x_t)^2}{L}
+ =\frac{q^2}{n}+\frac{n(x_t-mq/n)^2}{mL}.                   \tag{57}\label{eq:tu-57}
+\end{equation}
+The identity uses the actual height \(x_t\). Grouping those heights into
+unit bands changes the exponential by only \(e^{O(1)}\).  The Gaussian sum in the
+last term and the remaining source factors cost only a polynomial in
+\(m\).  Since \(q\ge\epsilon_0n\) and \(L\asymp n\), the ballot prefactor
+in (30), including \(\sqrt{x_t/(qL)}\), gives
+\begin{equation}
+ P(\hbox{prefix good},\,Y\in I_q)
+ \le C(k+1)^C(1+p)n^{-2}\exp\{-q^2/(2n)\}.                  \tag{58}\label{eq:tu-58}
+\end{equation}
+For the only positive start below two, namely \(T_m=1\), add an
+independent ancestor and require that ancestor to die in its first
+generation.  This has probability \(1/2\), so the desired probability is
+at most twice the bound from initial population two: from generation
+one onward the two paths agree, and these are exactly the generations on
+which the barrier in (30) is imposed.  Initial population zero cannot
+produce the present positive endpoint.  Thus
+\eqref{eq:tu-58} proves the central-range estimate (41). Its relative lattice
+comparison remains valid after summing over the cells.
+
+\smallskip\noindent
+\underline{\textit{Step 3.}}\quad Combine the traversal and terminal costs.
+The complementary endpoint range is controlled directly by the terminal
+tilt.  If
+\(Y<\epsilon_0n\), then \(b\le\epsilon_0^2n^2/2+O(n)\), and the saturated
+line of \eqref{eq:tu-51}, uniformly in the radial word, gives
+\begin{equation}
+ P(\hbox{terminal mark}\mid w)
+ \le C e^{-2n}J^c
+       \exp\{\epsilon_0^2n/2-\kappa J^2/h+O(1)\}.            \tag{58a}\label{eq:tu-58a-2}
+\end{equation}
+After summing this over at most \(Ce^{2n}\) original cells, the result is
+\(o(J^{-A})\) for every fixed \(A\), because \(h=o(J)\), after fixing
+\(\epsilon_0\) sufficiently small.  This is why neither (29) nor (41)
+was claimed in the extinction range.
+
+For the number \(b=T_n+O(1)\) of completed outward pieces in the band
+\(I_q\),
+\[
+       b=q^2/2+O(n).
+\]
+Conditional on the radial word, Lemma~\ref{lem:terminal-feynman-kac} applies;
+the start/end observation at the end of that lemma shows that all visits
+to \(V_y\) belong to its completed pieces.  Multiply
+\eqref{eq:tu-58} by \eqref{eq:tu-51}.  The factors
+\(\exp\{-q^2/(2n)\}\) and \(\exp\{b/n\}\) cancel up to a constant.
+Moreover,
+\begin{equation}
+ \sum_{0\le p\le B_n+1}(1+p)
+ \exp\left\{-\kappa\min\left(
+          \frac{(p-p_*)^2}{h},\frac{J^2}{h}\right)\right\}
+       =J^{o(1)}.                                             \tag{59}\label{eq:tu-59}
+\end{equation}
+Indeed the nonsaturated Gaussian sum is
+\[
+ O\bigl((1+|p_*|)\sqrt h+h\bigr)=J^{o(1)},
+\]
+while its saturated complement contributes
+\(O(J^2)e^{-\kappa J^2/h}=o(1)\).  The small-\(Y\) part has the
+saturated factor in \eqref{eq:tu-51}.  Thus, uniformly
+over all endpoint bands and all radial words,
+\begin{equation}
+ P(\hbox{this original cell is good and marked})
+       \le (k+1)^Ce^{-2n}J^{c-2+o(1)}.                        \tag{60}\label{eq:tu-60}
+\end{equation}
+The terminal maximum has already included all sites of the original
+cell, so the remaining union bound is over the original cells.
+
+There are \(O(e^{2(n-k)})\) original cells in shell \(k\).  Summing \eqref{eq:tu-60}
+and using \eqref{eq:tu-54} yields
+\begin{equation}
+ \sum_{k=s}^{C_0\log J}e^{2(n-k)}
+       (k+1)^Ce^{-2n}J^{c-2+o(1)}
+       \le J^{-2\beta+c-2+o(1)}.                              \tag{61}\label{eq:tu-61-2}
+\end{equation}
+
+\smallskip\noindent
+\underline{\textit{Step 4.}}\quad Treat cells near the starting point.
+It remains to treat \(k>C_0\log J\). For a lattice site in shell \(k\),
+Green-function identities and Lemma~\ref{lem:elementary-walk-estimates} give
+\[
+ P_0(H_x<\sigma_y)\le C(k+1)/J
+\]
+and, conditionally on the hit,
+\[
+ P_x(L_{\sigma_y}(x)\ge u_{J,c})
+       \le Ce^{-2J}J^c.
+\]
+There are \(O(e^{2J-2k})\) sites in that shell.  Their total contribution
+is
+\begin{equation}
+       J^{c-1-2C_0+o(1)}.                                    \tag{62}\label{eq:tu-62-2}
+\end{equation}
+Choose \(C_0\) after \(A,c\).  Combining \eqref{eq:tu-55}, \eqref{eq:tu-61-2}, and \eqref{eq:tu-62-2} proves
+\eqref{eq:tu-53}.  The word-cap and digital row errors are superpolynomial by
+Lemma~\ref{lem:buffered-transfer} and are included in \(O(J^{-A})\).
+\end{proof}

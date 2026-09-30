@@ -1,0 +1,1387 @@
+\section{Continuum barriers and lattice traversal counts}
+\label{sec:continuum-transfer}
+
+Traversal counts separate the large-scale accumulation of excursions from
+occupation inside the last annulus.  We first record the continuum barrier
+estimates in the form needed below.  We then compare rare upper events by
+multiplying one-step lattice probabilities.  For the lower event, a single
+strong coupling transfers the existence of a suitable Brownian center.
+The two comparisons have different purposes: the first preserves probabilities
+on their exponential scale, while the second preserves a positive probability
+of existence.
+
+\subsection{Spherical traversal estimates}
+
+We use Rosen's spherical traversal construction \cite{Rosen2022}.
+Its upper and lower arguments use separate fixed choices of the initial
+radius.  We keep the customary notation $r_0$ in each argument and state
+the change explicitly; the two choices are never used in the same pathwise
+comparison.
+
+Let $X$ be spherical Brownian motion started at $v$, stopped at its
+first hit $\tau$ of $\partial B_d(v,r_*)$.  When defining source
+stopping times we extend it by an independent Brownian continuation;
+the safety event below will imply that every portion actually used lies
+before $\tau$.  Put
+\begin{equation}
+h(r)=2\arctan(r/2),\qquad r_j=r_0e^{-j},\qquad h_j=h(r_j),\label{eq:ct-external-23}
+\end{equation}
+For the upper estimates, choose the fixed radii as in
+\cite[Section~2, (2.2)]{Rosen2022}, in particular $2r_*\le h_0$.  Let $F_j$ be a
+maximal $d_0h_j$-separated set, augmented if necessary to a
+$d_0h_j$-cover; thus $|F_j|\asymp e^{2j}$.  For $y\in F_L$,
+$T_{y,j}$ is the number, before $\tau$, of completed excursions from
+$\partial B_d(y,h_{j-1})$ to $\partial B_d(y,h_j)$, with the initial
+and final incomplete pieces omitted.  Its source shell is
+\begin{equation}
+k_y=\inf\{k:y\notin B_d(v,h_k)\}.\label{eq:ct-external-24}
+\end{equation}
+Pairs have separation shell $k$ when
+$2h_k<d(y,y')\le2h_{k-1}$.
+
+Set
+\[
+\rho_L=2-\frac{\log L}{L},\qquad l_L=l\wedge(L-l),
+\]
+\begin{equation}
+\alpha_{z,+}(l)=\rho_Ll+z+l_L^{1/4},\qquad
+ \alpha_{z,-}(l)=\rho_Ll+z-l_L^{1/4}.\label{eq:ct-external-25}
+\end{equation}
+Fix an admissible $z\ge z_0$ in Rosen's upper argument.  The upper
+first-crossing event $U(y,l,z)$ means
+\[
+\sqrt{2T_{y,j}}\le\alpha_{z,+}(j)
+       \quad(k_y<j<l),\qquad
+ \sqrt{2T_{y,l}}>\alpha_{z,+}(l).
+\]
+Rosen's representative construction is deterministic.  With fixed
+tie-breaking, every fine center is sent to its closest point of the
+predetermined coarser net at scale
+$h_{l+\frac14 l_L^{1/4}}$; equations (2.26)--(2.33) give the buffered
+ball inclusions and domination of its traversal count.  Proposition 2.5,
+specifically equations (2.34)--(2.35), then proves the complete estimates
+\begin{equation}
+\#\{\hbox{representatives with source }k\}
+ \le C\exp\{2(l-k)+\tfrac12l_L^{1/4}\},\label{eq:ct-external-26}
+\end{equation}
+\begin{equation}
+P(U(y,l,z))\le
+ C\exp\{-2l-l_L^{1/4}\}e^{-2z}.\label{eq:ct-external-27}
+\end{equation}
+They hold pointwise for $1\le k\le l\le L-(4\log L)^4$.
+Only the choice $F_L\cap B_d(v,h_{\log L})^c$, and not the proof of
+\eqref{eq:ct-external-26}--\eqref{eq:ct-external-27}, imposed $k\le\log L$.  Hence, for any
+$s\le C_0\log L$, summing just the representatives whose source shell
+is at least $s$ gives
+\begin{equation}
+P\big(\exists y:k_y\ge s,\ \exists l\le L-(4\log L)^4:
+              U(y,l,z)\big)
+       \le C e^{-2s+o(\log L)}e^{-2z}.\label{eq:ct-external-28}
+\end{equation}
+
+\subsubsection{The endpoint estimate for complete centered excursions}
+
+The endpoint calculation must be applied to a complete centered excursion
+forest.  To specify that law, start spherical Brownian motion at $v$ with
+$h_{k_y}\le d(v,y)<h_{k_y-1}$ and continue it until its first exit from
+$B_d(y,h_0)$.  Let $T^{\mathrm c}_{y,j}$ count its completed traversals
+at level $j$, and let ${\cal G}^{\mathrm c}_{y,L,z}$ require the upper
+barrier in \eqref{eq:ct-external-25} from $m=k_y+1$ through $L-1$.
+Put $Y_y^{\mathrm c}=\sqrt{2T^{\mathrm c}_{y,L}}$ and
+$B_L=\rho_LL+z$.  Uniformly for
+$k_y\le C_0\log L$, every fixed $\epsilon_0>0$,
+$\epsilon_0L\le q\le B_L+1$, and fixed $z$, the source law in
+\cite[(2.8)]{Rosen2022} and its Appendix Theorem~9.1(a) give
+\begin{equation}
+P\big({\cal G}^{\mathrm c}_{y,L,z},Y_y^{\mathrm c}\in[q,q+1]\big)
+ \le C(k_y+1)^C(2+B_L-q)L^{-2}e^{-q^2/(2L)}.\label{eq:ct-external-29}
+\end{equation}
+This assertion concerns the centered stopping rule just defined.  We do not
+identify the descendants of a population stopped at the off-center boundary
+$\partial B_d(v,r_*)$ with an independent Galton--Watson forest.
+The later lattice endpoint estimate will be proved directly for its centered
+continuation.
+
+The following version of \cite[Appendix, Theorem~9.1(a)]{Rosen2022}
+is sufficient: if $T$ is critical Galton--Watson with
+$P(\xi=m)=2^{-m-1}$, $T_0=x^2/2$, and
+\[
+\begin{gathered}
+\delta>0,\quad C\ge0,\quad\eta>1,\quad\epsilon\in(0,1/2),\\
+2\le x,y\le\eta L,\quad x^2/2\in\mathbb N,\\
+0\le x\le a,\quad0\le y\le b,
+\end{gathered}
+\]
+\begin{equation}
+\begin{split}
+P\big(&\sqrt{2T_j}\le a+(b-a)j/L
+             +C(j\wedge(L-j))^{1/2-\epsilon},\ 1\le j<L;\\
+&\sqrt{2T_L}\in[y,y+\delta]\big)
+\le C'\frac{(1+a-x)(1+b-y)}L\sqrt{\frac{x}{yL}}
+e^{-(x-y)^2/(2L)}.\label{eq:ct-external-30}
+\end{split}
+\end{equation}
+Write $m=k_y+1$ and $N=L-m$.  Conditional on $T^{\mathrm c}_{y,m}=t$,
+the $t$ complete source excursions give the critical geometric
+Galton--Watson chain in \eqref{eq:ct-external-30}, started from $t$.
+Indeed each excursion from level $m$ to level $m-1$ is explored completely
+before the centered path can exit at level $0$; its neighboring logarithmic
+side choices have probability $1/2$ independently of the entrance angle.
+The logarithmic
+gambler--ruin calculation (2.8) gives
+\[
+P(T^{\mathrm c}_{y,m}\ge t)\le Cm e^{-t/m},
+\]
+and hence, after grouping the integer values of $t$ for which
+$x=\sqrt{2t}$ lies in a unit band,
+\begin{equation}
+P(\sqrt{2T^{\mathrm c}_{y,m}}\in[x,x+1])
+       \le Cm^C e^{-x^2/(2m)}.\label{eq:ct-external-30a}
+\end{equation}
+On ${\cal G}^{\mathrm c}_{y,L,z}$, $x\le a:=\alpha_{z,+}(m)=O(m)$.
+Apply \eqref{eq:ct-external-30} over the remaining $N$ generations with this $a$ and
+with $b=B_L+1$.  The needed deterministic barrier inclusion follows
+from
+\begin{equation}
+((m+j)\wedge(L-m-j))^{1/4}
+ \le (1-j/N)m^{1/4}+C(j\wedge(N-j))^{1/4};\label{eq:ct-external-30b}
+\end{equation}
+for $j\le N/2$ use
+$(m+j)^{1/4}\le m^{1/4}+j^{1/4}$ and
+$m^{1/4}j/N\le j^{1/4}$, while for $j>N/2$ use the
+right-end distance directly.  Thus every parameter in \eqref{eq:ct-external-30} has been
+specified, including $x\le a$, $q\le b$, and
+$x,q\le\eta N$.
+
+The sole positive start not covered by the hypothesis $x\ge2$ is
+$t=1$.  Couple a process from two ancestors as the sum of two
+independent one-ancestor processes.  On the event, of probability
+$1/2$, that the second ancestor has no child in the first generation,
+the total process agrees from generation $1$ onward with the first
+process.  The barrier in \eqref{eq:ct-external-30} is imposed precisely at generations
+$1,\ldots,N-1$, so the $t=1$ contribution is at most twice the same
+event for initial population two, to which \eqref{eq:ct-external-30} applies.  The case
+$t=0$ cannot have the positive endpoint $q\ge\epsilon_0L$.
+
+Multiplication of \eqref{eq:ct-external-30a} with \eqref{eq:ct-external-30}, the identity
+\begin{equation}
+\frac{x^2}{k+1}+\frac{(q-x)^2}{L-k-1}
+ =\frac{q^2}{L}+
+   \frac{L(x-(k+1)q/L)^2}{(k+1)(L-k-1)},\label{eq:ct-external-31}
+\end{equation}
+proves \eqref{eq:ct-external-29}.  Indeed $q\ge\epsilon_0L$, $N\asymp L$,
+$x\le Cm$, and so the square-root factor in \eqref{eq:ct-external-30}, together with its
+explicit $N^{-1}$, is at most $Cm^{1/2}L^{-2}$; all remaining source
+and summation factors cost only $m^C$.
+
+No estimate of the form \eqref{eq:ct-external-29} is asserted at $q=0$: extinction there
+has order-one probability.  In the lattice upper bound below,
+$q<\epsilon_0L$ is instead disposed of by the saturated terminal
+Chernoff factor.  We shall also use the following truncated version.
+If $n=J-h$, $m\le C_0\log J$, and
+\[
+B_l=\rho_Jl+z+(l\wedge(J-l))^{1/4},
+\]
+then \eqref{eq:ct-external-29}, with $L$ replaced by $n$ and $B_L$ by $B_n$, holds
+for $\epsilon_0n\le q\le B_n+1$.  To verify the only new point, put
+$\phi(l)=(l\wedge(J-l))^{1/4}$.  Its two Hölder bounds from $m$
+and $n$ give
+\begin{equation}
+\phi(m+j)\le(1-j/N)\phi(m)+(j/N)\phi(n)
+                 +C(j\wedge(N-j))^{1/4}.\label{eq:ct-external-31a}
+\end{equation}
+The affine part $\rho_Jl+z$ interpolates exactly, so \eqref{eq:ct-external-30} applies with
+the arbitrary endpoints $a=B_m,b=B_n+1$.  In particular, no
+$\rho_n$-barrier theorem is being assumed.
+
+\subsubsection{A fixed number of source excursions}
+
+For the lower event, now choose $r_0$ sufficiently small that
+$4h(r_{-1})<r_*$, as in \cite[Section~3]{Rosen2022}.  The preceding
+upper estimates retain their separate choice of radii.  Fix the source
+parameter $x_*>0$ from that section so that
+\begin{equation}
+m_0:=x_*^2\in\mathbb N.\label{eq:ct-external-32a}
+\end{equation}
+(This $x_*$ is not the variable called $x$ in Appendix Theorem 9.1;
+the latter equals $\sqrt{2m_0}$ when that theorem is started with
+$m_0$ particles.)  Put
+\[
+F_L^0=F_L\cap\{h_1/40\le d(v,y)\le h_1/20\}.
+\]
+This fixed annulus, instead of Rosen's full ball, retains a fixed
+positive area fraction; the one- and two-point sums in Rosen's proof are
+therefore unchanged up to constants, and every source index is $O(1)$.
+
+We spell out the superscript in Rosen (3.3), because it is important for
+the stopping-time comparison below.  Write
+$\Gamma_{y,j}=\partial B_d(y,h_j)$ and set
+\[
+A_{y,1}=H_{\Gamma_{y,1}},\qquad
+ B_{y,i}=\inf\{t>A_{y,i}:X_t\in\Gamma_{y,0}\},
+\]
+\begin{equation}
+A_{y,i+1}=\inf\{t>B_{y,i}:X_t\in\Gamma_{y,1}\},
+                    \qquad 1\le i<m_0.\label{eq:ct-external-32b}
+\end{equation}
+The intervals $[A_{y,i},B_{y,i}]$, and only these intervals, are the
+first $m_0$ source excursions; the intervening intervals
+$[B_{y,i},A_{y,i+1}]$ are connectors and are not counted.  Set
+$T_{y,1}^{1,m_0}=m_0$.  For $l\ge2$, define inside each source
+interval
+\[
+C_{i,l,1}=\inf\{t\ge A_{y,i}:X_t\in\Gamma_{y,l-1}\},
+\]
+\[
+D_{i,l,q}=\inf\{t>C_{i,l,q}:X_t\in\Gamma_{y,l}\},\qquad
+ C_{i,l,q+1}=\inf\{t>D_{i,l,q}:X_t\in\Gamma_{y,l-1}\},
+\]
+and put
+\begin{equation}
+T_{y,l}^{1,m_0}=\sum_{i=1}^{m_0}
+             \#\{q:D_{i,l,q}<B_{y,i}\}.\label{eq:ct-external-32c}
+\end{equation}
+Thus Rosen's abbreviation is exactly
+$T_{y,l}^{\,1}=T_{y,l}^{1,x_*^2}$, not a count in one source
+excursion.  The strong Markov property and logarithmic gambler's ruin
+make $(T_{y,1+j}^{1,m_0})_{j\ge0}$ a critical Galton--Watson chain
+with $m_0$ ancestors and offspring law
+$P(\xi=r)=2^{-r-1}$, $r\ge0$.
+
+Define $\widehat I_{y,z}$ by
+\begin{equation}
+\sqrt{2T_{y,l}^{1,m_0}}\le\alpha_{z,-}(l),\quad1\le l<L,
+ \qquad \sqrt{2T_{y,L}^{1,m_0}}\ge\rho_LL+z.\label{eq:ct-external-32}
+\end{equation}
+For the outward excursions at scale $k$, let $\theta_{k,i}$ be their
+angular increments and let $\nu_k$ be the exit-angle law from radius
+$r_k$ to $r_{k-1}$.  If
+\[
+N_{k,a}=\left\lfloor\frac{(\rho_Lk+z-a+1)^2}{2}\right\rfloor,
+\]
+ set $N_k=N_{k,a}$ on
+$\sqrt{2T_{y,k}^{1,m_0}}\in[\rho_Lk+z-a,\rho_Lk+z-a+1]$, and
+\begin{equation}
+W_{y,k}(N_k)=\left\{
+ d_{W^1}\left(N_k^{-1}\sum_{i\le N_k}\delta_{\theta_{k,i}},
+                 \nu_k\right)
+ \le\frac{c_0\log(L-k)}{2\sqrt{N_k}}\right\}.\label{eq:ct-external-33}
+\end{equation}
+With $L^+=L-(500\log L)^4$ and Rosen's fixed $d_*$, the event is
+\begin{equation}
+I_{y,z}=\widehat I_{y,z}
+          \cap\bigcap_{k=L^+}^{L-d_*}W_{y,k}(N_k).\label{eq:ct-external-34}
+\end{equation}
+Rosen Lemmas 3.3--3.4 state completely that, uniformly for
+$0\le z\le\log L$,
+\begin{equation}
+P(I_{y,z})\asymp(1+z)e^{-2L}e^{-2z},\label{eq:ct-external-35}
+\end{equation}
+and, for a pair in separation class $k$,
+\begin{equation}
+P(I_{y,z}\cap I_{y',z})
+ \le C(1+z)e^{-4L+2k}e^{-2z}
+       e^{-c(k\wedge(L-k))^{1/4}}.\label{eq:ct-external-36}
+\end{equation}
+The convention for $L-d_*\le k<L$ is the one-center bound from that
+lemma.  Fix $z_0$ in Rosen's admissible range.  After imposing the
+source-safety event below we will choose a fixed $C_*$ and use the
+truncated events
+\begin{equation}
+I_{y}^{\circ}:=I_{y,z_0}\cap
+ \{\rho_LL+z_0\le\sqrt{2T_{y,L}^{1,m_0}}
+                         \le\rho_LL+z_0+C_*\}\label{eq:ct-external-37}
+\end{equation}
+The notation in \eqref{eq:ct-external-37} is provisional until $C_*$ is chosen after
+safety has been proved.  This order matters: because $X$ was extended
+after $\tau$, the inequality
+$T_{y,L}^{1,m_0}\le T_{y,L}^{\tau}$ can fail before safety is imposed.
+
+\subsubsection{Keeping the source excursions before the stopping time}
+
+The lower event was defined using a Brownian continuation after $\tau$.
+We must therefore force the entire source forest to finish before $\tau$
+without losing its probability on the scale $e^{-2L}$.  Let $S_y$ require every connector
+$[B_{y,i},A_{y,i+1}]$, $i<m_0$, to hit $\Gamma_{y,1}$ before the
+larger circle $\Gamma_{y,-1}$.  In the centered logarithmic cylinder,
+the unrestricted connector endpoint subdensity and the safely killed
+one, relative to Haar measure, are respectively
+\[
+q_\infty(u)={\sinh1\over\cosh1-\cos u},
+\]
+\begin{equation}
+q_{\rm sf}(u)=\frac12+2\sum_{n\ge1}{\sinh n\over\sinh(2n)}\cos(nu)
+ =\frac\pi2\sum_{k\in\mathbb Z}
+       \operatorname {sech}\!\left({\pi\over2}(u+2\pi k)\right).\label{eq:ct-external-38a}
+\end{equation}
+Both are continuous and strictly positive, so
+$\kappa_*:=\min_uq_{\rm sf}(u)/q_\infty(u)>0$.  Thus the safe
+connector kernel dominates $\kappa_*$ times the unrestricted kernel
+pointwise.  Iterating the strong Markov factorization, with the whole
+later path functional left in the last factor, gives
+\begin{equation}
+P(I_{y,z}\cap S_y)\ge\kappa_*^{m_0-1}P(I_{y,z}).\label{eq:ct-external-38b}
+\end{equation}
+This is finite-measure domination against the entire later functional,
+not multiplication of marginal probabilities.  Before endpoint
+truncation put
+\[
+\widetilde Z_L^{\rm sf}:=\sum_{y\in F_L^0}{\bf1}_{I_{y,z_0}\cap S_y}.
+\]
+Equation \eqref{eq:ct-external-38b} preserves its first moment, whereas
+$I_{y,z_0}\cap S_y\subset I_{y,z_0}$ preserves the pair upper bound
+\eqref{eq:ct-external-36}.  Rosen's shell summation and Paley--Zygmund therefore give
+\begin{equation}
+E\widetilde Z_L^{\rm sf}\le C,\qquad
+ P(\widetilde Z_L^{\rm sf}>0)\ge c_1>0.\label{eq:ct-external-38c}
+\end{equation}
+Rosen chooses $r_0$ so that $4h(r_{-1})<r_*$.  Since
+$d(v,y)\le h_1/20$, there is a fixed $\chi>0$ such that
+\begin{equation}
+B_d(y,h(r_{-1}))\subset B_d(v,r_*-\chi).\label{eq:ct-external-38d}
+\end{equation}
+Every source block and every connector on $S_y$ lies in the left
+side, hence ends before $\tau$.  This is the exact stopped-source
+certificate used in the coupling below.  In particular, on $S_y$,
+\begin{equation}
+T_{y,L}^{1,m_0}\le T_{y,L}^{\tau}.\label{eq:ct-external-38e}
+\end{equation}
+Rosen's Theorem~1.6 gives the following upper tail on $F_L$; extending
+its bound to bounded nonnegative $z$ only enlarges the constant:
+\begin{equation}
+P\left(\sup_{y\in F_L}\sqrt{2T_{y,L}^{\tau}}\ge\rho_LL+z\right)
+       \le C(1+z)e^{-2z},\qquad0\le z\le\log L.\label{eq:ct-external-38f}
+\end{equation}
+Choose $C_*$ so large that the right side at $z=z_0+C_*$
+is below $c_1/2$, and now define $I_y^\circ$ by \eqref{eq:ct-external-37}.  Equations
+\eqref{eq:ct-external-38c}--\eqref{eq:ct-external-38f} give, with
+\[
+Z_L^{\rm sf}:=\sum_{y\in F_L^0}{\bf1}_{I_y^\circ\cap S_y},
+\]
+\begin{equation}
+EZ_L^{\rm sf}\le C,\qquad P(Z_L^{\rm sf}>0)\ge c_1/2.\label{eq:ct-external-38}
+\end{equation}
+The constant $C_*$ and the safe count are now fixed.
+
+\begin{lemma}[Continuum barrier inputs]\label{lem:external-barrier-input}
+In the upper choice of radii, the first-crossing estimate
+\eqref{eq:ct-external-28} holds.  For the complete centered traversal process,
+the endpoint estimate \eqref{eq:ct-external-29} holds, including the truncated
+barrier described in \eqref{eq:ct-external-31a}.  In the lower choice of radii,
+on $I_y^\circ\cap S_y$ all first $m_0$ source excursions finish before
+$\tau$, and the number of centers with this event satisfies
+\eqref{eq:ct-external-38}.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{lem:external-barrier-input}]
+The representative estimates are the packing and one-center bounds of
+\cite[Proposition~2.5, (2.34)--(2.35)]{Rosen2022}, summed over the indicated
+source shells.  The complete centered source calculation above proves
+\eqref{eq:ct-external-29}, and \eqref{eq:ct-external-31a} checks the change of
+barrier at a truncated horizon.  The lower construction combines
+\cite[Lemmas~3.3--3.4]{Rosen2022} with the connector-kernel domination
+\eqref{eq:ct-external-38b} and the terminal truncation.
+All the first- and second-moment assertions \eqref{eq:ct-external-35}--\eqref{eq:ct-external-38} remain in Rosen's
+original spherical geometry.  In particular, we do \emph{not} infer an
+event-level Euclidean two-center theorem from Rosen's occupation-measure
+argument in Section 8.  The next lemma instead maps the actual spherical
+interfaces into the plane, so the spherical event and its pair law are
+preserved exactly until the one-sided lattice coupling is made.
+\end{proof}
+
+\subsection{Comparison of smooth interface kernels}
+
+Fix $\alpha\in(0,1)$.  Let
+$(\Gamma_R^-,\Gamma_R^0,\Gamma_R^+)$ range over triples of
+disjoint Jordan curves which, after translation, rotation, and scaling
+by $R^{-1}$, together with their tubular-coordinate charts, belong to
+a bounded $C^{4,\alpha}$ family.  Assume consecutive curves are
+separated by distances comparable to $R$, and that a specified
+conformal coordinate sends each triple to three concentric logarithmic
+levels.  The interfaces used below are circles or uniformly
+Möbius-transformed circles, so this hypothesis entails no loss.
+
+For a boundary function put
+\begin{equation}
+\|f\|_{4,R}:=\sum_{j=0}^4R^j\|\partial_\tau^jf\|_\infty
+             +R^{4+\alpha}[\partial_\tau^4f]_\alpha .\label{eq:ct-smooth-39a}
+\end{equation}
+A lattice starting state is a directed edge whose endpoints lie on opposite
+sides of $\Gamma_R^0$; the lattice query starts from its post-crossing
+endpoint and the Brownian query from the normal projection of that endpoint
+onto $\Gamma_R^0$.  The side of a vertex is determined by membership in
+the bounded component of the complement (vertices lying on the curve are
+assigned to the exterior).  Let $Q_R^B$ be the Brownian selected-side
+subprobability kernel, stopped at first contact with either competing curve,
+and let $Q_R^S$ be the lattice selected-side subprobability kernel, stopped
+at the first directed edge whose endpoint-side indicators differ for one of
+the two competing curves.  A tangency, or any intersection of an interpolated
+edge whose two endpoints remain on the same side, is not a lattice crossing.
+Write $\pi_0,\pi_+$ for normal projection of the digital source
+and selected target states.  For a function $f$ on the selected target
+curve and a function $g$ on the middle curve, define the two differently
+typed lifts by
+\[
+U_+f=f\circ\pi_+,
+                 \qquad U_0g=g\circ\pi_0.
+\]
+\begin{lemma}[Comparison of interface kernels]
+\label{lem:smooth-interface-discretization}
+As an estimate from functions on the selected target curve to functions
+on the digital source-edge space,
+\begin{equation}
+\|Q_R^SU_+f-U_0(Q_R^Bf)\|_\infty
+       \le CR^{-1}\|f\|_{4,R}.\label{eq:ct-smooth-39b}
+\end{equation}
+If the Brownian side probability $p_R=Q_R^B1$ is constant on the
+middle curve and lies in $[c,1-c]$, then, uniformly in the starting
+angle,
+\begin{equation}
+Q_R^S1=p_R(1+O(R^{-1}))\label{eq:ct-smooth-39c}
+\end{equation}
+and the corresponding row-normalized angular kernels differ by
+$O(R^{-1})$ on $C^4$ tests.
+
+Consequently, let a chronological radial word consist of $N$
+ordinary decisions between neighboring concentric interfaces at
+scales $R_i\ge M$.  The next queried triple may depend on the already
+exposed radial prefix, but not on an unexposed angular mark.  For a fixed
+word, let $E_i$ be the directed-edge state space after its first $i$
+letters and let $K^S_{i,w_{i+1}}(e,de')$ be the subkernel realizing the
+next prescribed side.  If $p_i$ is the corresponding Brownian side
+probability, then, for every current edge,
+\begin{equation}
+e^{-C/R_i}p_i\le K^S_{i,w_{i+1}}1(e)
+          \le e^{C/R_i}p_i .\label{eq:ct-smooth-39cprime}
+\end{equation}
+After summing all compatible directed-edge refinements,
+\begin{equation}
+e^{-C\sum_iR_i^{-1}}P^B(w)
+ \le P^S(w)\le
+ e^{C\sum_iR_i^{-1}}P^B(w).\label{eq:ct-smooth-39d}
+\end{equation}
+The same inequality holds after integrating the initial edge against any
+entrance law and after summing a disjoint family of complete words.  A
+radial-prefix stopping rule is padded by cemetery letters of row mass one.
+No assertion is made after conditioning on an edge list generated later by
+the word.  Source-root and source-death letters are handled explicitly in
+Lemma \ref{lem:buffered-transfer}.
+
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{lem:smooth-interface-discretization}]
+Let $\Omega_R$ be the annulus between the two competing curves and let
+$u$ be the continuum Dirichlet solution with boundary data $f$ on the
+selected component and zero on the other.  Uniform rescaled boundary
+regularity gives
+\begin{equation}
+\|D^ju\|_{L^\infty(\overline\Omega_R)}
+       \le CR^{-j}\|f\|_{4,R},\qquad0\le j\le4.\label{eq:ct-smooth-39e}
+\end{equation}
+The compact rescaled family has a tubular radius $\rho R$.  In a signed
+normal chart $\Phi(s,t)$, with $t\ge0$ on $\Omega_R$, choose fixed
+numbers $c_1,\ldots,c_5$ satisfying
+\[
+\sum_{a=1}^5c_a(-a)^q=1,
+             \qquad q=0,1,2,3,4,
+\]
+and, for $-\rho R/5<t<0$, set
+\[
+\widetilde u(\Phi(s,t))=\sum_{a=1}^5c_a u(\Phi(s,-at)).
+\]
+Do this in the two disjoint collars and retain $\widetilde u=u$ on
+$\overline\Omega_R$.  The five matching identities make
+$\widetilde u$ a $C^4$ continuation through the boundary, with the
+same scaled derivative bounds as \eqref{eq:ct-smooth-39e}.
+
+Let $\Omega_R$ be understood with the same vertex-side convention and set
+\[
+T=\inf\{n\ge1:S_{n-1}\in\Omega_R,\ S_n\notin\Omega_R\}.
+\]
+Equivalently, $T$ is the first side-changing directed edge across one of
+the two competing components; same-side contacts of the interpolated edge
+are ignored.  For $n<T$, $S_n$ lies in the open annulus or on its inner
+boundary (with the exterior convention above); it cannot lie on the outer
+boundary.  At an open-annulus point
+$\Delta\widetilde u(S_n)=\Delta u(S_n)=0$, while at an inner-boundary
+lattice vertex the $C^4$ matching and continuity from the annulus give
+\[
+\Delta\widetilde u(S_n)
+       =\lim_{\Omega_R\ni x\to S_n}\Delta u(x)=0.
+\]
+Thus Taylor expansion is legitimate on the full four-neighbor stencil and
+its quadratic term vanishes in either case.  The linear and cubic terms
+cancel by symmetry.
+Thus
+\begin{equation}
+|(P-I)\widetilde u(S_n)|\le CR^{-4}\|f\|_{4,R},
+             \qquad n<T.\label{eq:ct-smooth-39f}
+\end{equation}
+For large $R$, the two boundary components are more than two lattice
+spacings apart and each has tubular radius $\rho R$.  Hence the exit edge
+crosses exactly one component, its post-crossing endpoint is within one
+lattice spacing of that component and has a unique normal projection.
+Moreover $T$ is no larger than the exit time of a fixed $CR$-disk
+containing the annulus.  Optional stopping of
+$\lVert S_n-z_*\rVert^2-n$ gives $ET\le CR^2$, so the accumulated
+defect in \eqref{eq:ct-smooth-39f} is $O(R^{-2})\|f\|_{4,R}$.  The terminal endpoint is
+within one lattice unit of the uniquely crossed component; its value
+under $\widetilde u$ differs from the projected boundary payoff by
+$O(R^{-1})\|f\|_{4,R}$.  The post-crossing starting endpoint and its
+projection onto $\Gamma_R^0$ have the same error.  Optional stopping of
+$\widetilde u(S_{n\wedge T})$ minus its defect sum proves \eqref{eq:ct-smooth-39b}.
+Taking $f=1$, using $p_R\in[c,1-c]$, and dividing by the row mass
+proves \eqref{eq:ct-smooth-39c}.  Notice that the continuation is used only to make a
+boundary-crossing stencil legal; harmonicity, or its boundary-continuity
+consequence, is invoked only at a live vertex.
+
+For completeness, the logarithmic annular probability behind \eqref{eq:ct-smooth-39c} is
+also the following cited lattice estimate.  Hao--Li--Okada--Zheng,
+\emph{Favorite sites for simple random walk in two and more dimensions},
+\cite{HLOZ2025}, Lemma 2.1,
+equation (2.5), states in full that, uniformly for
+$r<\lVert x\rVert<R$,
+\[
+P_x(H_{\partial D(0,R)}<H_{\partial D(0,r)})
+ ={\log(\lVert x\rVert/r)+O(r^{-1})\over\log(R/r)},
+\]
+and the complementary inner-hit probability is
+\[
+P_x(H_{\partial D(0,r)}<H_{\partial D(0,R)})
+ ={\log(R/\lVert x\rVert)+O(r^{-1})\over\log(R/r)}.
+\]
+At fixed logarithmic gaps the main terms are bounded away from zero.
+
+Finally fix a prescribed radial word and let $\nu_i^S$ be the finite
+measure on its current directed-edge states after the first $i$ letters,
+with every earlier edge integrated out.  The radial prefix fixes the next
+interface and prescribed side before the current edge is integrated.
+Brownian conformal radial symmetry makes its row mass $p_i$ independent
+of the angular endpoint, while \eqref{eq:ct-smooth-39cprime} gives
+\begin{equation}
+e^{-C/R_i}p_i\|\nu_i^S\|
+ \le\|\nu_i^SK^S_{i,w_{i+1}}\|
+ \le e^{C/R_i}p_i\|\nu_i^S\|.\label{eq:ct-smooth-39iprime}
+\end{equation}
+Forward induction proves \eqref{eq:ct-smooth-39d}.  This remains valid for an adaptive
+exploration because the radial prefix determines its next query, and for a
+stopped exploration after adjoining the absorbing cemetery state.  It is a
+forward marginal comparison, not a conditional law given future entrance
+points, and it never applies \eqref{eq:ct-smooth-39b} to a rare future indicator.
+\end{proof}
+
+\subsection{Transfer of traversal events to the lattice}
+
+Fix $A,C_0<\infty$ and a positive barrier intercept $z$ in the
+admissible range above.  The upper first-crossing estimate below is uniform
+for $0\le s\le C_0\log J$.  Choose $h=h_J$ so that
+\begin{equation}
+{h\over\log J}\longrightarrow\infty,\qquad h=o(J),\qquad
+ M=e^h,\qquad n=J-h+O(1).\label{eq:ct-transfer-39}
+\end{equation}
+For the lower comparison let $v$ and $r_*$ be Rosen's starting
+point and outer stopping radius.  Fix stereographic coordinates $\sigma$ with
+$\sigma(v)=0$, put $R_*=2\tan(r_*/2)$, and dilate by
+$A_J=e^J/R_*$:
+\[
+\Psi_J=A_J\sigma .
+\]
+Thus the spherical stopped path becomes, up to an increasing time
+change, planar Brownian motion started at zero and stopped on
+$\partial B(0,e^J)$.  For a spherical center $y$, let $\chi_y$ be
+the rotated stereographic coordinate satisfying
+\[
+\chi_y(y)=0,\qquad |\chi_y(x)|=2\tan(d(x,y)/2).
+\]
+The lower-comparison physical interfaces are
+\begin{equation}
+\Gamma_{y,j}=\Psi_J\{x:|\chi_y(x)|=r_0e^{-j}\},
+       \qquad-1\le j\le n.\label{eq:ct-transfer-39g}
+\end{equation}
+They are Euclidean circles, although their Euclidean centers need not be
+the same.  In the conformal coordinate
+$\chi_y\circ\Psi_J^{-1}$, they are exactly the concentric logarithmic
+levels used by Rosen.  Their physical scale is comparable to
+$e^{J-j}$; the $O(1)$ choice in $n=J-h+O(1)$ makes the deepest
+scale comparable to $M$.
+
+The linearly interpolated lattice path identifies which smooth curve a
+lattice edge crosses, but every probabilistic cut is made at an integer
+edge-index stopping time.  If $D_{y,j}$ is the bounded component inside
+$\Gamma_{y,j}$, then, for adjacent levels and after an outer hit
+$\eta_i$, set
+\begin{equation}
+\begin{aligned}
+\sigma_i&=\inf\{n>\eta_i:S_{n-1}\notin D_{y,j},\ S_n\in D_{y,j}\},\\
+\eta_{i+1}&=\inf\{n>\sigma_i:S_{n-1}\in D_{y,j-1},\
+                                  S_n\notin D_{y,j-1}\}.
+\end{aligned}\label{eq:ct-transfer-39h}
+\end{equation}
+A state records the directed crossing edge; interpolation is used only to
+assign its projected $\chi_y$-angle.
+Only portions belonging to the first $m_0$ source intervals
+$[A_{y,i},B_{y,i}]$ in \eqref{eq:ct-external-32b} contribute traversal counts or terminal
+bridges.  Inter-source connectors contribute only their guarded coarse
+boundary decisions, never their interior occupation.  The whole segment
+from $\sigma_i$ to $\eta_{i+1}$, including further contacts with the
+inner interface, is one outward piece.  Recursing inside each parent
+excursion gives the standard nested excursion tree.  The lower
+\emph{radial word} $W_y=(W_{y,1},\ldots,W_{y,m_0})$ is a fixed collection
+of $m_0$ centered words, one for each source interval, with all angles
+erased; the complete guard record additionally contains the finitely many
+connector boundary decisions.  If
+$\ell_{y,i}\in\{1,-1\}$ records whether the connector after
+$B_{y,i}$ first hits $\Gamma_{y,1}$ or $\Gamma_{y,-1}$, write
+\begin{equation}
+\overline W_y=(W_{y,1},\ell_{y,1},W_{y,2},\ldots,
+                 \ell_{y,m_0-1},W_{y,m_0})\label{eq:ct-transfer-39hprime}
+\end{equation}
+for the complete conditioned guard word.  Its traversal coordinate
+$T^S_{y,j}$ is the sum over these
+words of completed crossings from $\Gamma_{y,j-1}$ to
+$\Gamma_{y,j}$.  At the last
+fixed number of levels, the interfaces are replaced through one
+unit-width digital collar by concentric circles about the nearest lattice
+point to $\Psi_J(y)$, of radii $M_y,eM_y$ with
+$M_y\in[cM,CM]$.  We relabel $M_y$ as $M$; every later estimate is
+uniform under this fixed-factor change and $\log M_y=h+O(1)$.
+Define ${\cal R}_y$ by the chronological erasure map which replaces each
+completed terminal segment, from its inward directed crossing of radius
+$M$ through its next outward directed crossing of radius $eM$, by the
+two endpoint edges.  It retains $\overline W_y$, all radial letters and
+all crossing edges and projected angles outside the erased segments, but
+it does not retain an erased segment's duration, interior crossings, path,
+or occupation.  Inward connector pieces outside these erased segments are
+exposed.  This quotient sigma-field is the intrinsic coarse sigma-field.
+
+The upper application is instead defined directly on the lattice and is
+entirely centered.  Write $N=e^J$, $\tau_N=\tau_{D(0,N)}$, and, for
+each candidate cell center with $\|y\|<2N$, set
+\begin{equation}
+\sigma_y=\tau_{D(y,3N)}.\label{eq:ct-transfer-39k}
+\end{equation}
+The pathwise inclusions
+\begin{equation}
+D(0,N)\subset D(y,3N),\qquad \tau_N\le\sigma_y,
+ \qquad L_{\tau_N}(x)\le L_{\sigma_y}(x)\label{eq:ct-transfer-39l}
+\end{equation}
+hold for every $x$.  For each one-cell probability we decompose the
+extended path up to $\sigma_y$ using only circles centered at $y$,
+and sum those probabilities only afterwards.  Replacing $N$ by $3N$
+changes every logarithmic index by $O(1)$.  Use Rosen's formal horizon
+$J$, its barrier $\rho_Jj+z+(j\wedge(J-j))^{1/4}$, and retain only
+interfaces through $n$.  Let ${\cal U}_{J,s}$ be the union of these
+centered lattice upper first-crossing events, with source shell at least
+$s$, and let
+${\cal G}^{S,J}_{y,n,z}$ be the corresponding no-crossing event through
+$n-1$, and put
+\[
+B_n^J=\rho_Jn+z+(n\wedge(J-n))^{1/4}.
+\]
+On the detailed range $\|y\|>M$, its exact source index is
+\begin{equation}
+u_y=\log {3e^J\over\|y\|},\qquad
+ k_y=\lceil u_y\rceil,\qquad m_y=k_y+1;\label{eq:ct-transfer-39m}
+\end{equation}
+centers with $\|y\|\le M$ belong to the separately treated near-start
+range.  Thus $u_y\in(k_y-1,k_y]$ and $m_y-u_y\in[1,2)$.
+For the lower application relabel the numerical depth $n$ as $L$,
+use the genuine horizon-$L$ quantities $\rho_L,l_L$, and let
+$I_y^{S,\circ}$ be the \emph{radial} lattice version of \eqref{eq:ct-external-37}: it retains
+the traversal barrier and the bounded terminal band but drops every
+angular screen.  Angular screens are used only in the spherical
+Brownian certificate that supplies the second moment.
+
+\begin{lemma}[Transfer of traversal events]\label{lem:buffered-transfer}
+With the definitions above,
+\begin{equation}
+P({\cal U}_{J,s})\le J^{-2s/\log J+o(1)}+O(J^{-A}),\label{eq:ct-transfer-40}
+\end{equation}
+\begin{equation}
+P\big({\cal G}^{S,J}_{y,n,z},
+       \sqrt{2T^S_{y,n}}\in[a,a+1]\big)
+ \le C(k_y+1)^C(2+B_n^J-a)n^{-2}e^{-a^2/(2n)},\label{eq:ct-transfer-41}
+\end{equation}
+uniformly for $k_y\le C_0\log J$ and every fixed central range
+$\epsilon_0n\le a\le B_n^J+1$.  No such assertion is made in the
+extinction range $a<\epsilon_0n$.  Most importantly, if
+\[
+Z_L^S=\sum_{y\in F_L^0}{\bf1}_{I_y^{S,\circ}},
+\]
+then
+\begin{equation}
+EZ_L^S\le C,\qquad P(Z_L^S>0)\ge c.\label{eq:ct-transfer-42}
+\end{equation}
+Only the Brownian proof of \eqref{eq:ct-transfer-42} uses the two-center estimate \eqref{eq:ct-external-36}.
+No two-center lattice estimate is claimed or used.
+
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{lem:buffered-transfer}]
+There are two logically separate comparisons.  Rare upper and endpoint
+events are compared directly, word by word, using Lemma
+\ref{lem:smooth-interface-discretization}.  The global strong coupling is used
+only in the safe direction ``strict Brownian lower root implies loose
+lattice lower root.''  At no point is a Brownian bad-subkernel estimate
+multiplied by an arbitrary future functional of the coupled lattice path.
+In the geometric estimates below $L$ denotes the numerical depth $n$;
+the superscript $J$ records when the upper barrier retains the larger
+formal horizon $J$.
+
+\smallskip\noindent
+\underline{\textit{Step 1. Geometry and one global coupling.}}
+
+The conformal image retains the original spherical excursion structure.  Stereographic
+projection is conformal and sends spherical Brownian motion to planar
+Brownian motion under a continuous increasing time change.  Moreover,
+by the definition of $\chi_y$,
+\[
+\Psi_J\bigl(\partial B_d(y,h(r_0e^{-j}))\bigr)
+       =\Gamma_{y,j}.
+\]
+Thus hitting orders, the complete nested excursion tree, all traversal
+counts, and all $\chi_y$-angular marks are literally Rosen's spherical
+objects.  In particular, \eqref{eq:ct-external-36} will be applied only before any lattice
+comparison.
+
+For the strong approximation we use Zaitsev, Estimates for the Strong
+Approximation in Multidimensional Central Limit Theorem,
+\cite{Zaitsev2003},
+Theorem 2 and Corollary 1.  The form needed here is: for fixed
+dimension $d$, centered independent vectors with identity covariance
+whose laws lie in the analytic finite-exponential-moment class
+${\cal A}_d(\tau)$ for a fixed $\tau\ge1$, one can couple them with independent standard
+Gaussian vectors so that, for
+$\Delta_N=\max_{k\le N}\lVert\sum_{i\le k}(X_i-Y_i)\rVert$,
+\[
+E\exp\{c\Delta_N/(\tau d^{7/2}\log^*d)\}
+ \le \exp\{C d^{9/4+\alpha}\log^*(N/\tau^2)\},
+\]
+and hence
+\begin{equation}
+P(\Delta_N>C\log N+x)\le C e^{-cx},\qquad x\ge0,\label{eq:ct-transfer-30}
+\end{equation}
+for a fixed i.i.d. law.  The planar walk increment multiplied by $\sqrt2$
+has identity covariance and bounded support, so the hypotheses apply.
+
+Take the deterministic time cap
+\[
+T_J=e^{2J}J^{20}.
+\]
+Lemma \ref{lem:elementary-walk-estimates} and its Brownian analogue show that
+the walk or Brownian motion remains inside the outer disk beyond $T_J$
+with probability $e^{-cJ^{10}}$.  By \eqref{eq:ct-transfer-30}, after changing Brownian time
+by the covariance factor $1/2$, there is a coupling for which
+\begin{equation}
+\sup_{t\le T_J}\lVert S^{\rm lin}_{2t}-B_t\rVert
+       \le b_J:=CJ^8\label{eq:ct-transfer-31}
+\end{equation}
+except on an event of probability $e^{-cJ^8}$.  Brownian interpolation
+between integer times has a smaller Gaussian error.
+
+The crossing convention is an intrinsic deterministic function of the
+finite lattice path.  For a curve with bounded component $D$, a lattice
+crossing is recorded exactly when
+$\mathbf1_{\{S_{n-1}\in D\}}\ne\mathbf1_{\{S_n\in D\}}$; a curve vertex
+is assigned to the exterior, and same-side tangencies or chord contacts are
+ignored.  The crossing angle is the normal projection of the post-crossing
+endpoint.  At all used scales the endpoint lies in the uniform tubular
+collar, so this projection is unique.  On the compact family of
+centers under consideration, the maps $\chi_y\circ\Psi_J^{-1}$ and
+their inverses have uniformly bounded scaled first two derivatives.
+Consequently, if two physical paths are within $b$, then every
+crossing of a nominal interface by one path is sandwiched between the
+crossings by the other path of the two interfaces obtained by changing
+its $\log|\chi_y|$-level by $Cb/R$, where $R$ is the physical
+scale.  This is just the deterministic inclusion of the two
+$b$-neighborhoods of a smooth separating curve; applying it
+successively preserves chronological order.
+The crossed directed edge retains the digital-boundary overshoot, which
+costs at most two extra lattice units.  Thus
+the only difference between the nominal Brownian word and the lattice
+word comes from collars of relative logarithmic width
+\begin{equation}
+\delta_J=C\frac{b_J+1}{M}=O\left(\frac{J^8}{M}\right).\label{eq:ct-transfer-33}
+\end{equation}
+
+\smallskip\noindent
+\underline{\textit{Step 2. Preserving the lower radial word.}}
+
+Uniform path closeness alone does not preserve an excursion tree: a path
+may enter a narrow collar, retreat, and thereby insert or delete a traversal.
+We exclude precisely these retreats and wrong-side approaches.  Their total
+conditional probability will be small for every prescribed radial word.  Work in the centered cylinder coordinate
+\[
+U_t=-\log\bigl(|\chi_y(X_t)|/r_0\bigr),
+\]
+after its conformal time change, so that $U$ is one-dimensional Brownian
+motion and $\Gamma_{y,j}=\{U=j\}$.  For a stopping time $s$, write
+$H_a[s]=\inf\{t\ge s:U_t=a\}$, with $\inf\varnothing=\infty$.  Put
+\begin{equation}
+\eta_J=8\delta_J,\qquad N_0=J^4,\label{eq:ct-transfer-R1}
+\end{equation}
+and take $J$ large enough that $0<\delta_J<\eta_J/4$ and
+$\eta_J\le1/4$.
+
+Here is the finite depth-$L$ word belonging to \eqref{eq:ct-external-32b}.  From
+$S_{i,0}=A_{y,i}$, $K_{i,0}=1$, recursively set, when $K_{i,r}<L$,
+\[
+S_{i,r+1}=\inf\{t>S_{i,r}:U_t\in
+             \{K_{i,r}-1,K_{i,r}+1\}\},\qquad
+ K_{i,r+1}=U_{S_{i,r+1}}.
+\]
+When $K_{i,r}=L$, instead set
+\begin{equation}
+S_{i,r+1}=H_{L-1}[S_{i,r}],\qquad K_{i,r+1}=L-1;\label{eq:ct-transfer-R1a}
+\end{equation}
+this is a forced terminal return, and the motion below $\Gamma_{y,L}$
+is deliberately not resolved.  Stop at
+$N_i=\inf\{r\ge1:K_{i,r}=0\}$, so $B_{y,i}=S_{i,N_i}$.
+For $i<m_0$ put
+\[
+C_i=\inf\{t>B_{y,i}:U_t\in\{-1,1\}\}.
+\]
+On $S_y$, $U_{C_i}=1$, $C_i=A_{y,i+1}$, and the connector is the
+single prescribed sign $0\to1$.  Concatenating the $m_0$ block words
+and these $m_0-1$ connector signs gives exactly $\overline W_y$ in
+\eqref{eq:ct-transfer-39hprime}.  A block letter $j-1\to j$ pushes the next Ulam--Harris child,
+a letter $j\to j-1$ pops it, and \eqref{eq:ct-transfer-R1a} closes a terminal leaf.  Hence
+\begin{equation}
+T_{y,1}^{1,m_0}=m_0,\qquad
+ T_{y,j}^{1,m_0}=\#\{j-1\to j\hbox{ block letters}\},
+                  \quad2\le j\le L.\label{eq:ct-transfer-R1b}
+\end{equation}
+All these times are recursively defined hitting times of closed sets;
+the completed $m_0$-block word and the cap $|\overline W_y|\le N_0$
+are therefore stopping-line measurable.
+
+We next define the guards.  Consider first a competitive letter beginning
+at a stopping time $s$, at level $k<L$, whose prescribed sign is
+$\epsilon\in\{-1,1\}$.  Its end is
+\[
+t=\inf\{u>s:U_u\in\{k-1,k+1\}\},\qquad U_t=k+\epsilon.
+\]
+Define
+\[
+\begin{array}{lll}
+ p=H_{k+\epsilon(1-\eta_J)}[s],
+ &w=H_{k-\epsilon(1-\eta_J)}[s],
+ &r=H_{k+\epsilon\eta_J}[p],\\
+ e=H_{k+\epsilon(1+\eta_J)}[t],
+ &o=H_{k+\epsilon\eta_J}[t].
+\end{array}
+\]
+The bad events for this letter are
+\begin{equation}
+D^{\rm wrong}=\{w<t\},\qquad
+ D^{\rm ret}=\{r<t\},\qquad
+ D^{\rm post}=\{o<e\}.\label{eq:ct-transfer-R2}
+\end{equation}
+The last comparison is with the old-side collar
+$k+\epsilon\eta_J$, not merely with the old nominal line $k$.
+For a forced terminal return $L\to L-1$ beginning at $s$, set
+\[
+t=H_{L-1}[s],\quad p=H_{L-1+\eta_J}[s],\quad
+ r=H_{L-\eta_J}[p],\quad
+ e=H_{L-1-\eta_J}[t],\quad o=H_{L-\eta_J}[t],
+\]
+and use $D^{\rm ret}=\{r<t\}$ and
+$D^{\rm post}=\{o<e\}$.  There is no wrong-side guard because the
+path below level $L$ is not resolved.
+
+The first source opening needs its own two guards.  The fixed annulus
+defining $F_L^0$ gives a uniform initial margin.  Indeed,
+$d(v,y)\le h_1/20$, convexity of $\tan$ on the relevant fixed small
+interval, and $r_1=r_0e^{-1}$ imply
+\[
+|\chi_y(v)|=2\tan\!\left(\frac{d(v,y)}2\right)
+ \le 2\tan\!\left(\frac{h_1}{40}\right)
+ \le \frac{r_1}{20},
+ \qquad U_0\ge1+\log20.
+\]
+(The lower annulus bound keeps $U_0$ finite.)  Thus, with
+$c_{\rm src}:=\log20$, one has $U_0\ge1+c_{\rm src}$, and for
+$\eta_J<c_{\rm src}$ the stopping time
+$c_1=H_{1+\eta_J}[0]$ satisfies $c_1<A_{y,1}$.  Since the first
+opening approaches level $1$ from the inner side, define
+\begin{equation}
+D^{A_1,{\rm pre}}=\{H_{2-\eta_J}[c_1]<A_{y,1}\},\qquad
+ D^{A_1,{\rm post}}=
+ \{H_{2-\eta_J}[A_{y,1}]<H_{1-\eta_J}[A_{y,1}]\}.\label{eq:ct-transfer-R2a}
+\end{equation}
+For $i\ge2$, the pre-opening guard at $A_{y,i}$ is exactly
+$D^{\rm ret}$ for connector $i-1$, and its post-opening guard is
+exactly $D^{\rm post}$ for that connector; they are named both ways
+but counted once.  At every $B_{y,i}$, the last block symbol is the
+competitive closing letter $1\to0$; its wrong, retreat, and post events
+in \eqref{eq:ct-transfer-R2} are respectively the pre-closing and closing-recognition guards.
+For $i<m_0$ the following symbol is the connector $0\to1$.  At the
+last close $B_{y,m_0}$, retain its post-guard and expose it without any
+following letter.  Let $D_y$ be the union of these events through the
+last post-closing collar hit.  Every member of this union has the form
+$\{H_a[S]<H_b[S]\}$ for a named stopping time $S$, so $D_y$ is
+measurable at that finite stopping line.
+
+We record the exact conditional ratios.  Fix an admissible complete word
+$w$.  Translation, reflection, gambler's ruin, and strong Markov at the
+integer-line hits give, for every competitive letter,
+\begin{equation}
+\frac{P(D^{\rm wrong},\overline W_y=w)}{P(\overline W_y=w)}
+       =\frac{\eta_J}{2-\eta_J},\qquad
+ \frac{P(D^{\rm ret},\overline W_y=w)}{P(\overline W_y=w)}
+       =\frac{\eta_J(1+\eta_J)}
+          {(1-\eta_J)(2-\eta_J)}.\label{eq:ct-transfer-R2b}
+\end{equation}
+If the next symbol is competitive, then
+\begin{equation}
+\frac{P(D^{\rm post},\overline W_y=w)}{P(\overline W_y=w)}
+ =\begin{cases}
+    \eta_J^2,&\text{if the next sign continues the present direction},\\
+    2\eta_J-\eta_J^2,&\text{if it reverses it}.
+   \end{cases}\label{eq:ct-transfer-R2c}
+\end{equation}
+Indeed, after translating the new level to $1$,
+$P_1(H_{\eta_J}<H_{1+\eta_J})=\eta_J$; from $\eta_J$, the
+probabilities of the next exits at $2$ and $0$ are respectively
+$\eta_J/2$ and $1-\eta_J/2$, while either prescribed next sign has
+probability $1/2$.  If the successor is the forced return in \eqref{eq:ct-transfer-R1a}, or
+there is no successor, the post ratio is simply $\eta_J$.  For a forced
+return $L\to L-1$,
+\begin{equation}
+\frac{P(D^{\rm ret},\overline W_y=w)}{P(\overline W_y=w)}
+       =\frac{\eta_J}{1-\eta_J}.\label{eq:ct-transfer-R2d}
+\end{equation}
+The first-opening pre ratio in \eqref{eq:ct-transfer-R2a} is also
+$\eta_J/(1-\eta_J)$.  If $d_1=-1$ is its crossing direction and
+$\epsilon_1$ is the first block sign, its post ratio is
+$\eta_J^2$ when $\epsilon_1=d_1$, and
+$2\eta_J-\eta_J^2$ otherwise.  The same table applies at every later
+opening through its incoming connector.  In particular, at $B_{y,i}$,
+$i<m_0$, the close has direction $-1$ and the next connector has sign
+$+1$, so its post ratio is $2\eta_J-\eta_J^2$.  At the final close
+$B_{y,m_0}$ it is exactly $\eta_J$, with no fictitious next sign.
+All later letters cancel by strong Markov; no arbitrary angular or future
+functional is being inserted into these ratios.  A union bound, without
+any independence assertion among guards, gives
+\begin{equation}
+P(D_y\mid\overline W_y=w)
+ \le8(|w|+2m_0+1)\eta_J
+ \le\varepsilon_J,
+ \qquad \varepsilon_J:=CJ^4\delta_J=o(J^{-A})\label{eq:ct-transfer-R3}
+\end{equation}
+for every $|w|\le N_0$ and every fixed $A$.  The estimate remains
+valid after conditioning on barriers, traversal counts, or any other
+function of $w$, but is not claimed after conditioning on Rosen's
+angular screens.
+
+For completeness, here is the deterministic implication used below.  Let
+$\mathcal A_J$ be the finite set of all nominal integer levels and all
+guard-collar levels occurring in \eqref{eq:ct-transfer-R2}--\eqref{eq:ct-transfer-R2a}, including the forced-return
+collars.  Let $V$ be the corresponding log-radius of the linearly
+interpolated lattice path, in the coupling time parametrization.  Its
+nominal source blocks and truncated word are defined at integer edge indices
+by the endpoint-side-change convention above: a letter is recorded only
+when an edge's endpoints change sides, and interpolation along such an edge
+is used only to locate its crossing and evaluate collar separation.
+Same-side tangencies and chord contacts record no letter.  Assume the
+following symmetric collar condition: whenever either $U_t$ or $V_t$ is
+within $2\delta_J$ of $\mathcal A_J$, both log-radii are finite and
+$|U_t-V_t|\le\delta_J$.  No comparison is required while both paths lie
+strictly on the unresolved inner side of the deepest collars.  Suppose $S_y$,
+$|\overline W_y|\le N_0$, and $D_y^c$ occur.  Before the target collar
+of a competitive Brownian letter, $V$ cannot make a side-changing crossing
+of the target nominal line, while $D^{{\rm wrong},c}$ prevents it from hitting the other
+neighbor.  From the first target-collar hit until the nominal target,
+$D^{{\rm ret},c}$ keeps $U$ beyond the old-side collar; hence an early
+side-changing target crossing by $V$ cannot be followed by a reversal.  From the nominal
+hit to the far collar, $D^{{\rm post},c}$ gives the same separation,
+and at the far collar
+\[
+\epsilon\bigl(V-(k+\epsilon)\bigr)
+       \ge\eta_J-\delta_J>0.
+\]
+Thus $V$'s next nominal neighboring line is exactly $k+\epsilon$,
+and it has made no intervening push or pop.  The forced return \eqref{eq:ct-transfer-R1a} uses
+the retreat and post guards only; deeper visits are ignored by both
+truncated words.
+
+At $A_{y,1}$, \eqref{eq:ct-transfer-R2a} first prevents a premature completed neighboring
+letter and then forces $V$ across the source line.  The preceding
+letter argument initializes every later $A_{y,i}$ through its connector.
+Induction in chronological order on the active Ulam--Harris stack now
+gives the same push/pop operation at every symbol.  At $B_{y,i}$ the
+same stack empties; for $i<m_0$ the guarded connector has sign $0\to1$
+and starts the next stack, while the unconditional final post-guard forces
+$V$ across level $0$ at $B_{y,m_0}$.  Hence the two stopped ordered
+forests are canonically isomorphic and
+\begin{equation}
+T_{y,j}^{1,m_0}(V)=T_{y,j}^{1,m_0}(U),\qquad1\le j\le L.\label{eq:ct-transfer-R4}
+\end{equation}
+Moreover the exact word length is
+\begin{equation}
+|\overline W_y|=2\sum_{j=2}^{L}T_{y,j}^{1,m_0}+2m_0-1
+       \le CL^3<N_0,\label{eq:ct-transfer-R4a}
+\end{equation}
+on the lower barrier and terminal band.  On the single global coupling
+event \eqref{eq:ct-transfer-31}, the symmetric collar condition holds.  Indeed, every
+$2\delta_J$-neighborhood of a nominal or guard collar used by the
+truncated word has physical radius at least $cM$.  If either path is in
+such a neighborhood, physical $b_J$-closeness, the radial Lipschitz
+inequality, chart distortion, and the $O(1)$ terminal-interface rounding
+give
+\[
+|U_t-V_t|\le C(b_J+1)/M\le\delta_J
+\]
+after fixing the constant in \eqref{eq:ct-transfer-33}.  No log-radius comparison is asserted or
+used while both paths are deeper than the terminal collars.  Source safety
+keeps every collar test before global killing.  This condition suffices:
+any premature target, wrong-neighbor, or reversal crossing occurs at a
+member of $\mathcal A_J$, where collar closeness and
+$\delta_J<\eta_J/4$ contradict the corresponding safe guard.  This also
+covers a premature $L-1$ hit during a forced $L\to L-1$ return.
+Consequently
+\begin{equation}
+I_y^{\circ}\cap S_y\cap D_y^c\cap\{\text{global coupling \eqref{eq:ct-transfer-31}}\}
+       \subseteq I_y^{S,\circ}.\label{eq:ct-transfer-R4b}
+\end{equation}
+Only the radial consequence is transferred: Rosen's original angular
+screens remain solely on the Brownian certificate.
+
+\smallskip\noindent
+\underline{\textit{Step 3. The upper first-crossing probability.}}
+
+We now prove the rare upper estimates by direct lattice comparison.  Fix a target cell
+and use the centered continuation \eqref{eq:ct-transfer-39k}--\eqref{eq:ct-transfer-39l}.  Put
+\[
+R_j=R_0e^{-j},\qquad R_0=3e^J,
+\]
+rounding every radius by at most two lattice units.  On the detailed-source
+range $\|y\|>M$, define from the actual starting radius
+\begin{equation}
+u_y=\log {R_0\over\|y\|},\qquad
+ k_y=\lceil u_y\rceil,\qquad m=k_y+1.\label{eq:ct-transfer-45a0}
+\end{equation}
+Then $u_y\in(k_y-1,k_y]$, $m-u_y\in[1,2)$, and the
+deterministic start lies outside $D(y,R_{m-1})$.  This index differs by
+only $O(1)$ from $\lfloor\log(e^J/\|y\|)\rfloor$, so it changes no
+shell exponent.  Write
+\begin{equation}
+\begin{split}
+ E_j^{\rm in}&=\{(a,b):a\notin D(y,R_j),\ b\in D(y,R_j),\ a\sim b\},\\
+ E_j^{\rm out}&=\{(a,b):a\in D(y,R_j),\ b\notin D(y,R_j),\ a\sim b\}.
+\end{split}\label{eq:ct-transfer-45a1}
+\end{equation}
+Every radial query retains its phase, level, Ulam--Harris stack and child
+counters, population vector, and current directed crossing edge.
+
+Potential-kernel optional stopping, uniformly in that edge, gives for
+$k<l$
+\begin{equation}
+q^S_{k,l}\le C{k+1\over l},\qquad
+ p_l^S(e)={l-1+O(R_l^{-1})\over l+O(R_l^{-1})},\qquad
+ d_l^S(e)={1+O(R_l^{-1})\over l+O(R_l^{-1})}.\label{eq:ct-transfer-45a}
+\end{equation}
+Here $q^S_{k,l}$ includes the first completion at level $l$, while
+$p_l^S$ and $d_l^S=1-p_l^S$ are the continuation and death rows
+after return to level $l-1$.  Indeed, the two complete formulas from
+Hao--Li--Okada--Zheng, \cite{HLOZ2025}, Lemma 2.1, equation (2.5), quoted in
+Lemma \ref{lem:smooth-interface-discretization}, have respective logarithmic
+gaps $l-1+O(R_l^{-1})$, $1+O(R_l^{-1})$, and
+$l+O(R_l^{-1})$.  Thus both the continuation and the order-$1/l$
+death probability are relative estimates.  Strong Markov at every
+successive directed hit yields, for $N\ge1$,
+\begin{equation}
+P(T_{y,l}^{S,k\to0}\ge N\mid\hbox{initial directed edge})
+ \le C{k+1\over l}\exp\left\{-{N\over l}+{CN\over lM}\right\}.\label{eq:ct-transfer-45b}
+\end{equation}
+In particular, for $X=\sqrt{2T_{y,m}}$ and $x\le Cm$,
+\begin{equation}
+P(X\in[x,x+1])
+       \le Cm^C e^{-x^2/(2m)}.\label{eq:ct-transfer-45c}
+\end{equation}
+No independence of directed entrance edges is used in these scalar bounds.
+
+A union bound over all fine centers would count many copies of the same
+crossing.  We replace each center by a deterministic nearby representative
+and enlarge its target disk so that the crossing count can only increase.  Put
+\[
+\phi(l)=\exp\{\tfrac14(l\wedge(J-l))^{1/4}\}.
+\]
+Fix constants
+\[
+0<c_{\rm sep}\le c_{\rm mesh}<C_\delta<\frac{e-1}{e+1}.
+\]
+For each $l$, choose a deterministic maximal
+$c_{\rm sep}R_l/\phi(l)$-separated subset of $\mathbb Z^2$, with
+$c_{\rm sep}$ chosen so that its covering radius (for lattice points) is
+at most $c_{\rm mesh}R_l/\phi(l)$.  Given a candidate lattice center
+$y$ in source shell $k$, choose a mesh point
+$\widehat y=\widehat y(y,l)\in\mathbb Z^2$ with
+\[
+|y-\widehat y|\le c_{\rm mesh}R_l/\phi(l),\qquad
+ \delta_l=C_\delta/\phi(l),\qquad R_j^\pm=(1\pm\delta_l)R_j.
+\]
+For all sufficiently large $J$, the gap
+$(C_\delta-c_{\rm mesh})R_l/\phi(l)$ absorbs the at-most-two-unit
+rounding of every radius on the used range.  Moreover
+$\delta_l<(e-1)/(e+1)$, and hence
+$R_{l-1}^->R_l^+$, so every buffered annulus below is nonempty.
+Starting with the first entrance into
+$D(\widehat y,R_k^+)$, and stopping on exiting
+$D(\widehat y,R_0^+)$, let
+$\widetilde T_{\widehat y,l}^{S,k\to0}$ count completed crossings from
+$\partial D(\widehat y,R_{l-1}^-)$ to
+$\partial D(\widehat y,R_l^+)$.  The inclusions
+\begin{equation}
+\begin{split}
+ D(y,R_k)&\subset D(\widehat y,R_k^+),\\
+ D(y,R_l)&\subset D(\widehat y,R_l^+),\\
+ D(\widehat y,R_{l-1}^-)&\subset D(y,R_{l-1}),\\
+ D(y,R_0)&\subset D(\widehat y,R_0^+)
+\end{split}\label{eq:ct-transfer-45d0}
+\end{equation}
+show pathwise that
+\begin{equation}
+T_{y,l}^{S,k\to0}
+       \le\widetilde T_{\widehat y,l}^{S,k\to0}.\label{eq:ct-transfer-45d1}
+\end{equation}
+Indeed every $y$-crossing begins outside the representative's buffered
+outer circle, ends inside its buffered inner circle, and occurs after the
+representative start and before its stop.  The same inclusions cover
+$k=l-1$.  Area comparison for the mesh in a shell of diameter
+$O(R_k)$ gives, for every $k\le l-1$,
+\begin{equation}
+\#\{\hbox{representatives at }(k,l)\}
+ \le C e^{2(l-k)}\phi(l)^2.\label{eq:ct-transfer-45d}
+\end{equation}
+The buffered inclusions in Rosen (2.26)--(2.33) do not impose
+$k\le\log J$.  For the four modified radii
+$(R_k^+,R_{l-1}^-,R_l^+,R_0^+)$, the same potential-kernel
+calculation gives, uniformly in all directed entrance edges,
+\begin{equation}
+\widetilde q_{k,l}^S\le C{k+1\over l},\qquad
+ \widetilde p_l^S
+ \le1-\frac{1-C/\phi(l)-C/M}{l}.\label{eq:ct-transfer-45d2}
+\end{equation}
+Consequently \eqref{eq:ct-transfer-45b} holds with $T$ replaced by
+$\widetilde T_{\widehat y,l}^{S,k\to0}$, the additional exponent being
+$CN/(l\phi(l))+CN/(lM)$.  Taking
+$N=\alpha_{z,+}(l)^2/2$ there gives
+\begin{equation}
+P(\widetilde T_{\widehat y,l}^{S,k\to0}\ge N)
+ \le C e^{-2l-(l\wedge(J-l))^{1/4}}e^{-2z}.\label{eq:ct-transfer-45e}
+\end{equation}
+On the used range $l\le J-(4\log J)^4$, the elementary exponent
+calculation gives $l/\phi(l)=O(1)$ (the bounded early values are
+absorbed into $C$), and $N/(lM)=o(1)$.  Multiplying \eqref{eq:ct-transfer-45d} and \eqref{eq:ct-transfer-45e}
+and summing first in $l$, then in $k\ge s$, proves \eqref{eq:ct-transfer-40}, including
+the range $\log J<k\le C_0\log J$.
+
+\smallskip\noindent
+\underline{\textit{Step 4. The centered endpoint probability.}}
+
+The source population and its descendants must be compared together.
+Conditioning on a later list of entrance edges would change the law of the
+current radial decision.  We therefore compare the entire chronological
+word, integrating each edge when it is first produced, and only then
+condition under the ideal Galton--Watson law.  In addition to
+the directed-edge/stack states in \eqref{eq:ct-transfer-45a1}, introduce a special deterministic
+initial atom $\star_y$, representing $S_0=0$.  The first query is
+\texttt{ROOT} (hit $D_m$ before leaving $D_0$), whose kernel maps
+$\star_y$ to $E_m^{\rm in}$, or \texttt{FAILURE}, whose kernel maps
+$\star_y$ to the cemetery state.  After every root, its descendants are
+explored depth first: at an active node of level $j<n$, \texttt{BIRTH} is the
+first hit of $D_{j+1}$ and pushes the next child, while \texttt{CLOSE} is the
+first exit from $D_{j-1}$ and pops the node.  A level-$n$ leaf has a
+forced return to level $n-1$, of row mass one.  After a root closes, the
+current state lies in $E_{m-1}^{\rm out}$; the next source query is
+another \texttt{ROOT}, mapping to $E_m^{\rm in}$, or the final \texttt{DEATH}, mapping
+through $E_0^{\rm out}$ to the cemetery state.  Thus a word with
+$t\ge1$ roots has the
+physical order
+\begin{equation}
+\mathtt{ROOT},\operatorname{DFS}(1),\mathtt{ROOT},
+ \operatorname{DFS}(2),\ldots,\mathtt{ROOT},
+ \operatorname{DFS}(t),\mathtt{DEATH}.\label{eq:ct-transfer-45f0}
+\end{equation}
+The word stops at the first barrier violation, endpoint decision, death,
+or a fixed deterministic cap $Q_*=C_*J^3$, chosen above
+$3+2\sum_{j=m}^n(T_{y,j}+1)$ on the coefficient-two barrier,
+and is then padded by cemetery letters.  It contains every terminating
+close and the final source death, so there is no residual future condition.
+
+Let $P_*$ be the angle-free ideal law.  Its first root and failure
+probabilities are $u_y/m$ and $(m-u_y)/m$; subsequent root and death
+probabilities are $(m-1)/m$ and $1/m$; every descendant
+birth/close decision has probability $1/2$.  Potential-kernel optional
+stopping, with every output edge summed but every current directed edge
+retained, gives the four lattice source rows
+\begin{equation}
+\begin{aligned}
+ r_{0,y}^S
+   &=\frac{u_y+O(R_m^{-1})}{m+O(R_m^{-1})},
+ & f_{0,y}^S
+   &=\frac{m-u_y+O(R_m^{-1})}{m+O(R_m^{-1})},\\
+ r_m^S(e)
+   &=\frac{m-1+O(R_m^{-1})}{m+O(R_m^{-1})},
+ & d_m^S(e)
+   &=\frac{1+O(R_m^{-1})}{m+O(R_m^{-1})}.
+\end{aligned}\label{eq:ct-transfer-45f-src}
+\end{equation}
+Here the first pair starts from $\star_y$, while the second pair is
+uniform in $e\in E_{m-1}^{\rm out}$.  Since every candidate satisfies
+$\|y\|<2e^J$,
+\[
+u_y\ge\log(3/2),\qquad m-u_y\in[1,2),\qquad m-1\ge1.
+\]
+Also $R_m=e^{u_y-m}\|y\|\ge e^{-2}\|y\|\ge e^{-2}M$ on the detailed
+range.  Consequently each of the four displayed rows, including the two
+order-$1/m$ FAILURE and DEATH rows, equals its ideal row times
+$1+O(M^{-1})$.  Ordinary birth/close rows are
+$(1/2)(1+O(R_{j+1}^{-1}))$.
+
+Fix a complete radial word $w$, but no directed-edge refinement.  If
+$\nu_r$ is the edge-valued finite measure after its first $r$ letters,
+the next ideal row $p_r$ is determined by the radial prefix, and the
+uniform row estimates give
+\[
+e^{-C/M}p_r\|\nu_r\|\le\|\nu_{r+1}\|
+       \le e^{C/M}p_r\|\nu_r\|.
+\]
+Forward induction, with all compatible entrance and exit edges integrated,
+therefore gives
+\begin{equation}
+e^{-C|w|/M}P_*(w)\le P_S(w)
+       \le e^{C|w|/M}P_*(w).\label{eq:ct-transfer-45f}
+\end{equation}
+This is not a conditional comparison given a future edge list.
+
+Under $P_*$, the source population has the exact law
+\begin{equation}
+\pi_{m,u_y}(0)=1-{u_y\over m},\qquad
+ \pi_{m,u_y}(t)={u_y\over m}
+       \left({m-1\over m}\right)^{t-1}{1\over m},
+       \quad t\ge1,\label{eq:ct-transfer-45g0}
+\end{equation}
+and, conditional on $t$, the $t$ descendant trees are independent
+critical Galton--Watson trees with
+$P(\xi=r)=2^{-r-1}$.  Hence, for the disjoint union
+$\mathscr U(q)$ of complete barrier-respecting words ending in
+$\sqrt{2T_n}\in[q,q+1]$,
+\begin{equation}
+P_S(\mathscr U(q))
+ \le e^{CJ^3/M}\sum_{t\ge1}\pi_{m,u_y}(t)
+       P_t^{\rm GW}(\mathscr A_t^{\rm GW}(q)).\label{eq:ct-transfer-45g}
+\end{equation}
+Only the ideal law on the right has been disintegrated.  Moreover, for
+$x\le Cm$,
+\begin{equation}
+\sum_{\sqrt{2t}\in[x,x+1]}\pi_{m,u_y}(t)
+ \le C(1+x)m^{-1}e^{-x^2/(2m)+O(1)}
+ \le Ce^{-x^2/(2m)}.\label{eq:ct-transfer-45gprime}
+\end{equation}
+Apply Rosen Appendix Theorem 9.1(a), quoted in \eqref{eq:ct-external-30}, to the
+ideal Galton--Watson factor in \eqref{eq:ct-transfer-45g}, group $\sqrt{2t}$ into unit bands,
+and use \eqref{eq:ct-external-31}--\eqref{eq:ct-external-31a}.  This proves \eqref{eq:ct-transfer-41}.  The $t=1$ term is covered by
+the extra-ancestor argument following \eqref{eq:ct-external-30}, while $t=0$ cannot reach a
+positive central endpoint.  Since $J^3/M=o(J^{-A})$, the comparison is
+relative even for the rare endpoint event.
+
+\smallskip\noindent
+\underline{\textit{Step 5. The lower count and the terminal interfaces.}}
+
+We apply the Brownian second moment before transferring any event to the lattice.  We retain Rosen's original event
+$I_y^\circ$ and its original angular screens exactly as written in
+\eqref{eq:ct-external-33}--\eqref{eq:ct-external-37}, and intersect it with the source-safety event $S_y$.
+No tightened or halved screen is used.  Put
+$I_y^{\rm sf}=I_y^\circ\cap S_y$.  By \eqref{eq:ct-external-38},
+\begin{equation}
+P\left(\sum_y1_{I_y^{\rm sf}}>0\right)\ge c_* .\label{eq:ct-transfer-46}
+\end{equation}
+The screens occur only in this Brownian second-moment certificate; the
+lattice target discards all angular screens.
+
+Let $\widehat I_y^B$ be the Brownian event obtained from
+$I_y^\circ$ by deleting every angular screen and retaining only the
+radial barrier, the bounded endpoint band, and the fixed $m_0$-source
+definition.  Rosen Appendix Theorem 9.1(a), followed by the same source
+and barrier calculation as \eqref{eq:ct-external-29}, gives
+\begin{equation}
+P(\widehat I_y^B)\le Ce^{-2L},
+             \qquad \sum_yP(\widehat I_y^B)\le C.\label{eq:ct-transfer-47}
+\end{equation}
+Since
+$I_y^{\rm sf}\cap D_y\subseteq
+  \widehat I_y^B\cap S_y\cap D_y$, estimate \eqref{eq:ct-transfer-R3} may be summed over
+complete safe radial words before any angular screen is imposed.  Hence
+\begin{equation}
+\sum_yP(I_y^{\rm sf}\cap D_y)
+ \le\varepsilon_J\sum_yP(\widehat I_y^B\cap S_y)
+ \le\varepsilon_J\sum_yP(\widehat I_y^B)=o(1).\label{eq:ct-transfer-47a}
+\end{equation}
+Let ${\cal K}_J$ be the single global coupling/time-cap event \eqref{eq:ct-transfer-31}.
+The pathwise implication \eqref{eq:ct-transfer-R4b} gives
+\[
+\{Z_L^{\rm sf}>0\}\cap{\cal K}_J
+       \setminus\bigcup_y(I_y^{\rm sf}\cap D_y)
+       \subseteq\{Z_L^S>0\}.
+\]
+Consequently, paying the coupling failure only once,
+\begin{equation}
+P(Z_L^S>0)\ge P(Z_L^{\rm sf}>0)
+   -\sum_yP(I_y^{\rm sf}\cap D_y)-P({\cal K}_J^c)
+ \ge c_*-o(1).\label{eq:ct-transfer-47b}
+\end{equation}
+Source safety and \eqref{eq:ct-external-38d} keep every block, connector, and final exposed
+post-closing collar a fixed positive distance inside the stopping boundary,
+so the close lattice path is not killed before the transferred blocks
+finish.  No Brownian angular screen is transferred.
+This is the only use of the two-center estimate \eqref{eq:ct-external-36}, and it occurs
+entirely on the spherical Brownian side.
+
+For the lattice first moment, extend the path if necessary and decompose
+its first $m_0$ source blocks, treating every connector as an integrated
+subkernel of row mass at most one.  For a fixed collection of block words,
+apply the edge-marginal induction \eqref{eq:ct-smooth-39iprime} to all competitive letters,
+uniformly over the entrance law supplied by each preceding connector.
+Forced terminal returns have row mass one.  Thus, if $q$ is the number
+of competitive decisions,
+\[
+P_S(\hbox{these block words})\le e^{CJ^3/M}2^{-q}.
+\]
+Summing the disjoint words obeying the lower barrier and terminal band gives
+the critical geometric Galton--Watson probability with exactly $m_0$
+ancestors.  Rosen Appendix Theorem 9.1(a), followed by the fixed-source
+calculation already used in \eqref{eq:ct-transfer-47}, gives
+\begin{equation}
+P(I_y^{S,\circ})\le Ce^{-2L},\qquad EZ_L^S\le C.\label{eq:ct-transfer-47cprime}
+\end{equation}
+This proves \eqref{eq:ct-transfer-42}; in particular, the lower first moment does not use the
+upper source-population estimate \eqref{eq:ct-transfer-45c}.
+
+Finally we justify the terminal switch used in the definition of
+${\cal R}_y$.  On the compact center family, with
+$F_y=\sigma\circ\chi_y^{-1}$,
+\[
+F_y(w)=F_y(0)+a_yw+b_yw^2+O(|w|^3),
+       \qquad0<c\le|a_y|\le C.
+\]
+At $r_L\asymp e^{-J+h}$, dilation by $A_J\asymp e^J$ shows that
+the actual deepest image circle is at Hausdorff distance
+\begin{equation}
+O(A_Jr_L^2)=O(e^{-J+2h})=o(1)\label{eq:ct-transfer-47c}
+\end{equation}
+from its affine concentric circle.  Rounding the center and the digital
+boundary costs $O(1)$, or relative width $O(M^{-1})$, and is one
+additional collar in the lower guard construction \eqref{eq:ct-transfer-R1}--\eqref{eq:ct-transfer-R4}.  The induced
+angular conjugacy, after removing the fixed rotation
+$a_y/|a_y|$, is $C^4$-close to the identity by
+$O(e^{-J+h})$; its Haar-density defect is therefore absorbed by
+$M^{-7/24}\log M+M^{-1}$.  Thus the outer $\chi_y$-rotation kernels
+and the terminal Euclidean rotation kernels use the same common center
+up to the stated error.  All lattice
+events were defined before introducing the auxiliary coupling and are
+measurable in ${\cal R}_y$.  We may therefore discard the Brownian
+path after \eqref{eq:ct-transfer-47b}; every later conditional law is the original
+simple-random-walk law given ${\cal R}_y$.
+\end{proof}

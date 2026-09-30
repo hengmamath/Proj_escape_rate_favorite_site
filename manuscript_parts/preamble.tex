@@ -1,0 +1,219 @@
+\documentclass[12pt,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs,esint}
+\usepackage{mathalpha}
+\usepackage{enumitem}
+\usepackage{libertinus}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,array}
+\usepackage[a4paper,top=25mm,bottom=26mm,left=29mm,right=29mm,headsep=7mm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[
+  breaklinks=true,
+  pagebackref=true,
+  hypertexnames=false
+]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  pdfpagemode=UseNone,
+  citecolor=ForestGreen,
+  linkcolor=MidnightBlue,
+  urlcolor=RoyalBlue,
+  pdfstartview=FitH,
+  pdftitle={The lower-class escape rate of planar favorite sites},
+  pdfsubject={Planar simple random walk, favorite sites, and lower-class escape rate}
+}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% Page geometry and paragraph spacing from the template.
+\linespread{1.05}
+\normalsize
+\linespacing=\baselineskip
+\setlength{\parindent}{1em}
+\setlength{\parskip}{3pt}
+
+\makeatletter
+
+% First-page title, author block, abstract, and separate AI usage statement.
+\def\@settitle{%
+  \begin{center}%
+    \uppercasenonmath\@title
+    \Large\@title
+  \end{center}}
+
+\def\@setauthors{%
+  \vskip21pt plus6pt minus3pt
+  \begin{center}%
+    {\tiny BY\par}\medskip
+    {\normalsize\scshape\authors\par}\medskip
+    \def\address##1##2{\par ##2\par}%
+    \def\email##1##2{\par e-mail:~##2\par}%
+    {\small\itshape\addresses\par}%
+  \end{center}}
+
+\def\enddoc@text{}
+
+\renewenvironment{abstract}{%
+  \global\setbox\abstractbox=\vtop\bgroup
+  \vskip10pt
+  \normalfont\tiny\centering\MakeUppercase{\abstractname}\par
+  \Small
+  \list{}{%
+    \leftmargin3pc
+    \rightmargin3pc
+    \labelwidth0pt
+    \listparindent\normalparindent
+    \itemindent0pt
+    \parsep0pt plus1pt
+    \let\fullwidthdisplay\relax
+  }%
+  \item[]
+}{%
+  \vspace*{-10pt}
+  \endlist\egroup
+}
+
+\newbox\aiusagebox
+\newenvironment{aiusage}{%
+  \global\setbox\aiusagebox=\vtop\bgroup
+  \normalfont\Small
+  \list{}{%
+    \leftmargin3pc
+    \rightmargin3pc
+    \topsep0pt
+    \partopsep0pt
+    \parsep0pt
+    \itemsep0pt
+    \listparindent0pt
+    \itemindent0pt
+  }%
+  \item[]%
+  \nobreak\vspace{4pt}%
+  {\normalfont\tiny\centering\MakeUppercase{AI usage}\par}%
+  \nobreak\vspace{2pt}%
+  \noindent\ignorespaces
+}{%
+  \par\endlist\egroup
+}
+\let\original@setabstracta\@setabstracta
+\def\@setabstracta{%
+  \original@setabstracta
+  \ifvoid\aiusagebox\else
+    \vskip10pt
+    \box\aiusagebox
+    \prevdepth\z@
+  \fi
+}
+
+% Section headings.
+\let\@secnumfont\@empty
+\def\section{\@startsection{section}{1}{0pt}%
+  {20pt plus4pt minus4pt}
+  {.5\linespacing}
+  {\normalfont\bfseries}}
+\def\subsection{\@startsection{subsection}{2}{0pt}%
+  {.5\linespacing plus.7\linespacing}
+  {-.5em}
+  {\normalfont\scshape}}
+\def\subsubsection{\@startsection{subsubsection}{3}{0pt}%
+  {.5\linespacing plus.7\linespacing}
+  {-.5em}
+  {\normalfont\itshape}}
+\let\@afterindenttrue\@afterindentfalse
+\@afterindentfalse
+
+% Theorem and proof styles.
+\newtheoremstyle{plain}
+  {.5\linespacing}{.5\linespacing}
+  {\itshape}{1em}{\scshape}{.}{.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{\normalfont{} (#3)}}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newtheoremstyle{definition}
+  {.5\linespacing}{.5\linespacing}
+  {\upshape}{1em}{\scshape}{.}{.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{\normalfont{} (#3)}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheoremstyle{remark}
+  {.5\linespacing}{.5\linespacing}
+  {\upshape}{1em}{\scshape}{.}{.5em}
+  {\thmname{#1}\thmnumber{ #2}\thmnote{\normalfont{} (#3)}}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\renewenvironment{proof}[1][\proofname]{%
+  \par
+  \pushQED{\qed}%
+  \normalfont
+  \topsep6pt plus6pt\relax
+  \trivlist
+  \item[\hskip\labelsep\slshape #1\@addpunct{.}]%
+  \ignorespaces
+}{%
+  \popQED
+  \endtrivlist
+  \@endpefalse
+}
+\DeclareRobustCommand{\qed}{%
+  \leavevmode\unskip\penalty9999\hbox{}\nobreak
+  \ifmmode
+    \makebox[0pt][l]{\qquad\hbox{\qedsymbol}}%
+  \else
+    \qquad\hbox{\qedsymbol}%
+  \fi
+}
+\renewcommand{\qedsymbol}{\rule[.47pt]{4pt}{6pt}}
+
+\makeatother
+
+\setlength{\emergencystretch}{1.8em}
+\numberwithin{equation}{section}
+\allowdisplaybreaks[1]
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\osc}{osc}
+\DeclareMathOperator{\sech}{sech}
+
+\title[Escape of planar favorite sites]{The lower-class escape rate of planar favorite sites}
+\date{}
+
+\begin{document}
+
+\begin{abstract}
+We study the distance from the origin of the set of favorite sites of planar
+simple random walk. The logarithmic-power boundary for its almost-sure lower
+class is $\sqrt{n/\log n}$: above exponent $1/2$, every favorite eventually
+escapes each fixed multiple of $\sqrt n/(\log n)^\gamma$, whereas at exponent
+$1/2$ the entire favorite set enters arbitrarily small multiples of this
+scale infinitely often. The escape argument combines a localized upper
+bound for thick points with a lower bound for the global maximum at
+$J\log J$ precision. Traversal barriers, relative lattice comparisons and
+conditional terminal occupation estimates preserve the required logarithmic
+power. Critical recurrence follows from a stopped-resolvent estimate,
+reversal at a priority-selected favorite, and an injective insertion that
+removes ties.
+\end{abstract}
+
+\begin{aiusage}
+The initial proof was generated by OpenAI's GPT-5.6 sol.
+\end{aiusage}
+
+\maketitle
+
+\begingroup
+  \raggedbottom
+  \vspace*{-20pt}
+  \setcounter{tocdepth}{1}
+  \tableofcontents
+  \clearpage
+\endgroup

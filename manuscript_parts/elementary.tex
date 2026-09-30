@@ -1,0 +1,62 @@
+\section{Elementary estimates}\label{sec:elementary}
+For a finite lattice domain $D$, write
+\[
+ G_D(x,y)=E_x\sum_{j<\tau_{D^c}}\mathbf1_{\{S_j=y\}},
+ \qquad \tau_{D^c}=\inf\{j\ge0:S_j\notin D\}.
+\]
+The following estimates fix the normalization used throughout the paper.
+\begin{lemma}[Elementary walk estimates]\label{lem:elementary-walk-estimates}
+There are constants \(c,C\in(0,\infty)\) with the following properties.
+
+\begin{enumerate}\item If \(\tau_R=\inf\{n:\lVert S_n\rVert_2\ge R\}\), then
+   \[
+       \sup_{\lVert x\rVert<R}E_x\tau_R\le C R^2,\qquad
+       \sup_{\lVert x\rVert<R}P_x(\tau_R>mCR^2)\le 2^{-m}.
+   \]
+\item For all \(N,R\ge1\),
+   \[
+       P\left(\max_{k\le N}\lVert S_k\rVert_2\ge R\right)
+       \le C\exp\{-cR^2/N\}.
+   \]
+\item Uniformly for \(1\ll r<\lVert x\rVert<R\),
+   \[
+   P_x(\tau_{\partial D(0,R)}<\tau_{\partial D(0,r)})
+     =\frac{\log(\lVert x\rVert/r)+O(r^{-1})}{\log(R/r)}
+   \]
+   and the complementary inner-hitting probability is obtained by replacing
+   the numerator by \(\log(R/\lVert x\rVert)+O(r^{-1})\).
+\item For each fixed $\kappa\in(0,1)$, uniformly for $\|x\|\le(1-\kappa)R$ in
+   \(D(0,R)\),
+   \[
+       G_{D(0,R)}(x,x)=g\log R+O_\kappa(1).
+   \]
+   Conditional on first hitting \(x\), the number of visits to \(x\) before
+   leaving the disk is geometric with this mean.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For (1), optional stopping of
+\(\lVert S_{n\wedge\tau_R}\rVert_2^2-(n\wedge\tau_R)\), followed by the
+one-step overshoot bound, gives the expectation estimate.  Markov's
+inequality at time \(2CR^2\), iterated with the strong Markov property,
+gives the geometric tail.  Part (2) follows by applying the usual
+exponential martingale separately to both coordinates and to both signs.
+
+For the annulus estimate, we use \cite[Lemma~2.1, (2.5)]{HLOZ2025}:
+uniformly for $r<\|x\|<R$,
+\[
+ P_x(H_{\partial D(0,R)}<H_{\partial D(0,r)})
+ =\frac{\log(\|x\|/r)+O(r^{-1})}{\log(R/r)}.
+\]
+Here \(H\) is the positive-time hitting time and the boundaries are the
+digital outer vertex boundaries defined in that paper.  The later
+directed-edge convention can differ from this vertex-boundary convention
+only within a one-unit radial collar.  Applying the estimate with \(r,R\)
+shifted by at most two units, equivalently repeating its potential-kernel
+proof at the directed crossing time, changes the logarithmic terms by
+\(O(r^{-1})\).  Hence the same estimate holds for the directed-edge rows
+below.  The potential-kernel proof of that result also gives (4).  The
+geometric assertion in (4) is the strong Markov
+property at successive positive returns to \(x\).
+\end{proof}

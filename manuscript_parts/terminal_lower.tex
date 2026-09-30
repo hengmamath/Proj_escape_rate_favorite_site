@@ -1,0 +1,563 @@
+\section{The terminal maximum and the lower bound}
+\label{sec:terminal-lower}
+
+The coarse construction produces a cell with about
+$2L^2-2L\log L$ completed terminal pieces.  Its mean occupation is
+still below the desired level because the construction stops at depth
+$L=J-h$.  We now recover the missing contribution by maximizing over
+the sites inside the terminal disk.  Conditional on the entrance and
+exit data, the pieces are independent, and the covariance of their
+occupation field is close to a multiple of the killed Green function.
+A Gaussian approximation therefore reduces the remaining estimate to
+the maximum of the discrete Gaussian free field.
+
+\subsection{Conditional occupation in one terminal disk}
+
+Use the terminal domains $D_y$ and $V_y$, the endpoint law $\Lambda_M$,
+and the completed-piece occupation vectors $X_i$ defined above.  Within
+this subsection, write $G=G_{D_y}$.  For an endpoint pair $\omega=(a,e)$,
+set
+\[
+ \mu_x(\omega)=E^\omega X(x),\qquad
+ q_{x,x'}(\omega)=E^\omega[X(x)X(x')].
+\]
+The first task is to control these conditional moments simultaneously
+over the terminal disk.  This is the reason for taking a smaller
+terminal logarithmic scale here than in the upper bound.
+
+\begin{lemma}[The terminal maximum]
+\label{lem:terminal-maximum-lower}
+Fix $1<p<2$ and put
+\[
+ h=(\log J)^p,\qquad M=e^h,\qquad L=J-h.
+\]
+Suppose an admissible centered block word has $G_0\le m_0$ blocks and
+\begin{equation}
+ b=2L^2-2L\log L+O(L)
+ \tag{63}\label{eq:terminal-piece-count}
+\end{equation}
+completed terminal pieces, with a uniform constant in the remainder.
+Put $t_J=\log J/(J\log\log J)$.  Call the endpoint realization
+\emph{moment regular} if, for every $x,x'\in V_y$,
+\begin{equation}
+ \begin{split}
+ \left|\frac1b\sum_{i\le b}\mu_x(\omega_i)-\Lambda_M\mu_x\right|
+ &\le 2t_J,\\
+ \left|\frac1b\sum_{i\le b}q_{x,x'}(\omega_i)
+                    -\Lambda_Mq_{x,x'}\right|
+ &\le 2t_J\bigl(1+G(x,x')\bigr).
+ \end{split}
+ \tag{L1}\label{eq:terminal-moment-regularity}
+\end{equation}
+Uniformly over these words,
+\begin{equation}
+ P(\text{moment regularity fails}\mid w)
+ \le CM^4e^{-cbt_J^2}=o(J^{-A})
+ \tag{L2}\label{eq:terminal-moment-failure}
+\end{equation}
+for every fixed $A>0$.
+
+Let $\mathcal C_y$ be the intrinsic coarse sigma-field, which records
+the word and its endpoint pairs and erases the bridge interiors.
+For every moment-regular realization, under the conditional law given
+$\mathcal C_y$,
+\begin{equation}
+ \max_{x\in V_y}\sum_{i\le b}X_i(x)
+ =gb+2\sqrt2\,g\sqrt b\,h
+ +O_P\left(J\sqrt h+\frac{J\log J}{\log\log J}\right).
+ \tag{L3}\label{eq:terminal-maximum-expansion}
+\end{equation}
+The remainder is uniform over such realizations.  In particular, for
+every fixed $\eta>0$, the conditional probability that this maximum
+is at least $u_{J,2+\eta}$ tends to one uniformly.
+\end{lemma}
+
+\begin{proof}
+We first identify the conditional means and covariances.  We then
+approximate the centered maximum by a Gaussian maximum and compare
+the latter with the discrete Gaussian free field.  The scale
+$1<p<2$ makes both the simultaneous moment screen and the final
+error estimate compatible with the $J\log J$ margin.
+
+\smallskip\noindent
+\underline{\textit{Step 1. Conditional moments and their common center.}}
+Fix the entrance and directed-exit pairs $(a_i,e_i)_{i\le b}$.
+The strong Markov property makes the killed bridge occupation vectors
+independent under this conditioning.  Ordering the two visit times
+gives the exact identities
+\begin{equation}
+ E^{a,e}X(x)=\frac{G(a,x)H(x,e)}{H(a,e)}
+ \tag{65}\label{eq:terminal-exact-mean}
+\end{equation}
+and
+\begin{equation}
+ \begin{split}
+ E_a[X(x)X(x');E=e]
+ &=G(a,x)G(x,x')H(x',e)\\
+ &\quad+G(a,x')G(x',x)H(x,e)
+ -\mathbf1_{\{x=x'\}}G(a,x)H(x,e).
+ \end{split}
+ \tag{66}\label{eq:terminal-exact-second-moment}
+\end{equation}
+The subtraction accounts for the visit counted in both orders when
+$x=x'$.  Dividing \eqref{eq:terminal-exact-second-moment} by $H(a,e)$
+gives $q_{x,x'}(a,e)$.
+
+The fixed-ratio Harnack estimates yield
+\begin{equation}
+ \|\mu_x/C\|_\infty\le1,\qquad
+ \left\|\frac{q_{x,x'}}{C(1+G(x,x'))}\right\|_\infty\le1
+ \tag{67}\label{eq:terminal-normalized-moments}
+\end{equation}
+uniformly in $x,x'$.  The exact exit-edge averages (43a)--(43b)
+identify these functions with the finite Green class (47i), so the
+word concentration estimate (49) applies.  There are at most $CM^4$
+functions.  Moreover, admissibility and the present scale imply
+\begin{equation}
+ G_0/b+\varepsilon_M+Q/M=o(t_J),\qquad \eta_w^*=O(1).
+ \tag{67a}\label{eq:terminal-screen-errors}
+\end{equation}
+Apply (49) with $t=t_J/C_1$, where $C_1$ is a sufficiently large fixed
+multiple of the normalization constant in (47i).  After restoring
+the normalizations in \eqref{eq:terminal-normalized-moments}, the
+tolerances are those in \eqref{eq:terminal-moment-regularity}.  Thus
+\begin{equation}
+ \begin{split}
+ P(\text{\eqref{eq:terminal-moment-regularity} fails}\mid w)
+ &\le CM^4\exp\left\{-c\frac{\log^2J}{(\log\log J)^2}\right\}\\
+ &=o(J^{-A})
+ \end{split}
+ \tag{68}\label{eq:terminal-screen-union-bound}
+\end{equation}
+for every fixed $A>0$, because
+$h=o(\log^2J/(\log\log J)^2)$.  The estimate is uniform over the
+normalized reset kernels; these are included in the joint law and
+then integrated out.  This proves \eqref{eq:terminal-moment-failure}.
+Only the lower bound uses this simultaneous $M^4$-function screen.
+At the upper-bound scale $h=(C_h\log J)^4$, Lemma~\ref{lem:terminal-feynman-kac}
+uses the one-point exponential estimate (50) before taking its
+spatial union bound.
+
+To compute the center, multiply
+\eqref{eq:terminal-exact-mean}--\eqref{eq:terminal-exact-second-moment}
+by $\Lambda_M(a,e)=\lambda_A(a)H(a,e)$ and sum first over $e$.
+The Green identities (44)--(45) give
+\begin{equation}
+ \begin{split}
+ \Lambda_M\mu_x&=d_x,\\
+ \Lambda_Mq_{x,x'}
+ &=d_xG(x,x')+d_{x'}G(x',x)-\mathbf1_{\{x=x'\}}d_x,\\
+ \sup_{x\in V_y}|d_x-g|&\le C\varepsilon_M.
+ \end{split}
+ \tag{L4}\label{eq:terminal-common-moments}
+\end{equation}
+In particular, a moment-regular realization satisfies
+\begin{equation}
+ \max_{x\in V_y}
+ \left|\frac1b\sum_{i\le b}E^{\omega_i}X_i(x)-g\right|
+ \le Ct_J+O(\varepsilon_M).
+ \tag{70}\label{eq:terminal-conditional-mean}
+\end{equation}
+Write
+\[
+ \widetilde X_i(x)=X_i(x)-E^{\omega_i}X_i(x),\qquad
+ U_x=b^{-1/2}\sum_{i\le b}\widetilde X_i(x).
+\]
+Since $\sup_{x,x'}G(x,x')\le Ch$, the second-moment error in the
+screen is $O(t_J(1+h))=o(1)$.  The error from replacing $d_x$ by $g$
+in \eqref{eq:terminal-common-moments} is $O(\varepsilon_Mh)=o(1)$.
+The diagonal correction is bounded, as is
+\[
+ \frac1b\sum_{i\le b}
+ E^{\omega_i}X_i(x)E^{\omega_i}X_i(x')
+\]
+by \eqref{eq:terminal-normalized-moments}.  Consequently
+\begin{equation}
+ \max_{x,x'\in V_y}
+ \left|\operatorname{Cov}(U_x,U_{x'})-2gG_{D_y}(x,x')\right|
+ \le C.
+ \tag{74}\label{eq:terminal-covariance-comparison}
+\end{equation}
+The exact exit-edge averaging is what supplies the common center;
+no angular interpolation of a directed-edge observable is required.
+
+\smallskip\noindent
+\underline{\textit{Step 2. Approximation of the maximum by a Gaussian maximum.}}
+The number of coordinates is $P=|V_y|=e^{2h+O(1)}$, whereas there
+are only $b\asymp J^2$ independent vectors.  We therefore need an
+approximation whose dimension dependence is logarithmic.
+
+We use Chernozhukov--Chetverikov--Kato
+\cite[Theorem~3.1]{CCK2016}.  In the centered form needed here, let
+$Z_i\in\mathbb R^P$ be independent centered vectors with finite
+absolute third moments, and let $Y_i$ be independent centered
+Gaussian vectors with the same covariances.  Set
+\[
+ Z=\max_{j\le P}b^{-1/2}\sum_{i\le b}Z_{ij},\qquad
+ \widetilde Z=\max_{j\le P}b^{-1/2}\sum_{i\le b}Y_{ij}.
+\]
+For every Borel set $A\subset\mathbb R$ and $\delta>0$,
+\begin{equation}
+ P(Z\in A)\le P(\widetilde Z\in A^{C_7\delta})
+ +\frac{C_8\log^2P}{\delta^3\sqrt b}
+   \{L_b+M_{b,Z}(\delta)+M_{b,Y}(\delta)\},
+ \tag{69}\label{eq:terminal-cck}
+\end{equation}
+where $A^r=\{s:\operatorname{dist}(s,A)\le r\}$, the constants
+are universal, and
+\[
+ \begin{split}
+ L_b&=\max_{j\le P}\frac1b\sum_{i\le b}E|Z_{ij}|^3,\\
+ M_{b,Z}(\delta)
+ &=\frac1b\sum_{i\le b}E\left[
+   \max_{j\le P}|Z_{ij}|^3;
+   \max_{j\le P}|Z_{ij}|>\frac{\delta\sqrt b}{\log P}\right].
+ \end{split}
+\]
+The definition of $M_{b,Y}$ is the same with $Y$ in place of $Z$.
+We apply this statement conditionally, with $Z_i=\widetilde X_i$.
+
+The rank-one identity (42) gives the needed tail estimate with a
+factor $h^{-1}$.  Indeed, at $\theta=c_0/h$, with $c_0>0$ fixed
+and sufficiently small, (39) gives $r_\theta\le C/h$, and hence
+\[
+ E^\omega(e^{\theta X(x)}-1)
+ =r_\theta\mu_x(\omega)\le C/h.
+\]
+For $s\ge h$, exponential Markov's inequality gives
+$P^\omega(X(x)>s)\le Ch^{-1}e^{-cs/h}$.  To see the same scale
+for smaller $s$, the generating function in (42) identifies
+$X(x)$ as zero with probability $1-\mu_x(\omega)/G(x,x)$ and,
+otherwise, as a geometric random variable of mean $G(x,x)$.
+Since $G(x,x)\asymp h$ on $V_y$, we obtain, uniformly in the
+endpoint pair,
+\begin{equation}
+ P^\omega(X(x)>s)\le Ch^{-1}e^{-cs/h},\qquad
+ E^\omega|X(x)-E^\omega X(x)|^3\le Ch^2.
+ \tag{71}\label{eq:terminal-bridge-tails}
+\end{equation}
+Here and below $s\ge0$.  Integrating the tail proves the moment
+bound, and therefore $L_b=O(h^2)$.
+
+For $\delta=1$, the truncation threshold is
+\[
+ T=\frac{\sqrt b}{\log P}\asymp\frac Jh.
+\]
+A union bound over $P$ coordinates, followed by integration of
+\eqref{eq:terminal-bridge-tails}, gives
+\begin{equation}
+ \frac1b\sum_{i\le b}E^{\omega_i}\left[
+   \max_{x\in V_y}|\widetilde X_i(x)|^3;
+   \max_{x\in V_y}|\widetilde X_i(x)|>T\right]
+ \le \exp\{-cJ/h^2+Ch\}.
+ \tag{72}\label{eq:terminal-truncated-third-moment}
+\end{equation}
+The polynomial factors from integration are absorbed by the negative
+exponent.  The matching Gaussian vectors have coordinate variances
+at most $Ch$, by the second derivative of (42).  Their contribution
+is bounded by $\exp\{-cJ^2/h^3+Ch\}$ after the same union bound.
+Thus the error in \eqref{eq:terminal-cck} is at most
+\begin{equation}
+ O(h^4/J)+\exp\{-cJ/h^2+Ch\}=o(1).
+ \tag{73}\label{eq:terminal-cck-error}
+\end{equation}
+All estimates depend on the endpoint data only through the uniform
+bounds already established.
+
+\smallskip\noindent
+\underline{\textit{Step 3. The Gaussian maximum.}}
+Let $\Gamma=(\Gamma_x:x\in V_y)$ be centered Gaussian with the
+covariance of $U$, and let $\phi$ be the zero-boundary discrete
+Gaussian free field in $D_y$, so that
+\[
+ E[\phi_x\phi_{x'}]=G_{D_y}(x,x').
+\]
+The extremal-process result of Biskup--Louidor
+\cite[(1.2), (1.6), and Theorem~2.1]{BiskupLouidor2018}, together
+with its stated consequence for maxima on open subsets following
+(1.8), gives tightness of the maximum on a fixed inner subdisk after
+centering by
+\[
+ m_M=2\sqrt g\log M-\frac34\sqrt g\log\log M.
+\]
+The digital disks here approximate a disk, and $V_y$ is a fixed
+nonempty subdisk strictly inside it.  In particular,
+\begin{equation}
+ \max_{x\in V_y}\phi_x=2\sqrt g\,h+O_P(\log h).
+ \tag{75}\label{eq:terminal-dgff-maximum}
+\end{equation}
+Only this localization, rather than the full limiting point process,
+is used below.
+
+To pass to expectations, convergence in distribution alone is
+insufficient.  The tightness just stated places every median of the
+maximum at $m_M+O(1)$.  Its maximal coordinate variance is $O(h)$,
+so Gaussian concentration places the mean within $O(\sqrt h)$ of
+a median.  Therefore
+\begin{equation}
+ E\max_{x\in V_y}\phi_x=2\sqrt g\,h+O(\sqrt h).
+ \tag{75a}\label{eq:terminal-dgff-mean}
+\end{equation}
+
+We next check that the bounded covariance error in
+\eqref{eq:terminal-covariance-comparison} changes the expected
+maximum by at most $O(\sqrt h)$.  For $\lambda>0$, define
+\[
+ F_\lambda(z)=\lambda^{-1}\log\sum_{x\in V_y}e^{\lambda z_x}.
+\]
+If $p_x=e^{\lambda z_x}/\sum_{x'}e^{\lambda z_{x'}}$, then
+\[
+ \partial_{xx'}F_\lambda
+ =\lambda(p_x\mathbf1_{\{x=x'\}}-p_xp_{x'}),\qquad
+ \sum_{x,x'}|\partial_{xx'}F_\lambda|\le2\lambda.
+\]
+Gaussian interpolation between $\Gamma$ and $\sqrt{2g}\,\phi$
+therefore bounds the difference of their expected $F_\lambda$
+values by $C\lambda$, using
+\eqref{eq:terminal-covariance-comparison}.  Since
+\[
+ 0\le F_\lambda(z)-\max_xz_x\le\frac{\log P}{\lambda},
+\]
+choosing $\lambda\asymp\sqrt{\log P}$ yields
+\begin{equation}
+ \left|E\max_x\Gamma_x-E\max_x\sqrt{2g}\,\phi_x\right|
+ \le C\sqrt{\log P}.
+ \tag{76}\label{eq:terminal-gaussian-mean-comparison}
+\end{equation}
+Both fields have maximal coordinate variance $O(h)$.  Combining
+Gaussian concentration with
+\eqref{eq:terminal-dgff-mean}--\eqref{eq:terminal-gaussian-mean-comparison}
+gives
+\begin{equation}
+ \max_x\Gamma_x=2\sqrt2\,g h+O_P(\sqrt h+\log h)
+             =2\sqrt2\,g h+O_P(\sqrt h).
+ \tag{77}\label{eq:terminal-gaussian-maximum}
+\end{equation}
+
+Apply \eqref{eq:terminal-cck} to each of the two half-lines.  For
+any $K>0$, the probability that $\max_xU_x$ is below
+$2\sqrt2\,gh-K\sqrt h$ is bounded by the corresponding Gaussian
+lower-tail probability with its threshold increased by $C_7$, plus
+the error in \eqref{eq:terminal-cck-error}.  The upper tail is bounded
+by the Gaussian upper tail with its threshold decreased by $C_7$,
+plus the same error.  Equation~\eqref{eq:terminal-gaussian-maximum}
+thus transfers to $\max_xU_x$, uniformly in the regular endpoint
+data.  This argument compares distributions; it requires no
+pathwise coupling of the maxima.
+
+\smallskip\noindent
+\underline{\textit{Step 4. Restoring the means and the terminal depth.}}
+Equation~\eqref{eq:terminal-conditional-mean} implies
+\[
+ \sum_{i\le b}E^{\omega_i}X_i(x)
+ =gb+O\left(\frac{J\log J}{\log\log J}\right)
+\]
+uniformly in $x$.  Multiplying the centered maximum estimate by
+$\sqrt b=O(J)$ proves \eqref{eq:terminal-maximum-expansion}.
+
+Finally, \eqref{eq:terminal-piece-count} gives
+\begin{equation}
+ \begin{split}
+ gb+2\sqrt2\,g\sqrt b\,h
+ &=2gJ^2-2gJ\log J+O(h^2+h\log J+J).
+ \end{split}
+ \tag{73}\label{eq:terminal-restored-depth}
+\end{equation}
+For example, this follows by first using
+$\sqrt b=\sqrt2L-(\log L)/\sqrt2+O(1+(\log L)^2/L)$ and
+then substituting $L=J-h$.  The $4gLh$ term from the Gaussian
+maximum restores the missing terminal depth in $2gL^2$.
+Since $p<2$,
+\[
+ J\sqrt h+\frac{J\log J}{\log\log J}
+ +h^2+h\log J+J=o(J\log J).
+\]
+The level in \eqref{eq:terminal-restored-depth} exceeds
+$u_{J,2+\eta}$ by $\eta gJ\log J+o(J\log J)$, which proves
+the final assertion.
+\end{proof}
+
+\subsection{A positive probability of a large disk maximum}
+\label{sec:disk-lower}
+
+The terminal estimate is conditional on the coarse data of one
+fixed cell.  To combine it with the existence of a coarse root, we
+sum the failures over all candidates.  Selecting a successful coarse
+root first would introduce additional conditioning on bridge
+interiors from other cells, which the conditional estimate does not
+cover.
+
+\begin{proposition}[The disk maximum]
+\label{prop:disk-maximum-lower}
+For every fixed $\eta>0$, there is $p_\eta>0$ such that, for all
+sufficiently large $J$,
+\begin{equation}
+ P\left(M_{\tau_{e^J}}\ge u_{J,2+\eta}\right)\ge p_\eta.
+ \tag{74}\label{eq:disk-maximum-positive-probability}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Take $h=(\log J)^p$, $1<p<2$, and $L=J-h$.  Apply the lower-root
+construction (32)--(38) at depth $L$, with terminal physical radius
+$M=e^h$.  Restrict the centers to a fixed compact subdisk so that
+their enlarged terminal domains are contained in $D(0,e^J)$.
+This keeps a fixed positive fraction of the available area, and the
+estimates are uniform on the restricted set.  The endpoint band in
+(37) is
+\[
+ \sqrt{2T_L}\in[\rho_LL+z_0,\rho_LL+z_0+C_*],
+\]
+which gives the completed-piece count
+\eqref{eq:terminal-piece-count}.
+
+Lemma~\ref{lem:buffered-transfer} transfers the probability of
+existence of a coarse root directly from Brownian motion; the pair
+estimate is used on the Brownian side.  At each root, the terminal
+pieces are ordered separately within the $m_0$ source intervals.
+The inter-source connectors are exposed and omitted from the
+occupation sums.  Their occupation is nonnegative, so omitting it
+preserves a lower bound for the full-walk maximum.
+For the lattice coarse-root count $Z_L^S$, the count assertion of
+that lemma gives
+\begin{equation}
+ P(Z_L^S>0)\ge p_0,\qquad EZ_L^S\le C.
+ \tag{78}\label{eq:disk-root-count}
+\end{equation}
+
+We must also show that the moment screen does not remove every
+root.  Let $\widehat Z_L^S$ count the same radial barriers and
+endpoint bands with all angular screens dropped.  The scalar
+radial-word comparison (39d) and Rosen's Appendix Theorem~9.1(a)
+give
+\begin{equation}
+ P(\widehat I_y^{S,\circ})\le Ce^{-2L},\qquad
+ E\widehat Z_L^S\le C,
+ \tag{79a}\label{eq:disk-unscreened-count}
+\end{equation}
+because the deterministic net has $O(e^{2L})$ points.  Conditional
+on each complete radial word counted by $\widehat Z_L^S$,
+\eqref{eq:terminal-moment-failure} bounds failure of moment
+regularity by the same $\epsilon_J=o(J^{-A})$.  Sum first over
+words and then over centers to obtain
+\begin{equation}
+ E\sum_y\mathbf1_{I_y^{S,\circ}}
+       \mathbf1_{\{\text{the endpoints at }y\text{ are not moment regular}\}}
+ \le\epsilon_J E\widehat Z_L^S=o(1).
+ \tag{79}\label{eq:disk-irregular-roots}
+\end{equation}
+Using the unscreened count here is essential: the estimate for the
+endpoints is conditional on a radial word, so its failure probability
+must be integrated against the radial-word mass.  Equations
+\eqref{eq:disk-root-count} and \eqref{eq:disk-irregular-roots}
+show that a moment-regular lattice root exists with probability
+at least $p_0-o(1)$.
+
+For a fixed root $y$, erase its completed pieces from the path and
+let $\mathcal C_y$ record the exterior path and every entrance and
+directed-exit pair.  The event $G_y$ that $y$ is a moment-regular
+coarse root is $\mathcal C_y$-measurable.  Given this sigma-field,
+the erased pieces have the independent killed bridge laws used in
+Lemma~\ref{lem:terminal-maximum-lower}.  Let
+\[
+ A_y=\left\{\max_{x\in V_y}\sum_{i\le b}X_i(x)
+                       \ge u_{J,2+\eta}\right\}.
+\]
+The uniform conclusion of that lemma gives a deterministic
+$\widetilde\epsilon_J\downarrow0$ such that
+\begin{equation}
+ P(G_y\cap A_y^c)
+ =E[\mathbf1_{G_y}P(A_y^c\mid\mathcal C_y)]
+ \le\widetilde\epsilon_JP(G_y).
+ \tag{80}\label{eq:disk-fixed-root-failure}
+\end{equation}
+Consequently
+\begin{equation}
+ \begin{split}
+ P(\exists y:G_y\cap A_y)
+ &\ge P(\exists y:G_y)-\sum_yP(G_y\cap A_y^c)\\
+ &\ge p_0-o(1)-\widetilde\epsilon_J EZ_L^S
+ \ge p_0/2
+ \end{split}
+ \tag{81}\label{eq:disk-successful-root}
+\end{equation}
+for all sufficiently large $J$.  Each summand uses the intrinsic
+bridge disintegration for its own cell; the union bound does not
+require disjoint terminal disks.  On the event in
+\eqref{eq:disk-successful-root}, the full local-time maximum is at
+least the terminal maximum of a successful cell.  This proves
+\eqref{eq:disk-maximum-positive-probability}.
+\end{proof}
+
+\subsection{An almost-sure lower bound at deterministic times}
+\label{sec:deterministic-lower}
+
+The disk estimate has a probability bounded away from zero.  We
+amplify it using independent segments of increments.  The number of
+segments may grow as a small power of $\log N$; shortening each
+segment then costs only a controlled amount in the second-order
+term of the maximum.
+
+\begin{proposition}[The deterministic-time maximum]
+\label{prop:deterministic-maximum-lower}
+Let $N_j=\lfloor e^{2j}\rfloor$.  For every $\eta>0$, almost surely,
+\[
+ M_{N_j}\ge u_{j,2+\eta}
+\]
+for all sufficiently large $j$.
+\end{proposition}
+
+\begin{proof}
+Fix $0<\delta<\eta$, and then choose $a>0$ so that
+$\delta+2a<\eta$.  Proposition~\ref{prop:disk-maximum-lower}
+gives a disk-success probability $p_\delta>0$.  By
+Lemma~\ref{lem:elementary-walk-estimates}, choose a fixed $C$
+large enough that
+\[
+ \sup_R P_0(\tau_R>CR^2)\le p_\delta/2.
+\]
+It follows by translation invariance that a walk segment of length
+$CR^2$, from any starting site, has within-segment maximum local
+time at least $u_{\log R,2+\delta}$ with probability at least
+$p=p_\delta/2$, uniformly for all sufficiently large $R$.
+
+Partition the first $N_j$ increments into
+\[
+ q_j=\lfloor(\log N_j)^a\rfloor
+\]
+disjoint blocks of length $m_j=\lfloor N_j/q_j\rfloor$, ignoring
+the remainder.  Use the sites immediately after the increments in
+each block to define its within-block local times.  The translated
+block paths are independent, and each block maximum is bounded
+above by the full local-time maximum.  Bounded endpoint changes
+are absorbed by the strict margin in $\delta+2a<\eta$.
+Choose $R_j$ by
+\[
+ \log R_j=\frac12\log(m_j/C)
+         =j-\frac a2\log j+O(1).
+\]
+The loss in logarithmic radius is therefore $(a/2)\log j+O(1)$.
+Substituting this into the quadratic leading term gives
+\[
+ 2g(\log R_j)^2
+ =2gj^2-2agj\log j+O(j+(\log j)^2),
+\]
+while
+$g(\log R_j)\log\log R_j=gj\log j+O(j+(\log j)^2)$.
+Hence
+\begin{equation}
+ u_{\log R_j,2+\delta}
+ =u_{j,\,2+\delta+2a+o(1)}
+ \ge u_{j,2+\eta}
+ \tag{78}\label{eq:deterministic-block-level}
+\end{equation}
+for all sufficiently large $j$.  Independence of the blocks now
+implies
+\begin{equation}
+ P(M_{N_j}<u_{j,2+\eta})
+ \le(1-p)^{q_j}\le e^{-cj^a}.
+ \tag{79}\label{eq:deterministic-failure-summable}
+\end{equation}
+The right-hand side is summable, so Borel--Cantelli proves the
+assertion.
+\end{proof}

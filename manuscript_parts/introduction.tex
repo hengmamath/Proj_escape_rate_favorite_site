@@ -1,0 +1,103 @@
+\section{Introduction}\label{sec:introduction}
+
+A favorite site of a random walk is a site at which the accumulated local time
+is maximal. Although the planar walk returns to the origin infinitely often,
+its favorite sites need not remain near the origin. The question considered
+here is how small a neighborhood of the origin can still contain a favorite
+at arbitrarily large times. Because several sites can tie for the maximum,
+there are two distinct observables: the distance of the nearest favorite and
+the distance of the farthest favorite.
+
+Let $(S_n)_{n\ge0}$ be simple symmetric random walk on $\mathbb Z^2$, started
+at the origin. Define
+\begin{equation}\label{eq:local-time-definition}
+ L_n(x)=\sum_{j=0}^n\mathbf1_{\{S_j=x\}},\qquad
+ M_n=\max_{x\in\mathbb Z^2}L_n(x),\qquad
+ \mathcal F_n=\{x\in\mathbb Z^2:L_n(x)=M_n\}.
+\end{equation}
+The set $\mathcal F_n$ is finite and nonempty. Put
+\begin{equation}\label{eq:radii-definition}
+ R_n^- =\min_{x\in\mathcal F_n}\|x\|_2,\qquad
+ R_n^+ =\max_{x\in\mathcal F_n}\|x\|_2,
+ \qquad
+ a_\gamma(n)=\frac{\sqrt n}{(\log n)^\gamma},\quad n\ge3.
+\end{equation}
+For example, along the path $(0,e_1,0,e_1)$ the two sites tie, so
+$R_3^-=0$ and $R_3^+=1$. Thus localizing an arbitrarily chosen favorite
+does not by itself localize the whole favorite set.
+
+\begin{theorem}[Lower-class escape rate]\label{main:precise-escape-rate}
+Almost surely, simultaneously for every real $\gamma$,
+\begin{align}
+ \liminf_{n\to\infty}\frac{R_n^-}{a_\gamma(n)}
+ &=\infty, &&\gamma>\tfrac12,\label{eq:main-escape}\\
+ \liminf_{n\to\infty}\frac{R_n^+}{a_\gamma(n)}
+ &=0, &&\gamma\le\tfrac12.\label{eq:main-recurrence}
+\end{align}
+\end{theorem}
+
+In particular, for each $\gamma>1/2$ and each fixed $A>0$, eventually
+every favorite lies outside $B(0,Aa_\gamma(n))$. At the critical exponent,
+for every $\varepsilon>0$ there are infinitely many times at which
+\emph{all} favorites lie in $B(0,\varepsilon\sqrt{n/\log n})$.
+The conclusion identifies the boundary among logarithmic powers of the
+diffusive scale. It does not assert an integral test for arbitrary slowly
+varying perturbations of the critical gauge.
+
+The corresponding one-dimensional theorem has critical exponent $1$;
+see Bass~\cite[Theorem~2.2]{Bass2023}. The planar escape-rate question is
+posed in Hao, Li, Okada and Zheng~\cite[Remark~1.4(1) of the first arXiv
+version]{HLOZ2025}. Our focus is the location of the full set of maximizers.
+The two assertions in Theorem~\ref{main:precise-escape-rate} therefore retain
+the distinction between its nearest and farthest members throughout the proof.
+
+\subsection{Notation and the two local-time estimates}
+
+All logarithms are natural. We write $P_x$ and $E_x$ for the law and
+expectation of a walk started at $x$, and omit the subscript when $x=0$.
+Its transition operator is
+\[
+ Pf(x)=\frac14\sum_{y:\|y-x\|_2=1}f(y).
+\]
+By symmetry the same notation acts on lattice measures. For $r>0$ let
+$D(x,r)=\{y\in\mathbb Z^2:\|y-x\|_2<r\}$ and
+$\tau_r=\inf\{n\ge0:S_n\notin D(0,r)\}$. Closed balls are denoted by
+$B(x,r)$. We use the same geometric notation in the plane when the ambient
+space is specified. A local time at a stopping time includes that time;
+inside a killed domain it agrees with occupation strictly before exit.
+
+The Green-function normalization and the local-time levels are
+\begin{equation}\label{eq:level-definition}
+ g=\frac2\pi,\qquad
+ u_{J,c}=2gJ^2-cgJ\log J.
+\end{equation}
+The logarithmic radius is $J$, so the corresponding time scale is $e^{2J}$.
+The coefficient of $J\log J$ will matter: knowing only the leading
+$2gJ^2$ term cannot distinguish the powers in
+Theorem~\ref{main:precise-escape-rate}.
+
+The escape argument uses the following two estimates, proved in
+Propositions~\ref{prop:localized-disk-upper} and
+\ref{prop:disk-maximum-lower}. For fixed $\beta>0$, $c>2$ and $A>0$,
+\begin{equation}\label{eq:intro-localized-upper}
+ P\left(\max_{\|x\|_2\le e^JJ^{-\beta}}
+ L_{\tau_{e^J}}(x)\ge u_{J,c}\right)
+ \le J^{-2\beta+c-2+o(1)}+O(J^{-A}).
+\end{equation}
+For every fixed $\eta>0$, there is $p_\eta>0$ such that
+\begin{equation}\label{eq:intro-disk-lower}
+ P(M_{\tau_{e^J}}\ge u_{J,2+\eta})\ge p_\eta
+ \quad\text{for all sufficiently large }J.
+\end{equation}
+The latter estimate is amplified over independent segments to give an
+eventual almost-sure lower bound at deterministic exponential times.
+The former then excludes a favorite near the origin throughout each time
+block. Recurrence at the critical exponent uses a separate geometric-time
+localization argument and does not depend on either disk estimate.
+
+Constants denoted by $c,C$ may change between occurrences. Dependence on a
+fixed parameter is indicated when relevant. Integer parts and fixed changes
+of radius are harmless in estimates with a $J\log J$ margin: replacing $J$
+by $J+O(1)$ changes $u_{J,c}$ by $O(J)$. Directed lattice crossings and
+conditional bridge laws are defined exactly when they are introduced.
+

@@ -13,7 +13,7 @@ measure on \(\mathbb Z^2\) of mass \(\beta\).  Suppose that
 (I-zP)\mu=\alpha\delta_0-\nu,\qquad \nu\ge0,
        \qquad \alpha-\nu(\mathbb Z^2)=(1-z)\beta.                 \tag{1}
 \end{equation}
-There is a universal \(c>0\) such that, whenever
+There are universal constants \(c,C>0\) such that, whenever
 \(2\le f\le N^{1/8}\),
 \begin{equation}
 \mu\left(B\left(0,C\frac{\sqrt N}{f}\right)\right)
@@ -66,14 +66,16 @@ Let \(K\) be independent of the walk with
 \]
 Attach independent uniform $[0,1]$ priorities \((U_x)_{x\in\mathbb Z^2}\) to
 the sites and let \(X_K^*\) be the least-priority member of
-\(\mathcal F_K\).  If \(\sigma\) and \(\ell\) are respectively its first and
-last visit times, then the endpoint law of \(-X_K^*\), restricted by any event measurable with respect to the base tuple defined in the proof, is a positive
-mixture satisfying (1).  In particular,
+\(\mathcal F_K\). Then
 \begin{equation}
 P\left(\lVert X_K^*\rVert_2\le C\frac{\sqrt K}{f}\right)
        \ge c\,\frac{1+\log f}{f^2},\qquad
        2\le f\le N^{1/8}.                                     \tag{5}
 \end{equation}
+More precisely, the proof gives a stopped-resolvent representation of the
+endpoint law of \(-X_K^*\). The representation remains a positive mixture
+satisfying (1) after restriction by any event measurable with respect to
+the base tuple defined there.
 \end{lemma}
 
 \begin{proof}
@@ -275,12 +277,31 @@ even after
 \begin{equation}
 \frac{d_k}{8}N_k\le K_k\le J_{k+1}N_k.                 \tag{19}
 \end{equation}
-For all sufficiently large $k$, the translated clock interval in (19) lies in $[s_k,s_{k+1})$: its upper endpoint is $s_k+e^{J_{k+1}}/J_{k+1}<s_{k+1}$, while its lower clock endpoint is much larger than $s_k$. The singleton estimate already includes the four inserted steps.
+Since $e^{J_{k+1}}=e^{J_k}J_k^{10}$ and $J_{k+1}\sim J_k$,
+(18)--(19) give, uniformly over the clock restriction,
+\[
+ c'_{\varepsilon}e^{J_k}J_k^7\log J_k
+ \le K_k\le\frac{e^{J_{k+1}}}{J_{k+1}}
+\]
+for all sufficiently large $k$.  Thus $K_k/s_k\to\infty$, while
+$s_k+K_k<s_{k+1}$, so each witness time belongs to its fresh block.
+The singleton estimate already includes the four inserted steps.
 
-Let \(H_k(x)=\sum_{j=0}^{s_k-1}{\bf1}_{\{S_j=x\}}\), while the fresh
-profile includes its time-zero visit at \(S_{s_k}\).  Thus their sum is
-exactly the full profile at \(s_k+K_k\), with no double counting.  The
-fresh profile is translated by \(S_{s_k}\).  By
+Let
+\[
+ H_k(x)=\sum_{j=0}^{s_k-1}{\bf1}_{\{S_j=x\}},\qquad
+ \ell_k(z)=\sum_{i=0}^{K_k}
+       {\bf1}_{\{S_{s_k+i}-S_{s_k}=z\}}.
+\]
+The old profile stops before $s_k$, and the fresh profile includes its
+time-zero visit.  Hence, for every $x\in\mathbb Z^2$,
+\[
+ H_k(x)+\ell_k(x-S_{s_k})
+ =\sum_{j=0}^{s_k-1}{\bf1}_{\{S_j=x\}}
+   +\sum_{i=0}^{K_k}{\bf1}_{\{S_{s_k+i}=x\}}
+ =L_{s_k+K_k}(x).
+\]
+By
 Lemma~\ref{lem:inherited-profile-dichotomy}, at time
 \(t_k=s_k+K_k\) every favorite of the full walk belongs either to the old
 range or to \(S_{s_k}+Y_k\).
@@ -290,7 +311,14 @@ Part (2) of Lemma~\ref{lem:elementary-walk-estimates} and Borel--Cantelli give
        \max_{j\le s_k}\lVert S_j\rVert
        \le \sqrt{s_k}\,J_k
 \]
-eventually.  The choices above imply, uniformly over (19),
+eventually.  The clock bounds above give
+\[
+ \frac{s_kJ_k^2J_{k+1}}{K_k}
+ =O_{\varepsilon}\left(\frac{J_k^{-4}}{\log J_k}\right),
+ \qquad
+ \log(s_k+K_k)=J_{k+1}+O_{\varepsilon}(\log J_{k+1})
+\]
+uniformly over (19).  Consequently,
 \begin{equation}
 \sqrt{s_k}\,J_k=o\left(\sqrt{\frac{K_k}{J_{k+1}}}\right),
  \qquad \log(s_k+K_k)\sim J_{k+1},\qquad s_k=o(K_k).            \tag{20}

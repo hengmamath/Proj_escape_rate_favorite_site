@@ -9,10 +9,16 @@ strong coupling transfers the existence of a suitable Brownian center.
 The two comparisons have different purposes: the first preserves probabilities
 on their exponential scale, while the second preserves a positive probability
 of existence.
+Together they give the three lattice inputs used later: an upper bound on
+barrier crossings, a joint bound for a barrier-respecting traversal endpoint,
+and a positive probability of finding a lower root.  The first two enter the
+localized upper bound; the third enters the lower bound for the disk maximum.
 
 \subsection{Spherical traversal estimates}
 
 We use Rosen's spherical traversal construction \cite{Rosen2022}.
+The radius map $h(r)$ below is distinct from the scalar terminal depth
+$h=\log M$ used later in the lattice comparison.
 Its upper and lower arguments use separate fixed choices of the initial
 radius.  We keep the customary notation $r_0$ in each argument and state
 the change explicitly; the two choices are never used in the same pathwise
@@ -807,6 +813,14 @@ word comes from collars of relative logarithmic width
 \smallskip\noindent
 \underline{\textit{Step 2. Preserving the lower radial word.}}
 
+The target is the pathwise inclusion \eqref{eq:ct-transfer-R4b}.
+It suffices to exclude a set $D_y$ of collar failures whose conditional
+probability is small for each complete capped radial word. Outside $D_y$,
+collar closeness must give the same ordered traversal forest, and hence the
+same counts $T_{y,j}^{1,m_0}$, for the two paths. The three guards below
+prevent a wrong neighboring hit, a retreat before the intended hit, and a
+reversal just after it, respectively.
+
 Uniform path closeness alone does not preserve an excursion tree: a path
 may enter a narrow collar, retreat, and thereby insert or delete a traversal.
 We exclude precisely these retreats and wrong-side approaches.  Their total
@@ -922,7 +936,10 @@ last post-closing collar hit.  Every member of this union has the form
 $\{H_a[S]<H_b[S]\}$ for a named stopping time $S$, so $D_y$ is
 measurable at that finite stopping line.
 
-We record the exact conditional ratios.  Fix an admissible complete word
+Each guard is decided at a named stopping line. Strong Markov cancels the
+likelihood of all later prescribed letters in the numerator and denominator
+of its conditional ratio; for a post-guard the next prescribed sign is kept
+in the calculation. We record these ratios for an admissible complete word
 $w$.  Translation, reflection, gambler's ruin, and strong Markov at the
 integer-line hits give, for every competitive letter,
 \begin{equation}
@@ -960,8 +977,7 @@ opening through its incoming connector.  In particular, at $B_{y,i}$,
 $i<m_0$, the close has direction $-1$ and the next connector has sign
 $+1$, so its post ratio is $2\eta_J-\eta_J^2$.  At the final close
 $B_{y,m_0}$ it is exactly $\eta_J$, with no fictitious next sign.
-All later letters cancel by strong Markov; no arbitrary angular or future
-functional is being inserted into these ratios.  A union bound, without
+No angular or future functional is inserted into these ratios. A union bound, without
 any independence assertion among guards, gives
 \begin{equation}
 P(D_y\mid\overline W_y=w)

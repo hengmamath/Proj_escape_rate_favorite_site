@@ -18,22 +18,27 @@ Choose
 \[
        0<\delta<\frac{2\gamma-1}{4}.
 \]
-For \(N_j=e^{2j}\), Proposition~\ref{prop:deterministic-maximum-lower} gives,
-eventually,
+Set \(N_j=\lfloor e^{2j}\rfloor\).
+Proposition~\ref{prop:deterministic-maximum-lower} gives, for all
+sufficiently large \(j\),
 \begin{equation}
 M_{N_j}\ge u_{j,2+\delta}.                             \tag{81}
 \end{equation}
 
-Consider any \(n\in[N_j,N_{j+1}]\).  If a favorite at time \(n\) lies in
+Consider any \(n\in[N_j,N_{j+1}]\cap\mathbb N\).  If
+\(x\in\mathcal F_n\) lies in
 \[
        B\left(0,A_0\frac{\sqrt n}{(\log n)^\gamma}\right),
 \]
-then, by monotonicity of local times and (81), at time \(N_{j+1}\) some
-site in
+then monotonicity of local times and (81) give
+\[
+ L_{N_{j+1}}(x)\ge L_n(x)=M_n\ge M_{N_j}
+       \ge u_{j,2+\delta}.
+\]
+Since \(n\le N_{j+1}\) and \(\log n\ge\log N_j\), the same site lies in
 \begin{equation}
 B\left(0,C_{A_0}e^{j+1}j^{-\gamma}\right)             \tag{82}
 \end{equation}
-has local time at least \(u_{j,2+\delta}\).
 
 Take
 \[

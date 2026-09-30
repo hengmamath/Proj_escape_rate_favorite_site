@@ -10,6 +10,10 @@ exit data, the pieces are independent, and the covariance of their
 occupation field is close to a multiple of the killed Green function.
 A Gaussian approximation therefore reduces the remaining estimate to
 the maximum of the discrete Gaussian free field.
+We first prove this conditional terminal estimate, then combine it with the
+lattice root event to obtain a disk maximum with positive probability.
+Independent walk segments amplify that probability to an almost-sure bound
+at deterministic times.
 
 \subsection{Conditional occupation in one terminal disk}
 
@@ -244,7 +248,19 @@ For $\delta=1$, the truncation threshold is
  T=\frac{\sqrt b}{\log P}\asymp\frac Jh.
 \]
 A union bound over $P$ coordinates, followed by integration of
-\eqref{eq:terminal-bridge-tails}, gives
+\eqref{eq:terminal-bridge-tails}, gives the truncated third moment. To
+make the truncation explicit, put
+$V_i=\max_{x\in V_y}|\widetilde X_i(x)|$. Since $P\le Ce^{2h}$ and
+$T\asymp J/h\to\infty$, \eqref{eq:terminal-bridge-tails} implies
+$P(V_i>t)\le CP h^{-1}e^{-ct/h}$ for $t\ge T$. Therefore
+\[
+\begin{aligned}
+ E[V_i^3;V_i>T]
+ &=T^3P(V_i>T)+3\int_T^\infty t^2P(V_i>t)\,dt\\
+ &\le CP h^{-1}(T^3+hT^2+h^2T+h^3)e^{-cT/h}.
+\end{aligned}
+\]
+Here $T/h\asymp J/h^2$ and $\log P=O(h)$, which gives
 \begin{equation}
  \frac1b\sum_{i\le b}E^{\omega_i}\left[
    \max_{x\in V_y}|\widetilde X_i(x)|^3;
@@ -252,8 +268,8 @@ A union bound over $P$ coordinates, followed by integration of
  \le \exp\{-cJ/h^2+Ch\}.
  \tag{72}\label{eq:terminal-truncated-third-moment}
 \end{equation}
-The polynomial factors from integration are absorbed by the negative
-exponent.  The matching Gaussian vectors have coordinate variances
+The polynomial factors are absorbed by the negative exponent. The
+matching Gaussian vectors have coordinate variances
 at most $Ch$, by the second derivative of (42).  Their contribution
 is bounded by $\exp\{-cJ^2/h^3+Ch\}$ after the same union bound.
 Thus the error in \eqref{eq:terminal-cck} is at most

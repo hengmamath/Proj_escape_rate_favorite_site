@@ -203,8 +203,18 @@ are exact.  Hence
 Apply the normalized smooth-test estimate following (39c) to the
 \(K_{i,l}^S\) and telescope from the right.  If
 \(\Phi_{l,F}=\bar K_{i,l+1}\cdots\bar K_{i,q_i}F\), convolution gives
-\(\|\Phi_{l,F}\|_{C^4}\le\|F\|_{C^4}\).  With the appropriate angular
-pullback at every state,
+\(\|\Phi_{l,F}\|_{C^4}\le\|F\|_{C^4}\). Let $U_{i,l}$ pull an
+angular test back to the state after letter $l$, so that
+$U_{i,0}=U_E$ and $U_{i,q_i}=U_A$. The indexed telescoping identity is
+\[
+ Q_i^SU_AF-U_E\bar J_iF
+ =\sum_{l=1}^{q_i}K_{i,1}^S\cdots K_{i,l-1}^S
+ \bigl(K_{i,l}^SU_{i,l}\Phi_{l,F}
+       -U_{i,l-1}\bar K_{i,l}\Phi_{l,F}\bigr).
+\]
+Each Markov prefix contracts the sup norm, and the normalized
+smooth-test estimate bounds the $l$th bracket by
+$CR_{i,l}^{-1}\|F\|_{C^4}$. Hence
 \[
  \|Q_i^SU_AF-U_E\bar J_iF\|_\infty
        \le C\eta_i\|F\|_{C^4}.
@@ -832,8 +842,21 @@ Take \(r_0=(gn)^{-1}\).  Since
 Since \(G_0=1\), \(b=O(J^2)\), \(Q\le J^3\), and
 \(M=e^{(C_h\log J)^4}\), every error term in \eqref{eq:tu-50}
 is \(O(1)\) at \(r_0\), uniformly in the word.
-A union bound over \(O(e^{2h})\) sites, \eqref{eq:tu-50}, and Chernoff's inequality
-give the first line of \eqref{eq:tu-51}.
+Write \(\theta_x(r_0)\) for \eqref{eq:tu-49-2} at site \(x\).
+Since \(r_0=O(J^{-1})\le c/h\), \eqref{eq:tu-50} applies; also
+\(\lvert V_y\rvert\le Ce^{2h}\) and \eqref{eq:tu-50-2} is uniform over
+\(x\in V_y\).  Thus
+Chernoff's inequality and \eqref{eq:tu-50} give
+\[
+\begin{aligned}
+ P\left(\max_{x\in V_y}\sum_{i=1}^bX_i(x)\ge U\,\middle|\,w\right)
+ &\le\sum_{x\in V_y}e^{-\theta_x(r_0)U}
+   E\left[e^{\theta_x(r_0)\sum_{i=1}^bX_i(x)}\,\middle|\,w\right]\\
+ &\le Ce^{2h}e^{-2J+c\log J+b/n}
+   =Ce^{-2n}J^c e^{b/n}.
+\end{aligned}
+\]
+This is the first line of \eqref{eq:tu-51}.
 
 We retain the tilt freedom to sum every endpoint band.  Set
 \[
@@ -1007,71 +1030,24 @@ count and the probability of a crossing at one center, apply through the
 source-shell range \(k\le C_0\log J\).
 
 \smallskip\noindent
-\underline{\textit{Step 2.}}\quad Include the source law in the ballot estimate.
-Fix one original cell in a shell
-\[
-       s\le k\le C_0\log J.
-\]
-Sum the complete words that include the source and whose radial prefix
-stays below the barrier. The comparison is applied to this joint event
-before conditioning on a particular source height.  Put \(m=k+1\) and
-\[
-       X=\sqrt{2T_m},\qquad Y=\sqrt{2T_n}.
-\]
-The directed-edge source estimate (45c) gives, for each unit band \(I_x\),
-\begin{equation}
-       P(X\in I_x)\le C(k+1)^C\exp\{-x^2/(2m)\}.             \tag{56}\label{eq:tu-56}
-\end{equation}
-For a unit endpoint band \(I_q=[q,q+1]\), let \(\mathscr A(q)\) denote
-the disjoint union of complete words that retain the good barrier and end
-in \(Y\in I_q\).  The joint source-inclusive comparison (45g), before any
-disintegration of the actual lattice law, gives for every source band
-\(I_x\)
-\begin{equation}
-\begin{split}
- &P_S\bigl(X\in I_x,\mathscr A(q)\bigr)\\
- &\qquad\le e^{CJ^3/M}
-   \sum_{\sqrt{2t}\in I_x}\pi_{m,u_y}(t)
-       P_t^{\rm GW}(\mathscr A_t^{\rm GW}(q)).              \end{split}
-\tag{56a}\label{eq:tu-56a}
-\end{equation}
-Only the ideal law on the right is disintegrated by \(t\).  The remaining
-traversal chain has length \(L=n-m\).  Its affine barrier has endpoints
-\(a=B_m\) and \(b=B_n+1\), and (31a) shows that it dominates the truncated
-\(J\)-barrier without replacing \(\rho_J\) by \(\rho_n\).
-
-Fix \(\epsilon_0>0\) small and
-\(\epsilon_0n\le q\le B_n+1\), and put \(p=B_n+1-q\).  For each
-\(t\ge2\), set \(x_t=\sqrt{2t}\) and apply (30) pointwise with initial
-height \(x_t\), endpoint band \([q,q+1]\), and duration \(L\).  On the
-good prefix, \(x_t\le B_m=O(m)\), while the exact geometric source law
-satisfies
-\[
-       \pi_{m,u_y}(t)\le Cm^{-1}\exp\{-x_t^2/(2m)\}.
-\]
-Because \(m+L=n\), the two exponential costs combine by the exact identity
-\begin{equation}
- \frac{x_t^2}{m}+\frac{(q-x_t)^2}{L}
- =\frac{q^2}{n}+\frac{n(x_t-mq/n)^2}{mL}.                   \tag{57}\label{eq:tu-57}
-\end{equation}
-The identity uses the actual height \(x_t\). Grouping those heights into
-unit bands changes the exponential by only \(e^{O(1)}\).  The Gaussian sum in the
-last term and the remaining source factors cost only a polynomial in
-\(m\).  Since \(q\ge\epsilon_0n\) and \(L\asymp n\), the ballot prefactor
-in (30), including \(\sqrt{x_t/(qL)}\), gives
+\underline{\textit{Step 2.}}\quad Use the source-inclusive endpoint estimate.
+Fix an original cell with \(s\le k\le C_0\log J\), where its source index
+is \(k=k(y)\) in \eqref{eq:tu-54a}.  The extension to \(\sigma_y\) makes
+all its radial interfaces centered at \(y\), as required by
+Lemma~\ref{lem:buffered-transfer}; our choice of \(h\) satisfies
+\(h/\log J\to\infty\) and \(h=o(J)\).  On the complement of the crossing
+event in Step 1, its prefix satisfies the barrier \eqref{eq:tu-52} and
+hence the no-crossing event in \eqref{eq:ct-transfer-41}.
+Put \(Y=\sqrt{2T^S_{y,n}}\), fix \(\epsilon_0>0\) small, and take
+\(\epsilon_0n\le q\le B_n+1\).  With \(p=B_n+1-q\), the bound
+\eqref{eq:ct-transfer-41} gives
 \begin{equation}
  P(\hbox{prefix good},\,Y\in I_q)
  \le C(k+1)^C(1+p)n^{-2}\exp\{-q^2/(2n)\}.                  \tag{58}\label{eq:tu-58}
 \end{equation}
-For the only positive start below two, namely \(T_m=1\), add an
-independent ancestor and require that ancestor to die in its first
-generation.  This has probability \(1/2\), so the desired probability is
-at most twice the bound from initial population two: from generation
-one onward the two paths agree, and these are exactly the generations on
-which the barrier in (30) is imposed.  Initial population zero cannot
-produce the present positive endpoint.  Thus
-\eqref{eq:tu-58} proves the central-range estimate (41). Its relative lattice
-comparison remains valid after summing over the cells.
+Here \(I_q=[q,q+1]\), and \(B_n=B_n^J\) in that lemma because
+\(n=J-h\).  The estimate already includes the source population and its
+last death decision; no conditioning on a source height is needed.
 
 \smallskip\noindent
 \underline{\textit{Step 3.}}\quad Combine the traversal and terminal costs.

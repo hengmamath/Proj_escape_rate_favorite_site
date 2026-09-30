@@ -185,26 +185,24 @@
 \DeclareMathOperator{\osc}{osc}
 \DeclareMathOperator{\sech}{sech}
 
-\title[Escape of planar favorite sites]{The lower-class escape rate of planar favorite sites}
-\author{ GPT-5.6 Sol \and Heng Ma}
-\thanks{Only Heng Ma take responsebility of the work.}
+\title[The escape rate of  favorite sites]{On the escape rate of favorite sites of planar random walks}
+\author{GPT-5.6 Sol \and Heng Ma}
+\thanks{Only Heng Ma takes responsibility for this work.}
 \date{}
 
 \begin{document}
 
 \begin{abstract}
-We study the distance from the origin of the set of favorite sites of planar
-simple random walk. The logarithmic-power boundary for its almost-sure lower
-class is $\sqrt{n/\log n}$: above exponent $1/2$, every favorite eventually
-escapes each fixed multiple of $\sqrt n/(\log n)^\gamma$, whereas at exponent
-$1/2$ the entire favorite set enters arbitrarily small multiples of this
-scale infinitely often. The escape argument combines a localized upper
-bound for thick points with a lower bound for the global maximum at
-$J\log J$ precision. Traversal barriers, relative lattice comparisons and
-conditional terminal occupation estimates preserve the required logarithmic
-power. Critical recurrence follows from a stopped-resolvent estimate,
-reversal at a priority-selected favorite, and an injective insertion that
-removes ties.
+We determine the logarithmic-power lower class of the distance from the
+origin to the favorite sites of planar simple random walk. For every
+$\gamma>1/2$, all favorites eventually lie beyond each fixed multiple of
+$\sqrt n/(\log n)^\gamma$. At $\gamma=1/2$, the entire favorite set lies
+within arbitrarily small multiples of this scale infinitely often. The
+escape proof compares a sharp localized upper bound with the global
+local-time maximum at $J\log J$ precision; its key gain comes from estimating
+traversal barriers together with the occupation of the terminal cells.
+A separate geometric-time argument produces a unique nearby favorite
+often enough to establish critical recurrence for the full favorite set.
 \end{abstract}
 
 \begin{aiusage}
@@ -271,10 +269,20 @@ The conclusion identifies the boundary among logarithmic powers of the
 diffusive scale. It does not assert an integral test for arbitrary slowly
 varying perturbations of the critical gauge.
 
-The corresponding one-dimensional theorem has critical exponent $1$;
-see Bass~\cite[Theorem~2.2]{Bass2023}. The planar escape-rate question is
-posed in Hao, Li, Okada and Zheng~\cite[Remark~1.4(1) of the first arXiv
-version]{HLOZ2025}. Our focus is the location of the full set of maximizers.
+Dembo, Peres, Rosen and Zeitouni~\cite[Theorem~1.1]{DPRZ2001} proved that
+every planar favorite lies at distance $n^{1/2+o(1)}$. This first-order
+exponent leaves the logarithmic scales in Theorem~\ref{main:precise-escape-rate}
+undetermined. Erd\H{o}s and R\'ev\'esz
+\cite[Question~14]{ErdosRevesz1987} asked whether planar favorite sites
+escape to infinity. R\'ev\'esz later asked for their rate of escape
+\cite[Chap.~19]{Revesz1990}, as recorded by Dembo~\cite[p.~6]{Dembo2005}.
+Dembo's ICM survey~\cite[Open Problem~2.1]{Dembo2006} asks more broadly
+about the evolution of favorite sites in dimensions $d\ge2$, and Hao,
+Li, Okada and Zheng~\cite[Remark~1.4(1)]{HLOZ2025} also highlight the
+planar escape-rate question. In one dimension the corresponding theorem
+has critical exponent $1$; see Lifshits and Shi~\cite[Theorem~1.1]{LifshitsShi2004}
+for the walk and Bass~\cite[Theorem~2.2]{Bass2023} for Brownian motion.
+Our focus is the location of the full set of planar maximizers.
 The two assertions in Theorem~\ref{main:precise-escape-rate} therefore retain
 the distinction between its nearest and farthest members throughout the proof.
 
@@ -316,11 +324,16 @@ For every fixed $\eta>0$, there is $p_\eta>0$ such that
  P(M_{\tau_{e^J}}\ge u_{J,2+\eta})\ge p_\eta
  \quad\text{for all sufficiently large }J.
 \end{equation}
-The latter estimate is amplified over independent segments to give an
-eventual almost-sure lower bound at deterministic exponential times.
-The former then excludes a favorite near the origin throughout each time
-block. Recurrence at the critical exponent uses a separate geometric-time
-localization argument and does not depend on either disk estimate.
+Since $a_\gamma(e^{2J})=e^J/(2J)^\gamma$, the disk in
+\eqref{eq:intro-localized-upper} is at the scale relevant to the theorem.
+Taking $\beta=\gamma$ and $c=2+2\delta$ makes its main term
+$J^{-2\gamma+2\delta+o(1)}$, summable over integer $J$ when
+$\gamma>1/2$ and $\delta>0$ is small enough. The lower estimate is
+amplified over independent segments to give an eventual almost-sure
+bound at deterministic exponential times. Comparing it with the upper
+estimate excludes a favorite near the origin throughout each time block.
+Recurrence at the critical exponent uses a separate geometric-time
+localization argument.
 
 Constants denoted by $c,C$ may change between occurrences. Dependence on a
 fixed parameter is indicated when relevant. Integer parts and fixed changes
@@ -329,261 +342,210 @@ by $J+O(1)$ changes $u_{J,c}$ by $O(J)$. Directed lattice crossings and
 conditional bridge laws are defined exactly when they are introduced.
 
 
-
 % ---- proof_ideas ----
-\section{Proof ideas: obstacles and the estimates that overcome them}
-\label{sec:proof-ideas}
+\section{Proof strategy}\label{sec:proof-ideas}
 
-The two halves of the theorem require different information. To prove escape,
-one must show that a small disk cannot compete with the global local-time
-maximum. To prove critical recurrence, one must bring the entire set of
-maximizers into a small disk despite all local time accumulated in the past.
-We explain the quantitative mechanisms before developing their proofs.
+The two assertions of Theorem~\ref{main:precise-escape-rate} have separate
+proofs. For critical recurrence we produce, at infinitely many times, a
+unique favorite in a small disk and then account for the local time inherited
+from earlier times. For escape we compare the local times in a small disk
+with the maximum over the whole walk. The recurrence argument is shorter and
+comes first in the body of the paper.
 
-\subsection{Why a site-by-site bound misses the escape threshold}
+\subsection{Critical recurrence: from one favorite to the whole set}
 
-The local time at a site, after the first hit and before leaving a disk of
-radius $e^J$, has a geometric tail with mean $gJ+O(1)$. At level $u_{J,c}$
-this gives
+Consider the walk at an independent geometric time $K$ with
+$P(K=n)=(1-z)z^n$ and time scale $N=(1-z)^{-1}$. Choose one favorite using
+independent continuous priorities at the sites. Reversing the path through
+the last visit to this selected site separates it into completed excursions,
+a terminal arm, and a forward suffix. Once the excursions, suffix, and
+priorities are fixed, the selected-site condition imposes an upper capacity
+on the arm's occupation at every other site. The admissible arm is therefore
+a walk stopped at its first return to the selected site or its first capacity
+violation. This exact reversal, including the priority rule, is proved in
+Lemma~\ref{lem:plateau-bijection}.
+
+The endpoint law of the arm is a positive mixture of stopped occupation
+measures. Each measure $\mu$ obeys a resolvent identity
+$(I-zP)\mu=\alpha\delta_0-\nu$, where $\nu\ge0$ and
+$\alpha-\nu(\mathbb Z^2)=(1-z)\mu(\mathbb Z^2)$. Let $w_R$ be the
+normalized autocorrelation of a square of radius $R$, put
+$G_z=\sum_{m\ge0}z^mP^m$, and set $\phi_R=G_z*w_R$.
+Its nonnegative Fourier transform makes $\phi_R$ maximal at the origin,
+so the unknown exit measure has the favorable sign:
 \[
- P_x(L_{\tau_{e^J}}(x)\ge u_{J,c})
- \le C\exp\{-u_{J,c}/(gJ)+O(1)\}
- =Ce^{-2J}J^c
+ \mu(w_R)=\alpha\phi_R(0)-\nu(\phi_R)
+ \ge(1-z)\mu(\mathbb Z^2)\phi_R(0),\qquad
+ \phi_R(0)\gtrsim R^2\left(1+\log\frac N{R^2}\right).
 \]
-for sites in a fixed inner fraction of the disk. A union bound over
-$e^{2J}J^{-2\beta}$ sites therefore gives only $CJ^{c-2\beta}$.
-Even incorporating the hitting probability does not give the needed
-estimate. In a logarithmic shell at distance about $e^{J-k}$, that
-probability is at most $C(k+1)/J$, and the number of sites is
-$O(e^{2J-2k})$. Summing over $k\ge\beta\log J+O(1)$ yields
-\begin{equation}\label{eq:ideas-naive-upper}
- C J^{c-1}\sum_{k\ge\beta\log J+O(1)}(k+1)e^{-2k}
- \le J^{-2\beta+c-1+o(1)}.
-\end{equation}
-At the relevant level $c\downarrow2$, summability of this bound over
-exponential time blocks would require $\beta>1$. The desired conclusion
-requires the extra factor $J^{-1}$ in
-\eqref{eq:intro-localized-upper}.
-
-The improvement comes from recording how local time is built across nested
-annuli. Let $T_j$ count inward traversals at logarithmic level $j$.
-For the ideal concentric Brownian model, descendants of completed source
-excursions form a critical Galton--Watson process with geometric offspring.
-The square-root coordinate $\sqrt{2T_j}$ has an approximately linear
-profile on an extreme traversal event. We restrict this profile below
-\[
- B_j=\rho_Jj+z+(j\wedge(J-j))^{1/4},\qquad
- \rho_J=2-\frac{\log J}{J},
-\]
-where $z>0$ is fixed. Early crossings are controlled separately by a
-coarser net of representatives. On the event with no crossing, the
-Galton--Watson ballot estimate retains the cost of staying below the barrier,
-rather than merely reaching a high endpoint.
-
-To see where that cost enters, stop the traversal description at
-$n=J-h$, with terminal radius $M=e^h$. Consider a cell in source shell
-$\beta\log J+O(1)\le k\le C_0\log J$. The joint event that the prefix
-stays below the barrier and $\sqrt{2T_n}\in[q,q+1]$ has probability at most
-\begin{equation}\label{eq:ideas-ballot}
- C(k+1)^C(1+p)n^{-2}e^{-q^2/(2n)},\qquad
- p=B_n+1-q.
-\end{equation}
-This statement applies to the central range $\epsilon_0n\le q\le B_n+1$;
-it is not a probability conditional on the prefix being good.
-Extinction has substantial probability and is treated separately. The
-factor $n^{-2}$ in \eqref{eq:ideas-ballot} follows by combining the
-source law with the square-root prefactor in the ballot theorem. The
-application-specific identity is
-\[
- \frac{x^2}{m}+\frac{(q-x)^2}{n-m}
- =\frac{q^2}{n}+\frac{n(x-mq/n)^2}{m(n-m)},\qquad m=k+1.
-\]
-It combines the cost of the source height $x$ with the cost of its
-descendants without losing an exponential factor.
-
-\subsection{Keeping the terminal local times on the correct conditional law}
-
-The traversal endpoint does not determine the local times inside the
-terminal cell. We erase each completed outward path from radius $M$ to
-radius $eM$, retaining its entrance and directed exit edge. Given the
-exterior path and these endpoints, the erased paths are independent killed
-bridges. If $b$ is their number and $X_i(x)$ their occupation at $x$, the
-remaining quantity is $\max_x\sum_{i\le b}X_i(x)$.
-
-Conditioning on a complete radial word also constrains the future of the
-endpoint sequence. Consequently, a one-step harmonic-measure calculation
-cannot simply be declared invariant under that conditioning. The proof
-factors the entire word likelihood, including the last suffix and the
-connectors between source intervals. It compares the true law with a law
-obtained by normalizing the successive kernels in chronological order.
-Uniform contraction controls dependence within each centered interval;
-a fixed number of intervening connector kernels is allowed. This gives
-both concentration of bridge moments and the exponential estimate needed
-for the upper bound.
-
-The central exact identity is a rank-one Green-function formula. For one
-bridge with endpoint pair $\omega$, set $m_x(\omega)=E^\omega X(x)$ and
-write $G$ for the Green function of its killing disk. Then
-\[
- E^\omega e^{\theta X(x)}=1+r_\theta(x)m_x(\omega),\qquad
- r_\theta(x)=\frac{e^\theta-1}
- {1-(G(x,x)-1)(e^\theta-1)}.
-\]
-Averaging over the full endpoint law gives, to a controlled error,
-$\log E[\exp\{\theta\sum_iX_i(x)\}\mid w]=bg r_\theta$.
-For the upper bound choose $h=(C_h\log J)^4$ and initially
-$r_0=(gn)^{-1}$. Since $G(x,x)=gh+O(1)$, the corresponding tilt satisfies
-$\theta(r_0)u_{J,c}=2J-c\log J+O(1)$. A union bound over the $O(e^{2h})$
-sites in one cell gives
-\[
- P\left(\max_x\sum_iX_i(x)\ge u_{J,c}\mid w\right)
- \le Ce^{-2n}J^c e^{b/n}.
-\]
-Because $b=q^2/2+O(n)$, the factor $e^{b/n}$ cancels the exponential
-in \eqref{eq:ideas-ballot}. This cancellation explains why the traversal
-endpoint and the terminal maximum must be estimated together.
-
-The displayed bound alone is insufficient: summing all endpoint bands
-would lose powers of $J$. Varying the tilt around $r_0$ supplies the
-additional factor
-\[
- \exp\left\{-\kappa\min\left(
- \frac{(p-p_*)^2}{h},\frac{J^2}{h}\right)\right\},
- \qquad p_*=O(\log J).
-\]
-Its central sum, including the factor $1+p$, is
-$O((1+|p_*|)\sqrt h+h)=J^{o(1)}$; the saturated part is negligible.
-Thus one original cell contributes at most
-$(k+1)^Ce^{-2n}J^{c-2+o(1)}$. There are $O(e^{2(n-k)})$ such cells in
-shell $k$. Summing from $k=\beta\log J+O(1)$ produces exactly
-$J^{-2\beta+c-2+o(1)}$. The remaining shells $k>C_0\log J$ contain
-few enough sites that the elementary hitting and geometric-tail bounds
-suffice, after choosing $C_0$ large.
-
-\subsection{Producing a sufficiently large global maximum}
-
-For the lower bound, the traversal construction must produce a cell with
-\begin{equation}\label{eq:ideas-coarse-count}
- b=2L^2-2L\log L+O(L),\qquad L=J-h.
-\end{equation}
-Rosen's barrier construction provides such a root with positive probability
-in the spherical Brownian model. Its angular restrictions make the
-two-point sum finite. The passage to the lattice has to preserve this
-existence event: an additive coupling error cannot be summed over
-exponentially many rare candidate roots. Accordingly, the strong coupling
-is applied to the union-existence event in one direction. The Brownian
-pair estimate is used before the transfer. The lattice proof then uses a
-first-moment bound and a separate conditional estimate for each root.
-
-The last scales supply a contribution that cannot be discarded.
-Conditionally on regular endpoint moments, the normalized sum of centered
-bridge occupations has covariance $2gG(x,x')+O(1)$. A Gaussian
-approximation and the maximum estimate for the discrete Gaussian free field
-give
-\begin{equation}\label{eq:ideas-terminal-lower}
- \max_x\sum_{i\le b}X_i(x)
- =gb+2\sqrt2\,g\sqrt b\,h
- +O_P\left(J\sqrt h+\frac{J\log J}{\log\log J}\right).
-\end{equation}
-Inserting \eqref{eq:ideas-coarse-count} shows the role of the second term:
-\begin{align*}
- gb&=2gJ^2-4gJh-2gJ\log J
-       +O(h^2+h\log J+J),\\
- 2\sqrt2\,g\sqrt b\,h&=4gJh+O(h^2+h\log J).
-\end{align*}
-The terminal fluctuation restores the $4gJh$ lost by stopping the
-traversal description early. The result is
-$2gJ^2-2gJ\log J+o_P(J\log J)$.
-
-Here the terminal scale is $h=(\log J)^p$ with $1<p<2$.
-The inequality $p>1$ makes $M=e^h$ large enough for the relative
-discretization errors. The inequality $p<2$ gives
-$J\sqrt h=o(J\log J)$ and makes simultaneous moment concentration over
-$O(M^4)$ observables possible. This is a different choice from the upper
-bound, where no simultaneous screen of all these moments is needed.
-
-Positive-probability disk success is enough. Partition a time interval of
-length $e^{2j}$ into $j^a$ independent segments. Their effective logarithmic
-radius is $j-(a/2)\log j+O(1)$, which costs $2a$ in the coefficient of
-$gj\log j$. Choose $a>0$ within the available margin. Failure in every
-segment has probability at most $e^{-cj^a}$, a summable bound. This yields
-the deterministic-time lower estimate used for escape.
-
-\subsection{Localizing the entire favorite set at the critical scale}
-
-For critical recurrence, work at an independent geometric time $K$ with
-$P(K=n)=(1-z)z^n$ and put $N=(1-z)^{-1}$. Choose a favorite by independent
-continuous site priorities and reverse the path up to its last visit.
-The reversed path consists of completed excursions from the selected site
-and one terminal arm. Once the excursions, the forward suffix and the
-priorities are fixed, being the selected favorite is exactly a collection
-of upper bounds on the terminal arm's occupation at the other sites.
-The arm is therefore a walk stopped when it returns to its root or exceeds
-one of these capacities.
-
-Its endpoint law is a positive mixture of stopped occupation measures.
-Such a measure $\mu$, of mass $\beta$, satisfies
-\[
- (I-zP)\mu=\alpha\delta_0-\nu,\qquad \nu\ge0,\qquad
- \alpha-\nu(\mathbb Z^2)=(1-z)\beta.
-\]
-Testing against a resolvent of the autocorrelation of a square gives
+Taking $R\asymp\sqrt N/f$ gives
 \begin{equation}\label{eq:ideas-resolvent-gain}
- \mu(B(0,C\sqrt N/f))
- \ge c\beta\frac{1+\log f}{f^2}.
+ \mu\bigl(B(0,C\sqrt N/f)\bigr)
+ \ge c\mu(\mathbb Z^2)\frac{1+\log f}{f^2},
+ \qquad 2\le f\le N^{1/8}.
 \end{equation}
-The Fourier transform of that test function is nonnegative, so its
-resolvent is maximal at the origin. This makes the unknown nonnegative
-exit measure $\nu$ usable. The two-dimensional integral is
-$R^2(1+\log(N/R^2))$, which gives the logarithmic gain in
-\eqref{eq:ideas-resolvent-gain} when $R\asymp\sqrt N/f$.
-A restriction depending only on the exposed pieces makes the radius
-proportional to $\sqrt K/f$ rather than $\sqrt N/f$.
+If $\sigma$ is the first visit to the selected favorite, restricting to
+$K-\sigma\ge N/8$ retains a fixed positive mass. This condition depends
+only on the exposed pieces and implies $K\ge N/8$, changing the radius
+in this estimate from $\sqrt N/f$ to $C\sqrt K/f$.
 
-Two remaining obstacles concern maximizers themselves. First, the selected
-favorite can have distant ties. Insert the fixed loop
-$(x,x+e_1,x,x+e_2,x)$ after its last visit. It raises the local time at $x$
-by two and at each affected neighbor by one, making $x$ unique. The loop
-is recovered from the last visit to the new unique favorite, so this is
-an injection with a fixed positive probability cost. Second, a fresh
-segment does not erase the old local-time profile $H$. If its own profile
-$\ell$ has unique maximizer $y$, then
+Locating the selected favorite does not yet locate the entire favorite set:
+other sites may tie it. Insert the four-step loop
+$(x,x+e_1,x,x+e_2,x)$ after its last visit to $x$. The new local time at
+$x$ rises by two and those at the two visited neighbors rise by one, so $x$
+becomes the unique favorite. The loop can be recovered from the image path,
+and the injection costs only a fixed factor in probability. Nor does a
+fresh segment erase the preceding local times. If $H$ is the old profile
+and the fresh profile $\ell$ has unique maximizer $y$, then
 \[
  \operatorname*{arg\,max}(H+\ell)
  \subset\operatorname{supp}H\cup\{y\}.
 \]
-Thus it suffices to make the old range small on the new spatial scale;
-the old local-time heights need not be bounded.
+Thus we only need to keep the old range inside the target disk; no bound on
+the heights of $H$ is needed.
 
-Choose block starting times $s_k=e^{J_k}$, with
-$J_{k+1}-J_k=10\log J_k$, and take $f_k\asymp\sqrt{J_{k+1}}$.
-The probability of a localized fresh singleton is at least
-\[
- d_k\asymp\frac{\log J_k}{J_k},\qquad J_k\sim10k\log k.
-\]
-Hence $\sum_kd_k=\infty$. The logarithmic factor improves the available
-success bound to order $1/k$; the weaker bound of order $1/J_k$ would
-also have divergent sum for this particular schedule. The role of the
-block choice is to make the old range negligible while preserving
-divergence. More precisely, take
-$N_k=e^{J_{k+1}}/J_{k+1}^2$ and retain clocks
-$K_k\ge(d_k/8)N_k$. The old range is eventually at most
-$\sqrt{s_k}J_k$, while $s_{k+1}/s_k\asymp J_k^{10}$ gives
+For the final block construction, take $s_k=\lfloor e^{J_k}\rfloor$ with
+$J_{k+1}-J_k=10\log J_k$ and $f_k\asymp\sqrt{J_{k+1}}$.
+The fresh unique-favorite event has probability at least
+$d_k\asymp(\log J_k)/J_k$. Since $J_k\sim10k\log k$, the sum
+$\sum_kd_k$ diverges. Retaining clocks
+$K_k\gtrsim d_k e^{J_{k+1}}/J_{k+1}^2$ and using the eventual old-range
+bound $\sqrt{s_k}J_k$ gives
 \[
  \frac{\sqrt{s_k}J_k}{\sqrt{K_k/J_{k+1}}}
- \le\frac{C}{J_k^2\sqrt{\log J_k}}\longrightarrow0.
+ =O\left(\frac1{J_k^2\sqrt{\log J_k}}\right)\longrightarrow0.
 \]
-At a smaller scale with $f_k\asymp J_k^\gamma$ and
-$\gamma>1/2$, the probabilities furnished by the same estimate would
-instead have summable lower bounds. This observation describes the
-reach of this construction; the separate upper estimate proves escape.
+Conditional Borel--Cantelli then gives the
+critical assertion for $R_n^+$.
 
-Finally, the escape estimate with $c=2+2\delta$ gives a block probability
-$j^{-2\gamma+2\delta+o(1)}$. For $\gamma>1/2$ choose $\delta>0$ so that
-$2\gamma-2\delta>1$ and apply Borel--Cantelli. At $\gamma=1/2$, the
-independent recurrence construction gives arbitrarily small normalized
-favorite-set radii. These are the two summability calculations that place
-the boundary at $1/2$.
+\subsection{Escape: the missing power in a localized upper bound}
+
+Write $u_{J,c}=2gJ^2-cgJ\log J$ and stop the walk on leaving a disk of
+radius $e^J$. The target disk has radius $e^JJ^{-\beta}$. A geometric
+tail for one site's local time, combined with the chance of hitting a site
+in the logarithmic shell at distance about $e^{J-k}$, gives only
+\begin{equation}\label{eq:ideas-naive-upper}
+ C J^{c-1}\sum_{k\ge\beta\log J+O(1)}(k+1)e^{-2k}
+ \le J^{-2\beta+c-1+o(1)}.
+\end{equation}
+As $c\downarrow2$, summing this over exponential time blocks would require
+$\beta>1$. The theorem needs $\beta>1/2$. The localized estimate
+\eqref{eq:intro-localized-upper} gains the missing factor $J^{-1}$ by
+keeping the traversal event and the terminal occupation in the same cell.
+
+Cover the target disk by cells centered at $y$, with terminal radius
+$M=e^h$ and core $V_y=D(y,M/2)$; write $n=J-h$. Let $T_j$ count the
+completed inward traversals around a cell at logarithmic level $j$.
+The upper argument uses $h=(C_h\log J)^4$, large enough that the
+first-crossing estimate applies through level $n$. It keeps the
+square-root traversal profile below
+$B_j=\rho_Jj+z+(j\wedge(J-j))^{1/4}$, where
+$\rho_J=2-(\log J)/J$. The slope records the $J\log J$ shift in an
+extreme traversal count; the curved buffer permits a summable bound on
+early barrier crossings.
+
+Fix a cell in source shell
+$\beta\log J+O(1)\le k\le C_0\log J$. For a fixed unit endpoint
+band $[q,q+1]$ in the central range $\epsilon_0n\le q\le B_n+1$,
+let $p=B_n+1-q\ge0$ be its deficit from the terminal barrier. Then
+the source-inclusive ballot estimate is
+\begin{equation}\label{eq:ideas-ballot}
+ P(\text{good prefix},\ q\le\sqrt{2T_n}<q+1)
+ \le C(k+1)^C(1+p)n^{-2}e^{-q^2/(2n)}.
+\end{equation}
+It bounds a joint event, rather than the endpoint conditional on a good
+prefix. The factor $n^{-2}$ combines the source-height law and the ballot
+prefactor. The corresponding centered continuation and its lattice
+comparison are established in Sections~\ref{sec:continuum-transfer} and
+\ref{sec:terminal-upper}.
+
+The endpoint $T_n$ counts completed pieces but does not determine their
+occupation of $V_y$. Expose the radial word $w$ and the entrance and
+directed-exit data, then erase the interiors of the pieces. Conditional
+on these data, the interiors are independent killed bridges. Conditioning
+on the \emph{complete} word also constrains later endpoints, so the proof
+compares its full likelihood, including connectors and the final suffix,
+with a sequentially normalized endpoint law. For an admissible centered
+word with $b$ completed pieces, let $Y=\sqrt{2b}$ and
+$p_w=B_n+1-Y$. If $X_i(x)$ is the occupation of $x\in V_y$ by piece
+$i$, then, in the central range $\epsilon_0n\le Y\le B_n+1$, the
+terminal estimate has the form
+\[
+\begin{aligned}
+ P\left(\max_{x\in V_y}\sum_{i\le b}X_i(x)\ge u_{J,c}
+       \,\middle|\,w,b\right)
+ &\le Ce^{-2n}J^c e^{b/n}\\
+ &\quad\times\exp\left\{-\kappa\min\left(
+      \frac{(p_w-p_*)^2}{h},\frac{J^2}{h}\right)\right\}.
+\end{aligned}
+\]
+Here $p_*=O(\log J)$.
+For an endpoint in the unit band of \eqref{eq:ideas-ballot},
+$b=T_n+O(1)=q^2/2+O(n)$, so $Y=q+O(1)$ and $p_w=p+O(1)$.
+Hence $e^{b/n}$ cancels the factor $e^{-q^2/(2n)}$. The decay around
+the preferred deficit $p_*$ controls the remaining endpoint sum:
+\[
+ \sum_{0\le p\le B_n+1}(1+p)
+ \exp\left\{-\kappa\min\left(\frac{(p-p_*)^2}{h},
+                                   \frac{J^2}{h}\right)\right\}
+ =J^{o(1)}.
+\]
+The cancellation alone would not control that sum. One original cell
+therefore contributes at most $(k+1)^Ce^{-2n}J^{c-2+o(1)}$. There are
+$O(e^{2(n-k)})$ such cells in shell $k$, so
+\[
+ \sum_{k\ge\beta\log J+O(1)}^{C_0\log J}
+ e^{2(n-k)}(k+1)^Ce^{-2n}J^{c-2+o(1)}
+ \le J^{-2\beta+c-2+o(1)}.
+\]
+The small-endpoint range and distant source
+shells are handled separately in Proposition~\ref{prop:localized-disk-upper}.
+
+\subsection{Escape: restoring the terminal depth in the global maximum}
+
+For the global lower bound, the traversal construction reaches only
+$L=J-h$ and supplies a cell with
+\begin{equation}\label{eq:ideas-coarse-count}
+ b=2L^2-2L\log L+O(L)
+\end{equation}
+completed pieces. Rosen's one- and two-center estimates give a positive
+probability that at least one Brownian root exists. The pair estimate is
+used before a one-sided strong coupling transfers the
+\emph{existence} event to the lattice; adding coupling errors separately
+over exponentially many roots would lose this positive probability.
+
+For the lower bound take $h=(\log J)^\xi$ with $1<\xi<2$. Conditional on
+regular endpoint moments, the centered bridge field has covariance close
+to a multiple of the killed Green function. A Gaussian approximation and
+the discrete Gaussian free field maximum yield, for the core $V_y$,
+\begin{equation}\label{eq:ideas-terminal-lower}
+ \max_{x\in V_y}\sum_{i\le b}X_i(x)
+ =gb+2\sqrt2\,g\sqrt b\,h
+ +O_P\left(J\sqrt h+\frac{J\log J}{\log\log J}\right).
+\end{equation}
+The second term is needed at the required precision. Indeed,
+\begin{align*}
+ gb&=2gJ^2-4gJh-2gJ\log J+O(h^2+h\log J+J),\\
+ 2\sqrt2\,g\sqrt b\,h&=4gJh+O(h^2+h\log J).
+\end{align*}
+The terminal maximum restores the $4gJh$ lost by truncating the
+traversal construction, leaving
+$2gJ^2-2gJ\log J+o_P(J\log J)$. Here $\xi>1$ makes the terminal disk
+large enough for the lattice comparison, while $\xi<2$ makes the moment
+screen and the error in \eqref{eq:ideas-terminal-lower} fit within the
+$J\log J$ margin. A conditional failure bound for each candidate cell,
+followed by a union bound, turns coarse-root existence into the positive
+probability estimate \eqref{eq:intro-disk-lower} without selecting a root
+using other bridge interiors.
+
+Finally, independent walk segments amplify disk success to an almost-sure
+lower bound at deterministic exponential times. Comparing that lower bound
+at the left end of a time block with the localized upper bound at its right
+end gives a block error with main term
+$j^{-2\gamma+2\delta+o(1)}$ and a summable exit error. For any
+$\gamma>1/2$, choose $\delta>0$ small enough to make the main term
+summable. This proves escape of $R_n^-$ throughout the blocks and
+completes the other half of the theorem.
 
 
 % ---- elementary ----
@@ -667,7 +629,7 @@ measure on \(\mathbb Z^2\) of mass \(\beta\).  Suppose that
 (I-zP)\mu=\alpha\delta_0-\nu,\qquad \nu\ge0,
        \qquad \alpha-\nu(\mathbb Z^2)=(1-z)\beta.                 \label{eq:rec-1}
 \end{equation}
-There is a universal \(c>0\) such that, whenever
+There are universal constants \(c,C>0\) such that, whenever
 \(2\le f\le N^{1/8}\),
 \begin{equation}
 \mu\left(B\left(0,C\frac{\sqrt N}{f}\right)\right)
@@ -720,14 +682,16 @@ Let \(K\) be independent of the walk with
 \]
 Attach independent uniform $[0,1]$ priorities \((U_x)_{x\in\mathbb Z^2}\) to
 the sites and let \(X_K^*\) be the least-priority member of
-\(\mathcal F_K\).  If \(\sigma\) and \(\ell\) are respectively its first and
-last visit times, then the endpoint law of \(-X_K^*\), restricted by any event measurable with respect to the base tuple defined in the proof, is a positive
-mixture satisfying \eqref{eq:rec-1}.  In particular,
+\(\mathcal F_K\). Then
 \begin{equation}
 P\left(\lVert X_K^*\rVert_2\le C\frac{\sqrt K}{f}\right)
        \ge c\,\frac{1+\log f}{f^2},\qquad
        2\le f\le N^{1/8}.                                     \label{eq:rec-5}
 \end{equation}
+More precisely, the proof gives a stopped-resolvent representation of the
+endpoint law of \(-X_K^*\). The representation remains a positive mixture
+satisfying \eqref{eq:rec-1} after restriction by any event measurable with
+respect to the base tuple defined there.
 \end{lemma}
 
 \begin{proof}
@@ -937,14 +901,33 @@ even after
 \begin{equation}
 \frac{d_k}{8}N_k\le K_k\le J_{k+1}N_k.                 \label{eq:rec-19}
 \end{equation}
-For all sufficiently large $k$, the translated clock interval in \eqref{eq:rec-19} lies in $[s_k,s_{k+1})$: its upper endpoint is $s_k+e^{J_{k+1}}/J_{k+1}<s_{k+1}$, while its lower clock endpoint is much larger than $s_k$. The singleton estimate already includes the four inserted steps.
+Since $e^{J_{k+1}}=e^{J_k}J_k^{10}$ and $J_{k+1}\sim J_k$,
+\eqref{eq:rec-18}--\eqref{eq:rec-19} give, uniformly over the clock restriction,
+\[
+ c'_{\varepsilon}e^{J_k}J_k^7\log J_k
+ \le K_k\le\frac{e^{J_{k+1}}}{J_{k+1}}
+\]
+for all sufficiently large $k$. Thus $K_k/s_k\to\infty$, while
+$s_k+K_k<s_{k+1}$, so each witness time belongs to its fresh block.
+The singleton estimate already includes the four inserted steps.
 
 \smallskip\noindent\underline{\textit{Step 2.}}\quad Include the inherited profile.
 
-Let \(H_k(x)=\sum_{j=0}^{s_k-1}{\bf1}_{\{S_j=x\}}\), while the fresh
-profile includes its time-zero visit at \(S_{s_k}\).  Thus their sum is
-exactly the full profile at \(s_k+K_k\), with no double counting.  The
-fresh profile is translated by \(S_{s_k}\).  By
+Let
+\[
+ H_k(x)=\sum_{j=0}^{s_k-1}{\bf1}_{\{S_j=x\}},\qquad
+ \ell_k(z)=\sum_{i=0}^{K_k}
+       {\bf1}_{\{S_{s_k+i}-S_{s_k}=z\}}.
+\]
+The old profile stops before $s_k$, and the fresh profile includes its
+time-zero visit. Hence, for every $x\in\mathbb Z^2$,
+\[
+ H_k(x)+\ell_k(x-S_{s_k})
+ =\sum_{j=0}^{s_k-1}{\bf1}_{\{S_j=x\}}
+   +\sum_{i=0}^{K_k}{\bf1}_{\{S_{s_k+i}=x\}}
+ =L_{s_k+K_k}(x).
+\]
+By
 Lemma~\ref{lem:inherited-profile-dichotomy}, at time
 \(t_k=s_k+K_k\) every favorite of the full walk belongs either to the old
 range or to \(S_{s_k}+Y_k\).
@@ -954,7 +937,14 @@ Part \eqref{eq:rec-2} of Lemma~\ref{lem:elementary-walk-estimates} and Borel--Ca
        \max_{j\le s_k}\lVert S_j\rVert
        \le \sqrt{s_k}\,J_k
 \]
-eventually.  The choices above imply, uniformly over \eqref{eq:rec-19},
+eventually. The clock bounds above give
+\[
+ \frac{s_kJ_k^2J_{k+1}}{K_k}
+ =O_{\varepsilon}\left(\frac{J_k^{-4}}{\log J_k}\right),
+ \qquad
+ \log(s_k+K_k)=J_{k+1}+O_{\varepsilon}(\log J_{k+1})
+\]
+uniformly over \eqref{eq:rec-19}. Consequently,
 \begin{equation}
 \sqrt{s_k}\,J_k=o\left(\sqrt{\frac{K_k}{J_{k+1}}}\right),
  \qquad \log(s_k+K_k)\sim J_{k+1},\qquad s_k=o(K_k).            \label{eq:rec-20}
@@ -1006,10 +996,16 @@ strong coupling transfers the existence of a suitable Brownian center.
 The two comparisons have different purposes: the first preserves probabilities
 on their exponential scale, while the second preserves a positive probability
 of existence.
+Together they give the three lattice inputs used later: an upper bound on
+barrier crossings, a joint bound for a barrier-respecting traversal endpoint,
+and a positive probability of finding a lower root. The first two enter the
+localized upper bound; the third enters the lower bound for the disk maximum.
 
 \subsection{Spherical traversal estimates}
 
 We use Rosen's spherical traversal construction \cite{Rosen2022}.
+The radius map $h(r)$ below is distinct from the scalar terminal depth
+$h=\log M$ used later in the lattice comparison.
 Its upper and lower arguments use separate fixed choices of the initial
 radius.  We keep the customary notation $r_0$ in each argument and state
 the change explicitly; the two choices are never used in the same pathwise
@@ -1804,6 +1800,14 @@ word comes from collars of relative logarithmic width
 \smallskip\noindent
 \underline{\textit{Step 2.}}\quad Preserving the lower radial word.
 
+The target is the pathwise inclusion \eqref{eq:ct-transfer-R4b}.
+It suffices to exclude a set $D_y$ of collar failures whose conditional
+probability is small for each complete capped radial word. Outside $D_y$,
+collar closeness must give the same ordered traversal forest, and hence the
+same counts $T_{y,j}^{1,m_0}$, for the two paths. The three guards below
+prevent a wrong neighboring hit, a retreat before the intended hit, and a
+reversal just after it, respectively.
+
 Uniform path closeness alone does not preserve an excursion tree: a path
 may enter a narrow collar, retreat, and thereby insert or delete a traversal.
 We exclude precisely these retreats and wrong-side approaches.  Their total
@@ -1919,7 +1923,10 @@ last post-closing collar hit.  Every member of this union has the form
 $\{H_a[S]<H_b[S]\}$ for a named stopping time $S$, so $D_y$ is
 measurable at that finite stopping line.
 
-We record the exact conditional ratios.  Fix an admissible complete word
+Each guard is decided at a named stopping line. Strong Markov cancels the
+likelihood of all later prescribed letters in the numerator and denominator
+of its conditional ratio; for a post-guard the next prescribed sign is kept
+in the calculation. We record these ratios for an admissible complete word
 $w$.  Translation, reflection, gambler's ruin, and strong Markov at the
 integer-line hits give, for every competitive letter,
 \begin{equation}
@@ -1957,8 +1964,7 @@ opening through its incoming connector.  In particular, at $B_{y,i}$,
 $i<m_0$, the close has direction $-1$ and the next connector has sign
 $+1$, so its post ratio is $2\eta_J-\eta_J^2$.  At the final close
 $B_{y,m_0}$ it is exactly $\eta_J$, with no fictitious next sign.
-All later letters cancel by strong Markov; no arbitrary angular or future
-functional is being inserted into these ratios.  A union bound, without
+No angular or future functional is inserted into these ratios. A union bound, without
 any independence assertion among guards, gives
 \begin{equation}
 P(D_y\mid\overline W_y=w)
@@ -2590,8 +2596,18 @@ are exact.  Hence
 Apply the normalized smooth-test estimate following \eqref{eq:ct-smooth-39c} to the
 \(K_{i,l}^S\) and telescope from the right.  If
 \(\Phi_{l,F}=\bar K_{i,l+1}\cdots\bar K_{i,q_i}F\), convolution gives
-\(\|\Phi_{l,F}\|_{C^4}\le\|F\|_{C^4}\).  With the appropriate angular
-pullback at every state,
+\(\|\Phi_{l,F}\|_{C^4}\le\|F\|_{C^4}\). Let $U_{i,l}$ pull an
+angular test back to the state after letter $l$, so that
+$U_{i,0}=U_E$ and $U_{i,q_i}=U_A$. The indexed telescoping identity is
+\[
+ Q_i^SU_AF-U_E\bar J_iF
+ =\sum_{l=1}^{q_i}K_{i,1}^S\cdots K_{i,l-1}^S
+ \bigl(K_{i,l}^SU_{i,l}\Phi_{l,F}
+       -U_{i,l-1}\bar K_{i,l}\Phi_{l,F}\bigr).
+\]
+Each Markov prefix contracts the sup norm, and the normalized
+smooth-test estimate bounds the $l$th bracket by
+$CR_{i,l}^{-1}\|F\|_{C^4}$. Hence
 \[
  \|Q_i^SU_AF-U_E\bar J_iF\|_\infty
        \le C\eta_i\|F\|_{C^4}.
@@ -3219,8 +3235,20 @@ Take \(r_0=(gn)^{-1}\).  Since
 Since \(G_0=1\), \(b=O(J^2)\), \(Q\le J^3\), and
 \(M=e^{(C_h\log J)^4}\), every error term in \eqref{eq:tu-50}
 is \(O(1)\) at \(r_0\), uniformly in the word.
-A union bound over \(O(e^{2h})\) sites, \eqref{eq:tu-50}, and Chernoff's inequality
-give the first line of \eqref{eq:tu-51}.
+Write \(\theta_x(r_0)\) for \eqref{eq:tu-49-2} at site \(x\).
+Since \(r_0=O(J^{-1})\le c/h\), \eqref{eq:tu-50} applies; also
+\(\lvert V_y\rvert\le Ce^{2h}\) and \eqref{eq:tu-50-2} is uniform over
+\(x\in V_y\). Thus Chernoff's inequality gives
+\[
+\begin{aligned}
+ P\left(\max_{x\in V_y}\sum_{i=1}^bX_i(x)\ge U\,\middle|\,w\right)
+ &\le\sum_{x\in V_y}e^{-\theta_x(r_0)U}
+   E\left[e^{\theta_x(r_0)\sum_{i=1}^bX_i(x)}\,\middle|\,w\right]\\
+ &\le Ce^{2h}e^{-2J+c\log J+b/n}
+   =Ce^{-2n}J^c e^{b/n}.
+\end{aligned}
+\]
+This is the first line of \eqref{eq:tu-51}.
 
 We retain the tilt freedom to sum every endpoint band.  Set
 \[
@@ -3394,71 +3422,24 @@ count and the probability of a crossing at one center, apply through the
 source-shell range \(k\le C_0\log J\).
 
 \smallskip\noindent
-\underline{\textit{Step 2.}}\quad Include the source law in the ballot estimate.
-Fix one original cell in a shell
-\[
-       s\le k\le C_0\log J.
-\]
-Sum the complete words that include the source and whose radial prefix
-stays below the barrier. The comparison is applied to this joint event
-before conditioning on a particular source height.  Put \(m=k+1\) and
-\[
-       X=\sqrt{2T_m},\qquad Y=\sqrt{2T_n}.
-\]
-The directed-edge source estimate \eqref{eq:ct-transfer-45c} gives, for each unit band \(I_x\),
-\begin{equation}
-       P(X\in I_x)\le C(k+1)^C\exp\{-x^2/(2m)\}.             \label{eq:tu-56}
-\end{equation}
-For a unit endpoint band \(I_q=[q,q+1]\), let \(\mathscr A(q)\) denote
-the disjoint union of complete words that retain the good barrier and end
-in \(Y\in I_q\).  The joint source-inclusive comparison \eqref{eq:ct-transfer-45g}, before any
-disintegration of the actual lattice law, gives for every source band
-\(I_x\)
-\begin{equation}
-\begin{split}
- &P_S\bigl(X\in I_x,\mathscr A(q)\bigr)\\
- &\qquad\le e^{CJ^3/M}
-   \sum_{\sqrt{2t}\in I_x}\pi_{m,u_y}(t)
-       P_t^{\rm GW}(\mathscr A_t^{\rm GW}(q)).              \end{split}
-\label{eq:tu-56a}
-\end{equation}
-Only the ideal law on the right is disintegrated by \(t\).  The remaining
-traversal chain has length \(L=n-m\).  Its affine barrier has endpoints
-\(a=B_m\) and \(b=B_n+1\), and \eqref{eq:ct-external-31a} shows that it dominates the truncated
-\(J\)-barrier without replacing \(\rho_J\) by \(\rho_n\).
-
-Fix \(\epsilon_0>0\) small and
-\(\epsilon_0n\le q\le B_n+1\), and put \(p=B_n+1-q\).  For each
-\(t\ge2\), set \(x_t=\sqrt{2t}\) and apply \eqref{eq:ct-external-30} pointwise with initial
-height \(x_t\), endpoint band \([q,q+1]\), and duration \(L\).  On the
-good prefix, \(x_t\le B_m=O(m)\), while the exact geometric source law
-satisfies
-\[
-       \pi_{m,u_y}(t)\le Cm^{-1}\exp\{-x_t^2/(2m)\}.
-\]
-Because \(m+L=n\), the two exponential costs combine by the exact identity
-\begin{equation}
- \frac{x_t^2}{m}+\frac{(q-x_t)^2}{L}
- =\frac{q^2}{n}+\frac{n(x_t-mq/n)^2}{mL}.                   \label{eq:tu-57}
-\end{equation}
-The identity uses the actual height \(x_t\). Grouping those heights into
-unit bands changes the exponential by only \(e^{O(1)}\).  The Gaussian sum in the
-last term and the remaining source factors cost only a polynomial in
-\(m\).  Since \(q\ge\epsilon_0n\) and \(L\asymp n\), the ballot prefactor
-in \eqref{eq:ct-external-30}, including \(\sqrt{x_t/(qL)}\), gives
+\underline{\textit{Step 2.}}\quad Use the source-inclusive endpoint estimate.
+Fix an original cell with \(s\le k\le C_0\log J\), where its source index
+is \(k=k(y)\) in \eqref{eq:tu-54a}. The extension to \(\sigma_y\) makes
+all its radial interfaces centered at \(y\), as required by
+Lemma~\ref{lem:buffered-transfer}; our choice of \(h\) satisfies
+\(h/\log J\to\infty\) and \(h=o(J)\). On the complement of the crossing
+event in Step 1, its prefix satisfies the barrier \eqref{eq:tu-52} and
+hence the no-crossing event in \eqref{eq:ct-transfer-41}.
+Put \(Y=\sqrt{2T^S_{y,n}}\), fix \(\epsilon_0>0\) small, and take
+\(\epsilon_0n\le q\le B_n+1\). With \(p=B_n+1-q\), the bound
+\eqref{eq:ct-transfer-41} gives
 \begin{equation}
  P(\hbox{prefix good},\,Y\in I_q)
  \le C(k+1)^C(1+p)n^{-2}\exp\{-q^2/(2n)\}.                  \label{eq:tu-58}
 \end{equation}
-For the only positive start below two, namely \(T_m=1\), add an
-independent ancestor and require that ancestor to die in its first
-generation.  This has probability \(1/2\), so the desired probability is
-at most twice the bound from initial population two: from generation
-one onward the two paths agree, and these are exactly the generations on
-which the barrier in \eqref{eq:ct-external-30} is imposed.  Initial population zero cannot
-produce the present positive endpoint.  Thus
-\eqref{eq:tu-58} proves the central-range estimate \eqref{eq:ct-transfer-41}. Its relative lattice
-comparison remains valid after summing over the cells.
+Here \(I_q=[q,q+1]\), and \(B_n=B_n^J\) in that lemma because
+\(n=J-h\). The estimate already includes the source population and its
+last death decision; no conditioning on a source height is needed.
 
 \smallskip\noindent
 \underline{\textit{Step 3.}}\quad Combine the traversal and terminal costs.
@@ -3552,6 +3533,10 @@ exit data, the pieces are independent, and the covariance of their
 occupation field is close to a multiple of the killed Green function.
 A Gaussian approximation therefore reduces the remaining estimate to
 the maximum of the discrete Gaussian free field.
+We first prove this conditional terminal estimate, then combine it with the
+lattice root event to obtain a disk maximum with positive probability.
+Independent walk segments amplify that probability to an almost-sure bound
+at deterministic times.
 
 \subsection{Conditional occupation in one terminal disk}
 
@@ -3786,7 +3771,19 @@ For $\delta=1$, the truncation threshold is
  T=\frac{\sqrt b}{\log P}\asymp\frac Jh.
 \]
 A union bound over $P$ coordinates, followed by integration of
-\eqref{eq:terminal-bridge-tails}, gives
+\eqref{eq:terminal-bridge-tails}, gives the truncated third moment. To
+make the truncation explicit, put
+$V_i=\max_{x\in V_y}|\widetilde X_i(x)|$. Since $P\le Ce^{2h}$ and
+$T\asymp J/h\to\infty$, \eqref{eq:terminal-bridge-tails} implies
+$P(V_i>t)\le CP h^{-1}e^{-ct/h}$ for $t\ge T$. Therefore
+\[
+\begin{aligned}
+ E[V_i^3;V_i>T]
+ &=T^3P(V_i>T)+3\int_T^\infty t^2P(V_i>t)\,dt\\
+ &\le CP h^{-1}(T^3+hT^2+h^2T+h^3)e^{-cT/h}.
+\end{aligned}
+\]
+Here $T/h\asymp J/h^2$ and $\log P=O(h)$, which gives
 \begin{equation}
  \frac1b\sum_{i\le b}E^{\omega_i}\left[
    \max_{x\in V_y}|\widetilde X_i(x)|^3;
@@ -3794,8 +3791,8 @@ A union bound over $P$ coordinates, followed by integration of
  \le \exp\{-cJ/h^2+Ch\}.
  \label{eq:terminal-truncated-third-moment}
 \end{equation}
-The polynomial factors from integration are absorbed by the negative
-exponent.  The matching Gaussian vectors have coordinate variances
+The polynomial factors are absorbed by the negative exponent. The
+matching Gaussian vectors have coordinate variances
 at most $Ch$, by the second derivative of \eqref{eq:tu-42}.  Their contribution
 is bounded by $\exp\{-cJ^2/h^3+Ch\}$ after the same union bound.
 Thus the error in \eqref{eq:terminal-cck} is at most
@@ -4126,22 +4123,27 @@ Choose
 \[
        0<\delta<\frac{2\gamma-1}{4}.
 \]
-For \(N_j=e^{2j}\), Proposition~\ref{prop:deterministic-maximum-lower} gives,
-eventually,
+Set \(N_j=\lfloor e^{2j}\rfloor\).
+Proposition~\ref{prop:deterministic-maximum-lower} gives, for all
+sufficiently large \(j\),
 \begin{equation}
 M_{N_j}\ge u_{j,2+\delta}.                             \label{eq:escape-81}
 \end{equation}
 
-Consider any \(n\in[N_j,N_{j+1}]\).  If a favorite at time \(n\) lies in
+Consider any \(n\in[N_j,N_{j+1}]\cap\mathbb N\). If
+\(x\in\mathcal F_n\) lies in
 \[
        B\left(0,A_0\frac{\sqrt n}{(\log n)^\gamma}\right),
 \]
-then, by monotonicity of local times and \eqref{eq:escape-81}, at time \(N_{j+1}\) some
-site in
+then monotonicity of local times and \eqref{eq:escape-81} give
+\[
+ L_{N_{j+1}}(x)\ge L_n(x)=M_n\ge M_{N_j}
+       \ge u_{j,2+\delta}.
+\]
+Since \(n\le N_{j+1}\) and \(\log n\ge\log N_j\), the same site lies in
 \begin{equation}
 B\left(0,C_{A_0}e^{j+1}j^{-\gamma}\right)             \label{eq:escape-82}
 \end{equation}
-has local time at least \(u_{j,2+\delta}\).
 
 Take
 \[
@@ -4243,7 +4245,7 @@ $Z_L^S,\widehat Z_L^S$ & Lattice root counts used before conditional terminal su
 
 % ---- references ----
 \clearpage
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \raggedright
 
 \bibitem{AthreyaEtAl2022}
@@ -4277,15 +4279,42 @@ Stochastic Process. Appl. \textbf{126} (2016), 3632--3651.
 \href{https://doi.org/10.1016/j.spa.2016.04.009}{doi:10.1016/j.spa.2016.04.009}.
 \href{https://arxiv.org/abs/1502.00352}{arXiv:1502.00352}.
 
+\bibitem{Dembo2005}
+A. Dembo,
+\emph{Favorite points, cover times and fractals},
+in \emph{Lectures on Probability Theory and Statistics},
+Lecture Notes in Math. \textbf{1869}, Springer (2005), 1--101.
+\href{https://doi.org/10.1007/11429579_1}{doi:10.1007/11429579\_1}.
+
+\bibitem{Dembo2006}
+A. Dembo,
+\emph{Simple random covering, disconnection, late and favorite points},
+in \emph{Proceedings of the International Congress of Mathematicians,
+Madrid 2006}, Vol.~III, EMS (2007), 535--558.
+\href{https://doi.org/10.4171/022-3/28}{doi:10.4171/022-3/28}.
+
+\bibitem{DPRZ2001}
+A. Dembo, Y. Peres, J. Rosen and O. Zeitouni,
+\emph{Thick points for planar Brownian motion and the Erd\H{o}s--Taylor
+conjecture on random walk},
+Acta Math. \textbf{186} (2001), 239--270.
+\href{https://doi.org/10.1007/BF02401841}{doi:10.1007/BF02401841}.
+
+\bibitem{ErdosRevesz1987}
+P. Erd\H{o}s and P. R\'ev\'esz,
+\emph{Problems and results on random walks},
+in \emph{Mathematical Statistics and Probability Theory}, Vol.~B,
+D. Reidel (1987), 59--65.
+\href{https://renyi.hu/~p_erdos/1987-26.pdf}{Full text}.
+
 \bibitem{HLOZ2025}
 C. Hao, X. Li, I. Okada and Y. Zheng,
 \emph{Favorite sites for simple random walk in two and more dimensions},
-Probab. Theory Related Fields (2025).
+Probab. Theory Related Fields \textbf{195} (2026), 1765--1822.
 \href{https://doi.org/10.1007/s00440-025-01441-1}{doi:10.1007/s00440-025-01441-1}.
 \href{https://arxiv.org/abs/2409.00995}{arXiv:2409.00995}.
-The escape-rate question cited here is Remark~1.4(1) in
-\href{https://arxiv.org/abs/2409.00995v1}{version~1}; the elementary
-walk estimates are in Lemma~2.1, (2.5), also in version~2.
+The planar escape-rate question is discussed in Remark~1.4(1); the
+elementary walk estimates cited here are in Lemma~2.1, (2.5).
 
 \bibitem{KozdronLawler2005}
 M. J. Kozdron and G. F. Lawler,
@@ -4293,6 +4322,19 @@ M. J. Kozdron and G. F. Lawler,
 random walk},
 Electron. J. Probab. \textbf{10} (2005), 1442--1467.
 \href{https://arxiv.org/abs/math/0501189}{arXiv version}.
+
+\bibitem{LifshitsShi2004}
+M. A. Lifshits and Z. Shi,
+\emph{The escape rate of favorite sites of simple random walk and Brownian
+motion},
+Ann. Probab. \textbf{32} (2004), 129--152.
+\href{https://doi.org/10.1214/aop/1078415831}{doi:10.1214/aop/1078415831}.
+
+\bibitem{Revesz1990}
+P. R\'ev\'esz,
+\emph{Random Walk in Random and Non-Random Environments},
+World Scientific, Singapore, 1990.
+\href{https://doi.org/10.1142/1107}{doi:10.1142/1107}.
 
 \bibitem{Rosen2022}
 J. Rosen,

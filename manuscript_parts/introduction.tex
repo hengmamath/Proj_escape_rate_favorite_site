@@ -44,10 +44,20 @@ The conclusion identifies the boundary among logarithmic powers of the
 diffusive scale. It does not assert an integral test for arbitrary slowly
 varying perturbations of the critical gauge.
 
-The corresponding one-dimensional theorem has critical exponent $1$;
-see Bass~\cite[Theorem~2.2]{Bass2023}. The planar escape-rate question is
-posed in Hao, Li, Okada and Zheng~\cite[Remark~1.4(1) of the first arXiv
-version]{HLOZ2025}. Our focus is the location of the full set of maximizers.
+Dembo, Peres, Rosen and Zeitouni~\cite[Theorem~1.1]{DPRZ2001} proved that
+every planar favorite lies at distance $n^{1/2+o(1)}$. This first-order
+exponent leaves the logarithmic scales in Theorem~\ref{main:precise-escape-rate}
+undetermined. Erd\H{o}s and R\'ev\'esz
+\cite[Question~14]{ErdosRevesz1987} asked whether planar favorite sites
+escape to infinity. R\'ev\'esz later asked for their rate of escape
+\cite[Chap.~19]{Revesz1990}, as recorded by Dembo~\cite[p.~6]{Dembo2005}.
+Dembo's ICM survey~\cite[Open Problem~2.1]{Dembo2006} asks more broadly
+about the evolution of favorite sites in dimensions $d\ge2$, and Hao,
+Li, Okada and Zheng~\cite[Remark~1.4(1)]{HLOZ2025} also highlight the
+planar escape-rate question. In one dimension the corresponding theorem
+has critical exponent $1$; see Lifshits and Shi~\cite[Theorem~1.1]{LifshitsShi2004}
+for the walk and Bass~\cite[Theorem~2.2]{Bass2023} for Brownian motion.
+Our focus is the location of the full set of planar maximizers.
 The two assertions in Theorem~\ref{main:precise-escape-rate} therefore retain
 the distinction between its nearest and farthest members throughout the proof.
 
@@ -89,15 +99,19 @@ For every fixed $\eta>0$, there is $p_\eta>0$ such that
  P(M_{\tau_{e^J}}\ge u_{J,2+\eta})\ge p_\eta
  \quad\text{for all sufficiently large }J.
 \end{equation}
-The latter estimate is amplified over independent segments to give an
-eventual almost-sure lower bound at deterministic exponential times.
-The former then excludes a favorite near the origin throughout each time
-block. Recurrence at the critical exponent uses a separate geometric-time
-localization argument and does not depend on either disk estimate.
+Since $a_\gamma(e^{2J})=e^J/(2J)^\gamma$, the disk in
+\eqref{eq:intro-localized-upper} is at the scale relevant to the theorem.
+Taking $\beta=\gamma$ and $c=2+2\delta$ makes its main term
+$J^{-2\gamma+2\delta+o(1)}$, summable over integer $J$ when
+$\gamma>1/2$ and $\delta>0$ is small enough. The lower estimate is
+amplified over independent segments to give an eventual almost-sure
+bound at deterministic exponential times. Comparing it with the upper
+estimate excludes a favorite near the origin throughout each time block.
+Recurrence at the critical exponent uses a separate geometric-time
+localization argument.
 
 Constants denoted by $c,C$ may change between occurrences. Dependence on a
 fixed parameter is indicated when relevant. Integer parts and fixed changes
 of radius are harmless in estimates with a $J\log J$ margin: replacing $J$
 by $J+O(1)$ changes $u_{J,c}$ by $O(J)$. Directed lattice crossings and
 conditional bridge laws are defined exactly when they are introduced.
-
